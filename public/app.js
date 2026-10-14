@@ -364,7 +364,7 @@
     const host = $('#intraday-chart');
     if (!pts.length) { host.replaceChildren(el('div', 'empty', 'The live feed starts once the updater is running.')); return; }
     const dp = intradayCode === 'USDINR' ? 2 : ['XAU', 'XAG', 'XPT', 'XPD'].includes(intradayCode) ? 2 : 0;
-    lineChart(host, [{ name: '', color: css('--accent'), pts }], { yFmt: (v) => fmt(v, dp), xFmt: (t, long) => new Date(t).toLocaleString('en-IN', long ? { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' } : { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) });
+    lineChart(host, [{ name: '', color: css('--accent'), pts }], { yFmt: (v) => fmt(v, dp), xFmt: (t, long) => { const span = pts.length > 1 ? pts[pts.length - 1].t - pts[0].t : 0; const o = long || span > 20 * 3600e3 ? { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' } : { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }; return new Date(t).toLocaleString('en-IN', o); } });
   }
 
   function renderHistory(smi, ewi) {
