@@ -2,9 +2,10 @@ name = "recovery-index-live"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 
-# Every 5 minutes. The code skips weekends when metals markets are closed.
+# Every 2 hours during Indian business hours, Mon–Fri: 9:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00 IST
+# (cron is in UTC; IST = UTC+5:30). For 5-minute updates use: crons = ["*/5 * * * *"]
 [triggers]
-crons = ["*/5 * * * *"]
+crons = ["30 3-15/2 * * 1-5"]
 
 # Create with:  npx wrangler kv namespace create LIVE
 # then paste the id it prints below. Bind the same namespace to the Pages site.

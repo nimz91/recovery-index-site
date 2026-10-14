@@ -362,7 +362,7 @@
     pick.value = intradayCode;
     const pts = (LIVE.intraday || []).filter((s) => s.prices && s.prices[intradayCode] != null).map((s) => ({ t: new Date(s.ts || s.fetched).getTime(), v: Number(s.prices[intradayCode]) }));
     const host = $('#intraday-chart');
-    if (!pts.length) { host.replaceChildren(el('div', 'empty', 'The live feed starts once the 5-minute updater is running.')); return; }
+    if (!pts.length) { host.replaceChildren(el('div', 'empty', 'The live feed starts once the updater is running.')); return; }
     const dp = intradayCode === 'USDINR' ? 2 : ['XAU', 'XAG', 'XPT', 'XPD'].includes(intradayCode) ? 2 : 0;
     lineChart(host, [{ name: '', color: css('--accent'), pts }], { yFmt: (v) => fmt(v, dp), xFmt: (t, long) => new Date(t).toLocaleString('en-IN', long ? { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' } : { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) });
   }

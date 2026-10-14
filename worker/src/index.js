@@ -1,5 +1,5 @@
 // The Recovery Index — live metals updater.
-// Runs every 5 minutes (see wrangler.toml), pulls the latest metal prices and
+// Runs on the schedule in wrangler.toml (currently every 2 hours in Indian business hours), pulls the latest metal prices and
 // USD/INR from metals.dev, and stores them in the LIVE KV namespace that the
 // website's /api/live endpoint reads.
 
@@ -18,7 +18,7 @@ const MAP = {
   XPD: ['palladium'],
 };
 const PRECIOUS = new Set(['XAU', 'XAG', 'XPT', 'XPD']);
-const KEEP_POINTS = 288; // 24 hours of 5-minute snapshots
+const KEEP_POINTS = 288; // last 288 snapshots (24h at 5-minute updates; ~6 weeks at 2-hourly)
 
 async function update(env) {
   if (!env.METALS_API_KEY) throw new Error('METALS_API_KEY secret is not set');

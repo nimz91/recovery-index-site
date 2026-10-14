@@ -8,18 +8,18 @@ Live metals, scrap and e-waste prices for India, published at **prices.therecove
 |---|---|---|
 | `public/` | The website: price board, RI Secondary Metals Index, RI E-waste Index | Cloudflare Pages |
 | `public/data/*.json` | Daily prices (scrap grades, e-waste observations, battery metals, black mass, history) | Committed to this repo every weekday evening by the Claude scheduled task; each commit redeploys the site |
-| `worker/` | Fetches metal prices + USD/INR every 5 minutes from metals.dev and stores them in KV | Cloudflare Worker (cron) |
+| `worker/` | Fetches metal prices + USD/INR from metals.dev (every 2 hours, 9 am–9 pm IST, Mon–Fri) and stores them in KV | Cloudflare Worker (cron) |
 | `functions/api/live.js` | Serves the latest 5-minute prices to the page at `/api/live` | Cloudflare Pages Function |
 
 The page polls `/api/live` every minute. Between daily observations, every scrap and e-waste price
-moves with its metals' live prices in rupees, so both indices update every 5 minutes.
+moves with its metals' live prices in rupees, so both indices update with every live price refresh.
 
 ## One-time setup
 
 You need: a Cloudflare account (free), a metals.dev account, and this repo on GitHub.
 
 1. **metals.dev key.** Sign up at metals.dev and pick a plan that allows at least ~7,000 requests a month
-   (5-minute polling on trading days uses about 6,500). Copy your API key.
+   (the 2-hourly schedule uses about 155 a month; 5-minute polling would use about 6,500). Copy your API key.
 2. **KV namespace.** In the Cloudflare dashboard: Storage & Databases → KV → Create namespace, name it `recovery-index-live`.
    Copy its ID into `worker/wrangler.toml` (`REPLACE_WITH_KV_NAMESPACE_ID`).
 3. **Worker.** From the `worker/` folder:
