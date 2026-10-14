@@ -1,0 +1,9 @@
+# Cloudflare Pages config for the website (the 5-minute updater has its own config in worker/).
+name = "recovery-index-prices"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-10-01"
+
+# Same KV namespace the updater writes to; read by functions/api/live.js
+[[kv_namespaces]]
+binding = "LIVE"
+id = "8e558ea2f5d94a4e97931e9eff7968da"
