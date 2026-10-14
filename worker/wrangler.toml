@@ -10,7 +10,7 @@ crons = ["*/5 * * * *"]
 # then paste the id it prints below. Bind the same namespace to the Pages site.
 [[kv_namespaces]]
 binding = "LIVE"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "8e558ea2f5d94a4e97931e9eff7968da"
 
 # The metals.dev API key is a secret, never stored here. Set it with:
 #   npx wrangler secret put METALS_API_KEY
