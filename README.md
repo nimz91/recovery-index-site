@@ -6,8 +6,8 @@ Live metals, scrap and e-waste prices for India, published at **prices.therecove
 
 | Part | What it does | Where it runs |
 |---|---|---|
-| `public/` | The website: price board, RI Secondary Metals Index, RI E-waste Index | Cloudflare Pages |
-| `public/data/*.json` | Daily prices (scrap grades, e-waste observations, battery metals, black mass, history) | Committed to this repo every weekday evening by the Claude scheduled task; each commit redeploys the site |
+| `public/` | The website: price board, RI Secondary Metals Index, RI E-waste Index, RI Plastics Index | Cloudflare Pages |
+| `public/data/*.json` | Daily prices (scrap grades, e-waste observations, plastics grades and virgin polymer references, battery metals, black mass, history) | Committed to this repo every weekday evening by the Claude scheduled task; each commit redeploys the site |
 | `worker/` | Fetches metal prices + USD/INR from metals.dev (every 2 hours, 9 am–9 pm IST, Mon–Fri) and stores them in KV | Cloudflare Worker (cron) |
 | `functions/api/live.js` | Serves the latest live prices to the page at `/api/live` | Cloudflare Pages Function |
 

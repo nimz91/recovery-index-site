@@ -1,11 +1,11 @@
 :root {
   --bg: #f6f5f1; --panel: #ffffff; --fg: #17201c; --muted: #67706b; --line: #e3e1da;
-  --accent: #0f5d4a; --accent-2: #b36b1f; --up: #13804f; --dn: #c0392b; --grid: #ecebe5;
+  --accent: #0f5d4a; --accent-2: #b36b1f; --accent-3: #3a5fa8; --up: #13804f; --dn: #c0392b; --grid: #ecebe5;
   --sans: 'Inter', system-ui, -apple-system, sans-serif; --serif: 'Source Serif 4', Georgia, serif;
   --r: 10px;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #0e1311; --panel: #151c19; --fg: #e8ece9; --muted: #96a19b; --line: #26302c; --accent: #3fb68b; --accent-2: #e09a4c; --up: #3fbf7f; --dn: #ef6b5b; --grid: #1f2824; }
+  :root { --bg: #0e1311; --panel: #151c19; --fg: #e8ece9; --muted: #96a19b; --line: #26302c; --accent: #3fb68b; --accent-2: #e09a4c; --accent-3: #7ea2e8; --up: #3fbf7f; --dn: #ef6b5b; --grid: #1f2824; }
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.45; }
@@ -54,6 +54,7 @@ select { font: inherit; font-size: 13px; padding: 5px 9px; border-radius: 8px; b
 
 .index-card { border-top: 3px solid var(--accent); }
 #ewi.index-card { border-top-color: var(--accent-2); }
+#pli.index-card { border-top-color: var(--accent-3); }
 .index-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .index-head > div:first-child { flex: 1 1 320px; }
 .index-val { text-align: right; }

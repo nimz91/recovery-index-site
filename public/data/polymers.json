@@ -1,0 +1,47 @@
+[
+ {
+  "date": "2026-10-14",
+  "code": "V-PET",
+  "name": "PET, bottle grade (virgin)",
+  "price": 95,
+  "unit": "INR/kg",
+  "source": "OfBusiness polymer prices, mid of ₹90–100",
+  "source_url": "https://www.ofbusiness.com/prices/polymers-packaging/pet"
+ },
+ {
+  "date": "2026-10-14",
+  "code": "V-HDPE",
+  "name": "HDPE (virgin)",
+  "price": 107.5,
+  "unit": "INR/kg",
+  "source": "OfBusiness polymer prices, mid of ₹100–115",
+  "source_url": "https://www.ofbusiness.com/prices/polymers-packaging"
+ },
+ {
+  "date": "2026-10-14",
+  "code": "V-PP",
+  "name": "PP (virgin)",
+  "price": 112.5,
+  "unit": "INR/kg",
+  "source": "OfBusiness polymer prices, mid of ₹105–120",
+  "source_url": "https://www.ofbusiness.com/prices/polymers-packaging"
+ },
+ {
+  "date": "2026-10-14",
+  "code": "V-LDPE",
+  "name": "LDPE (virgin)",
+  "price": 122.5,
+  "unit": "INR/kg",
+  "source": "OfBusiness polymer prices, mid of ₹115–130",
+  "source_url": "https://www.ofbusiness.com/prices/polymers-packaging"
+ },
+ {
+  "date": "2026-10-14",
+  "code": "V-ABS",
+  "name": "ABS (virgin)",
+  "price": 155,
+  "unit": "INR/kg",
+  "source": "OfBusiness polymer prices, mid of ₹145–165",
+  "source_url": "https://www.ofbusiness.com/prices/polymers-packaging"
+ }
+]

@@ -136,6 +136,60 @@
     return { rows, now: idx('now'), prev: idx('prev'), daily };
   }
 
+
+  // ---------- plastics index ----------
+  function polyAt(code, date) {
+    const s = D.polymers.filter((p) => p.code === code).sort((a, b) => (a.date < b.date ? -1 : 1));
+    let v = null;
+    for (const x of s) if (x.date <= date) v = Number(x.price);
+    if (v == null && s.length) v = Number(s[0].price);
+    return v;
+  }
+  function pliCompute() {
+    const dates = [...new Set(D.polymers.map((p) => p.date))].sort();
+    const last = dates[dates.length - 1] || BASE_DATE;
+    const prevDay = dates.filter((d) => d < last).pop() || null;
+    const valueOn = (it, d) => {
+      const p0 = polyAt(it.driver, it.anchor_date), p1 = polyAt(it.driver, d);
+      const f = Number(it.exp_fixed) + Number(it.exp_driver) * (p0 && p1 ? p1 / p0 : 1);
+      return Number(it.anchor_price) * f;
+    };
+    const rows = D.plastics.map((it) => ({ ...it, now: valueOn(it, last), base: valueOn(it, BASE_DATE), prev: prevDay ? valueOn(it, prevDay) : null, virgin: polyAt(it.driver, last) }));
+    const idx = (vals) => 100 * mean(vals);
+    const now = idx(rows.map((r) => r.now / r.base));
+    const prev = prevDay ? idx(rows.map((r) => r.prev / r.base)) : null;
+    const byPolymer = {};
+    rows.forEach((r) => { (byPolymer[r.polymer] = byPolymer[r.polymer] || []).push(r); });
+    const subs = Object.entries(byPolymer).map(([p, rs]) => ({ polymer: p, value: idx(rs.map((r) => r.now / r.base)), prev: prevDay ? idx(rs.map((r) => r.prev / r.base)) : null }));
+    const daily = dates.filter((d) => d >= BASE_DATE).map((d) => ({ date: d, value: idx(D.plastics.map((it) => valueOn(it, d) / valueOn(it, BASE_DATE))) }));
+    return { rows, now, prev, subs, daily, last };
+  }
+
+  function renderPLI(pli) {
+    $('#pli-live').textContent = fmt(pli.now, 2);
+    const c = $('#pli-chg');
+    if (pli.prev == null) { c.className = 'sub flat'; c.textContent = 'Base period · as of ' + dateLabel(pli.last); }
+    else { const d = pli.now - pli.prev; c.className = 'sub ' + cls(d); c.textContent = ptsText(d) + ' since last update · ' + dateLabel(pli.last); }
+    $('#pli-subs').replaceChildren(...pli.subs.map((s) => {
+      const d = s.prev == null ? null : s.value - s.prev;
+      const box = el('div', 'subcard');
+      box.append(el('div', 'lbl', s.polymer), el('div', 'v', fmt(s.value, 2)), el('div', 'c ' + cls(d), d == null ? '—' : ptsText(d)));
+      return box;
+    }));
+    const tb = $('#pli-table tbody');
+    tb.replaceChildren();
+    pli.rows.forEach((r) => {
+      const tr = tb.insertRow();
+      tr.title = `Observed ${inr(r.anchor_price, 2)}/kg on ${dateLabel(r.anchor_date)} · ${r.source}`;
+      const add = (t, k) => { const td = tr.insertCell(); td.textContent = t; if (k) td.className = k; };
+      add(r.item, 'nm'); add(r.polymer, 'hide-sm'); add(inr(r.anchor_price, r.anchor_price % 1 ? 2 : 0), 'r hide-sm');
+      add(inr(r.now, 2), 'r');
+      const ch = r.prev == null ? null : r.now / r.prev - 1;
+      add(ch == null ? '—' : pctText(ch), 'r ' + cls(ch));
+      add(inr(r.virgin, r.virgin % 1 ? 1 : 0), 'r hide-sm');
+    });
+  }
+
   // ---------- rendering ----------
   function boardView(r) {
     const live = livePrice(r.code);
@@ -177,7 +231,7 @@
     $('#tape').classList.add('run');
   }
 
-  function renderTiles(smi, ewi) {
+  function renderTiles(smi, ewi, pli) {
     const tile = (lbl, num, chgText, chgVal) => {
       const t = el('div', 'tile');
       t.append(el('div', 'lbl', lbl), el('div', 'num', num), el('div', 'chg ' + cls(chgVal), chgText));
@@ -188,7 +242,8 @@
     const smiPrev = smi.daily.length > 1 ? smi.daily[smi.daily.length - 2].composite : 100;
     tiles.push(tile('RI Secondary Metals Index', fmt(smi.live.composite, 2), ptsText(smi.live.composite - smiPrev), smi.live.composite - smiPrev));
     tiles.push(tile('RI E-waste Index', fmt(ewi.now, 2), ptsText(ewi.now - ewi.prev), ewi.now - ewi.prev));
-    for (const [code, lbl] of [['CU', 'Copper · USD/t'], ['XAU', 'Gold · USD/oz'], ['LI2CO3', 'Lithium carbonate · USD/t'], ['USDINR', 'USD / INR']]) {
+    tiles.push(tile('RI Plastics Index', fmt(pli.now, 2), pli.prev == null ? 'Base period' : ptsText(pli.now - pli.prev), pli.prev == null ? null : pli.now - pli.prev));
+    for (const [code, lbl] of [['CU', 'Copper · USD/t'], ['XAU', 'Gold · USD/oz'], ['LI2CO3', 'Lithium carbonate · USD/t']]) {
       const r = b(code); if (!r) continue;
       const v = boardView(r);
       tiles.push(tile(lbl, priceText(r, v.price), v.changeText, v.change));
@@ -367,18 +422,19 @@
     lineChart(host, [{ name: '', color: css('--accent'), pts }], { yFmt: (v) => fmt(v, dp), xFmt: (t, long) => { const span = pts.length > 1 ? pts[pts.length - 1].t - pts[0].t : 0; const o = long || span > 20 * 3600e3 ? { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' } : { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }; return new Date(t).toLocaleString('en-IN', o); } });
   }
 
-  function renderHistory(smi, ewi) {
+  function renderHistory(smi, ewi, pli) {
     const toPts = (arr, k) => arr.map((r) => ({ t: new Date(r.date + 'T00:00:00Z').getTime(), v: r[k] })).filter((p) => p.v != null);
     lineChart($('#history-chart'), [
       { name: 'Secondary metals', color: css('--accent'), pts: toPts(smi.daily, 'composite') },
       { name: 'E-waste', color: css('--accent-2'), pts: toPts(ewi.daily, 'value') },
+      { name: 'Plastics', color: css('--accent-3'), pts: toPts(pli.daily, 'value') },
     ], { yFmt: (v) => fmt(v, 2), xFmt: (t) => new Date(t).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' }), refY: 100 });
   }
 
   function renderAll() {
-    const smi = smiCompute(), ewi = ewiCompute();
-    renderStatus(); renderTape(); renderTiles(smi, ewi); renderTakeaway();
-    renderSMI(smi); renderEWI(ewi); renderMarkets(); renderIntraday(); renderHistory(smi, ewi);
+    const smi = smiCompute(), ewi = ewiCompute(), pli = pliCompute();
+    renderStatus(); renderTape(); renderTiles(smi, ewi, pli); renderTakeaway();
+    renderSMI(smi); renderEWI(ewi); renderPLI(pli); renderMarkets(); renderIntraday(); renderHistory(smi, ewi, pli);
   }
 
   async function pollLive() {
@@ -388,7 +444,7 @@
 
   async function init() {
     $('#year').textContent = new Date().getFullYear();
-    const names = ['board', 'history', 'scrap', 'smi_basket', 'ewaste'];
+    const names = ['board', 'history', 'scrap', 'smi_basket', 'ewaste', 'plastics', 'polymers'];
     const loaded = await Promise.all(names.map((n) => getJSON(`/data/${n}.json`)));
     names.forEach((n, i) => { D[n] = loaded[i]; });
     buildSeries();
@@ -398,6 +454,6 @@
   }
 
   // Exposed for tests.
-  window.RI = { D, get LIVE() { return LIVE; }, set LIVE(v) { LIVE = v; }, smiCompute, ewiCompute, factor, buildSeries, renderAll };
+  window.RI = { D, pliCompute, get LIVE() { return LIVE; }, set LIVE(v) { LIVE = v; }, smiCompute, ewiCompute, factor, buildSeries, renderAll };
   init().catch((e) => { $('#live-label').textContent = 'Could not load prices'; console.error(e); });
 })();
