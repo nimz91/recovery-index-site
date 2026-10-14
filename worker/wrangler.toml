@@ -1,0 +1,16 @@
+name = "recovery-index-live"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Every 5 minutes. The code skips weekends when metals markets are closed.
+[triggers]
+crons = ["*/5 * * * *"]
+
+# Create with:  npx wrangler kv namespace create LIVE
+# then paste the id it prints below. Bind the same namespace to the Pages site.
+[[kv_namespaces]]
+binding = "LIVE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# The metals.dev API key is a secret, never stored here. Set it with:
+#   npx wrangler secret put METALS_API_KEY

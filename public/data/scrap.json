@@ -1,0 +1,178 @@
+[
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "CU-ARM-PLANT",
+  "metal": "Copper",
+  "grade": "Armature (plant)",
+  "buy": 1349,
+  "sell": 1464,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "CU-ARM-BHATTI",
+  "metal": "Copper",
+  "grade": "Armature (bhatti)",
+  "buy": 1347,
+  "sell": 1462,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "CU-SUPERD",
+  "metal": "Copper",
+  "grade": "Super D",
+  "buy": 1424,
+  "sell": 1524,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "CU-CCR",
+  "metal": "Copper",
+  "grade": "CCR",
+  "buy": 1424,
+  "sell": 1536,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "BR-PURJA",
+  "metal": "Brass",
+  "grade": "Purja",
+  "buy": 858,
+  "sell": 900,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "BR-HONEY",
+  "metal": "Brass",
+  "grade": "Honey",
+  "buy": 896,
+  "sell": 938,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "BR-CHADARI",
+  "metal": "Brass",
+  "grade": "Chadari",
+  "buy": 878,
+  "sell": 920,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "AL-PURJA",
+  "metal": "Aluminium",
+  "grade": "Purja (1% iron)",
+  "buy": 242,
+  "sell": 270,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "AL-WIRE",
+  "metal": "Aluminium",
+  "grade": "Wire scrap",
+  "buy": 326,
+  "sell": 344,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "AL-BARTAN",
+  "metal": "Aluminium",
+  "grade": "Bartan (utensils)",
+  "buy": 286,
+  "sell": 309,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "AL-SHEET",
+  "metal": "Aluminium",
+  "grade": "Sheet",
+  "buy": 326,
+  "sell": 336,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "ZN-DROSS",
+  "metal": "Zinc",
+  "grade": "Dross",
+  "buy": 352,
+  "sell": 372,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "ZN-TUKADI",
+  "metal": "Zinc",
+  "grade": "Tukadi",
+  "buy": 353,
+  "sell": 376,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "PB-SOFT",
+  "metal": "Lead",
+  "grade": "Soft",
+  "buy": 194,
+  "sell": 216,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "PB-HARD",
+  "metal": "Lead",
+  "grade": "Hard",
+  "buy": 196,
+  "sell": 215,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ },
+ {
+  "date": "2026-10-14",
+  "city": "Delhi",
+  "code": "PB-BATT",
+  "metal": "Lead",
+  "grade": "Battery scrap (black/white)",
+  "buy": 99.5,
+  "sell": 121,
+  "source": "Delhi wholesale board (scrapc.com)",
+  "source_url": "https://scrapc.com/news/delhi-scrap-price-today/"
+ }
+]

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Recovery Index · Metals & E-waste Prices</title>
+<meta name="description" content="Live metal prices and India's secondary metals and e-waste price indices, from The Recovery Index.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5d4a'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/">The Recovery Index <span>Prices</span></a>
+    <div class="status"><span class="dot" id="live-dot"></span><span id="live-label">Loading…</span></div>
+  </div>
+  <div class="tape" id="tape" aria-label="Price ticker"><div class="tape-track" id="tape1"></div><div class="tape-track" id="tape2" aria-hidden="true"></div></div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Metals, scrap and e-waste prices for India</h1>
+    <p class="lede" id="takeaway">&nbsp;</p>
+  </section>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="card index-card" id="smi">
+    <div class="index-head">
+      <div>
+        <h2>RI Secondary Metals Index</h2>
+        <p class="note">India non-ferrous scrap, Delhi wholesale. 16 grades of copper, aluminium, brass, lead and zinc. Base 100 = 14 Oct 2026.</p>
+      </div>
+      <div class="index-val">
+        <div class="big" id="smi-live">—</div>
+        <div class="sub" id="smi-live-chg">&nbsp;</div>
+        <div class="sub muted" id="smi-close">&nbsp;</div>
+      </div>
+    </div>
+    <div class="subs" id="smi-subs"></div>
+    <div class="tw tall"><table id="smi-table"><thead><tr>
+      <th>Metal</th><th>Grade</th><th class="r hide-sm">Buy</th><th class="r hide-sm">Sell</th><th class="r">Last mid</th><th class="r">Live est.</th><th class="r">vs last mid</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="card index-card" id="ewi">
+    <div class="index-head">
+      <div>
+        <h2>RI E-waste Index</h2>
+        <p class="note">Indicative ₹/kg for 9 e-waste items, moved by the metals inside them. Base 100 = 14 Oct 2026.</p>
+      </div>
+      <div class="index-val">
+        <div class="big" id="ewi-live">—</div>
+        <div class="sub" id="ewi-live-chg">&nbsp;</div>
+      </div>
+    </div>
+    <div class="tw tall"><table id="ewi-table"><thead><tr>
+      <th>Item</th><th class="hide-sm">Category</th><th class="r hide-sm">Observed</th><th class="r">Indicative now</th><th class="r">Change</th><th class="hide-sm">Main driver</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="card" id="intraday-card">
+    <div class="card-head"><h2>Intraday</h2><select id="intraday-pick" aria-label="Metal"></select></div>
+    <p class="note" id="intraday-note">Live prices every 5 minutes on trading days.</p>
+    <div class="chart" id="intraday-chart"></div>
+  </section>
+
+  <div class="grid" id="markets"></div>
+
+  <section class="card" id="history-card">
+    <div class="card-head"><h2>Index history</h2></div>
+    <p class="note">Daily closing values. Dashed line = base 100.</p>
+    <div class="chart" id="history-chart"></div>
+  </section>
+
+  <section class="card method" id="method">
+    <h2>Method and sources</h2>
+    <p><b>Live prices.</b> Metal prices and USD/INR update every 5 minutes on trading days from a commercial data feed. Each table shows when its prices were last updated.</p>
+    <p><b>RI Secondary Metals Index.</b> Each grade's price is the midpoint of the Delhi wholesale buy and sell rate, observed daily. A metal's sub-index is the average of its grades' prices relative to 14 Oct 2026, × 100; the composite weights copper 35%, aluminium 25%, brass 15%, lead 15%, zinc 10%. Between daily observations, the live estimate moves each grade with its metal's live price in rupees (brass with 65% copper, 35% zinc).</p>
+    <p><b>RI E-waste Index.</b> Each item starts from an observed dealer buying rate and then moves with the metals it contains, in rupees: price now = observed rate × (Σ share of value from each metal × that metal's change since the observation + the share that tracks no metal). The index is the equal-weighted average of the items relative to 14 Oct 2026, × 100. Value shares are modelled estimates.</p>
+    <p><b>Other prices.</b> Base metals: LME 3-month. Precious metals: spot. Battery metals: GFEX lithium carbonate and LME cobalt. Black mass: quarterly payables. India scrap and e-waste observations come from dealer boards (Delhi wholesale, Jalna, MetalMandi) and are indicative, excluding 18% GST, not offers. Sources are credited and linked in each table.</p>
+    <p class="muted">Prices are for information only and are not trading or investment advice.</p>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h2>Get the weekly read on India's recovery markets</h2>
+      <p>E-waste, EPR and battery recycling, in one email.</p>
+    </div>
+    <a class="btn" href="https://therecoveryindex.beehiiv.com" target="_blank" rel="noopener">Subscribe</a>
+  </section>
+</main>
+
+<footer class="wrap foot">© <span id="year"></span> The Recovery Index · therecoveryindex.in</footer>
+<div class="tip" id="tip" hidden></div>
+<script src="/app.js"></script>
+</body>
+</html>

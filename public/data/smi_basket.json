@@ -1,0 +1,82 @@
+[
+ {
+  "code": "CU-ARM-PLANT",
+  "basket": "Copper",
+  "basket_weight": 35
+ },
+ {
+  "code": "CU-ARM-BHATTI",
+  "basket": "Copper",
+  "basket_weight": 35
+ },
+ {
+  "code": "CU-SUPERD",
+  "basket": "Copper",
+  "basket_weight": 35
+ },
+ {
+  "code": "CU-CCR",
+  "basket": "Copper",
+  "basket_weight": 35
+ },
+ {
+  "code": "BR-PURJA",
+  "basket": "Brass",
+  "basket_weight": 15
+ },
+ {
+  "code": "BR-HONEY",
+  "basket": "Brass",
+  "basket_weight": 15
+ },
+ {
+  "code": "BR-CHADARI",
+  "basket": "Brass",
+  "basket_weight": 15
+ },
+ {
+  "code": "AL-PURJA",
+  "basket": "Aluminium",
+  "basket_weight": 25
+ },
+ {
+  "code": "AL-WIRE",
+  "basket": "Aluminium",
+  "basket_weight": 25
+ },
+ {
+  "code": "AL-BARTAN",
+  "basket": "Aluminium",
+  "basket_weight": 25
+ },
+ {
+  "code": "AL-SHEET",
+  "basket": "Aluminium",
+  "basket_weight": 25
+ },
+ {
+  "code": "ZN-DROSS",
+  "basket": "Zinc",
+  "basket_weight": 10
+ },
+ {
+  "code": "ZN-TUKADI",
+  "basket": "Zinc",
+  "basket_weight": 10
+ },
+ {
+  "code": "PB-SOFT",
+  "basket": "Lead",
+  "basket_weight": 15
+ },
+ {
+  "code": "PB-HARD",
+  "basket": "Lead",
+  "basket_weight": 15
+ },
+ {
+  "code": "PB-BATT",
+  "basket": "Lead",
+  "basket_weight": 15
+ }
+]
