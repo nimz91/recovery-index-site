@@ -180,6 +180,66 @@
   "basis": "Mn 99.7%, China"
  },
  {
+  "code": "NDPR",
+  "name": "NdPr oxide, China",
+  "price": 97.3,
+  "prev": 96.69,
+  "date": "2026-09-30",
+  "source": "SMM (via Critical Minerals News)",
+  "source_url": "https://critical-minerals-news.com/rare-earths-price/",
+  "basis": "Pr-Nd oxide, China domestic, converted to USD; prev = 5 Sep. China industry index (CREIA) had NdPr at ¥729.8–749.8/kg on 9 Oct",
+  "group": "Rare earths",
+  "unit": "USD/kg"
+ },
+ {
+  "code": "DY-CN",
+  "name": "Dysprosium oxide, China",
+  "price": 188.16,
+  "prev": null,
+  "date": "2026-09-30",
+  "source": "SMM (via Critical Minerals News)",
+  "source_url": "https://critical-minerals-news.com/rare-earths-price/",
+  "basis": "China domestic, converted to USD",
+  "group": "Rare earths",
+  "unit": "USD/kg"
+ },
+ {
+  "code": "TB-CN",
+  "name": "Terbium oxide, China",
+  "price": 859.86,
+  "prev": null,
+  "date": "2026-09-30",
+  "source": "SMM (via Critical Minerals News)",
+  "source_url": "https://critical-minerals-news.com/rare-earths-price/",
+  "basis": "China domestic, converted to USD",
+  "group": "Rare earths",
+  "unit": "USD/kg"
+ },
+ {
+  "code": "DY-XC",
+  "name": "Dysprosium oxide 99.5%, ex-China",
+  "price": 3000,
+  "prev": 2205,
+  "date": "2026-10-01",
+  "source": "Fastmarkets, CIP global",
+  "source_url": "https://www.fastmarkets.com/insights/us-demand-drives-sharp-increases-in-cip-global-terbium-dysprosium-prices/",
+  "basis": "Mid of $2,500–3,500/kg; prev = mid of $1,910–2,500 a week earlier. Ex-China prices reflect China's export controls on heavy rare earths",
+  "group": "Rare earths",
+  "unit": "USD/kg"
+ },
+ {
+  "code": "TB-XC",
+  "name": "Terbium oxide 99.99%, ex-China",
+  "price": 6500,
+  "prev": 4600,
+  "date": "2026-10-01",
+  "source": "Fastmarkets, CIP global",
+  "source_url": "https://www.fastmarkets.com/insights/us-demand-drives-sharp-increases-in-cip-global-terbium-dysprosium-prices/",
+  "basis": "Mid of $5,000–8,000/kg; prev = mid of $4,200–5,000 on 24 Sep",
+  "group": "Rare earths",
+  "unit": "USD/kg"
+ },
+ {
   "code": "BM-NCM-CN",
   "name": "NCM black mass, EXW China",
   "group": "Black mass payables",
@@ -189,7 +249,7 @@
   "date": "2026-09-30",
   "source": "Benchmark Q3 2026 black mass review",
   "source_url": "https://source.benchmarkminerals.com/article/export-interventions-and-payables-under-pressure-q3-2026-black-mass-price-review",
-  "basis": "Quarterly; prev = end Q2"
+  "basis": "Quarterly; prev = end Q2. % of contained metal value"
  },
  {
   "code": "BM-NCM-ASIA",
@@ -201,7 +261,7 @@
   "date": "2026-09-30",
   "source": "Benchmark Q3 2026 black mass review",
   "source_url": "https://source.benchmarkminerals.com/article/export-interventions-and-payables-under-pressure-q3-2026-black-mass-price-review",
-  "basis": "Quarterly; prev = end Q2"
+  "basis": "Quarterly; prev = end Q2. Payable on Ni + Co value only; buyers in Korea also pay for the lithium content, so payables can exceed 100%"
  },
  {
   "code": "BM-LCO-CN",
@@ -214,6 +274,18 @@
   "source": "Benchmark Q3 2026 black mass review",
   "source_url": "https://source.benchmarkminerals.com/article/export-interventions-and-payables-under-pressure-q3-2026-black-mass-price-review",
   "basis": "Li and Co payables both 70.8%"
+ },
+ {
+  "code": "BM-LCO-ASIA",
+  "name": "LCO black mass, CIF Asia",
+  "group": "Black mass payables",
+  "unit": "% payable",
+  "price": 74.5,
+  "prev": 92.5,
+  "date": "2026-09-30",
+  "source": "Benchmark Q3 2026 black mass review",
+  "source_url": "https://source.benchmarkminerals.com/article/export-interventions-and-payables-under-pressure-q3-2026-black-mass-price-review",
+  "basis": "From end-of-life batteries; quarterly, prev = end Q2"
  },
  {
   "code": "BM-LFP-CN",

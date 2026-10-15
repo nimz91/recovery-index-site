@@ -15,7 +15,8 @@
     { g: 'Base metals', note: 'LME 3-month, USD per tonne', inr: true },
     { g: 'Precious metals', note: 'Spot, USD per troy ounce', inr: true },
     { g: 'Battery metals', note: 'Exchange references, USD per tonne', inr: true },
-    { g: 'Black mass payables', note: 'Quarterly, end of Q3 2026 vs end of Q2', inr: false },
+    { g: 'Rare earths', note: 'Magnet rare earth oxides, USD per kg. China domestic prices vs ex-China prices, which carry a premium under China\'s export controls', inr: true },
+    { g: 'Black mass payables', note: 'Quarterly, end of Q3 2026 vs end of Q2. Payable = % of contained metal value paid to the seller', inr: false },
     { g: 'India scrap & e-waste', note: 'Indicative dealer buying rates, ₹ per kg, excl. GST', inr: false },
     { g: 'FX', note: 'Indian rupees per US dollar', inr: false },
   ];
@@ -168,7 +169,8 @@
   function renderPLI(pli) {
     $('#pli-live').textContent = fmt(pli.now, 2);
     const c = $('#pli-chg');
-    if (pli.prev == null) { c.className = 'sub flat'; c.textContent = 'Base period · as of ' + dateLabel(pli.last); }
+    const nextChk = new Date(Date.parse(pli.last + 'T00:00:00Z') + 14 * 864e5).toISOString().slice(0, 10);
+    if (pli.prev == null) { c.className = 'sub flat'; c.textContent = 'Base period · virgin prices as of ' + dateLabel(pli.last) + ' · next update ~' + dateLabel(nextChk); }
     else { const d = pli.now - pli.prev; c.className = 'sub ' + cls(d); c.textContent = ptsText(d) + ' since last update · ' + dateLabel(pli.last); }
     $('#pli-subs').replaceChildren(...pli.subs.map((s) => {
       const d = s.prev == null ? null : s.value - s.prev;
@@ -203,6 +205,7 @@
     const fx = priceNow('USDINR');
     let inrText = '';
     if (r.unit === 'USD/t') inrText = inr(price * fx / 1000) + '/kg';
+    if (r.unit === 'USD/kg') inrText = inr(price * fx) + '/kg';
     if (r.unit === 'USD/oz') inrText = inr(price * fx / 31.1035 * 10) + '/10 g';
     return { price, isLive, change, changeText, inrText, asOf: isLive ? timeIST(LIVE.latest.ts || LIVE.latest.fetched) : dateLabel(r.date) };
   }
@@ -242,7 +245,7 @@
     const smiPrev = smi.daily.length > 1 ? smi.daily[smi.daily.length - 2].composite : 100;
     tiles.push(tile('RI Secondary Metals Index', fmt(smi.live.composite, 2), ptsText(smi.live.composite - smiPrev), smi.live.composite - smiPrev));
     tiles.push(tile('RI E-waste Index', fmt(ewi.now, 2), ptsText(ewi.now - ewi.prev), ewi.now - ewi.prev));
-    tiles.push(tile('RI Plastics Index', fmt(pli.now, 2), pli.prev == null ? 'Base period' : ptsText(pli.now - pli.prev), pli.prev == null ? null : pli.now - pli.prev));
+    tiles.push(tile('RI Plastics Index', fmt(pli.now, 2), pli.prev == null ? 'Base · updates fortnightly' : ptsText(pli.now - pli.prev), pli.prev == null ? null : pli.now - pli.prev));
     for (const [code, lbl] of [['CU', 'Copper · USD/t'], ['XAU', 'Gold · USD/oz'], ['LI2CO3', 'Lithium carbonate · USD/t']]) {
       const r = b(code); if (!r) continue;
       const v = boardView(r);
