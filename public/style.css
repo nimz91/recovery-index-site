@@ -16,7 +16,8 @@ a { color: inherit; }
 .r { text-align: right; }
 
 .top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.top-row { display: flex; justify-content: space-between; align-items: center; height: 52px; }
+.top-row { display: flex; justify-content: space-between; align-items: center; min-height: 52px; flex-wrap: wrap; gap: 4px 12px; padding-block: 4px; }
+@media (max-width: 560px) { .top-row .status { display: none; } }
 .brand { font-family: var(--serif); font-size: 19px; text-decoration: none; font-weight: 600; }
 .brand span { font-family: var(--sans); font-weight: 500; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-left: 6px; }
 .status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }

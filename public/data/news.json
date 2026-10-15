@@ -1,0 +1,75 @@
+{
+ "updated": "2026-10-15",
+ "items": [
+  {
+   "date": "2026-10-15",
+   "region": "India",
+   "topic": "Solar waste",
+   "title": "Chennai workshop calls for a separate rulebook for end-of-life solar panels",
+   "summary": "Speakers at a Consumer and Civic Action Group workshop in Chennai said India needs a dedicated solar recycling policy, modelled on its e-waste rules. With a 280 GW solar target, they argued EPR alone has not delivered safe panel dismantling.",
+   "why": "Solar panels sit inside the e-waste rules today. A separate framework would change who pays, and what recyclers can claim.",
+   "source": "The Hindu (via Solar Now)",
+   "url": "https://now.solar/2026/10/15/speakers-pitch-for-new-environment-framework-for-handling-solar-panel-waste-the-hindu/"
+  },
+  {
+   "date": "2026-10-14",
+   "region": "India",
+   "topic": "E-waste",
+   "title": "India reports 13.98 lakh tonnes of e-waste for 2024-25, but still doesn't count the informal workforce",
+   "summary": "Published on International E-Waste Day, this piece notes the environment ministry's estimate of 13.98 lakh tonnes generated in 2024-25, with 70.7% reported as processed. It argues India tracks tonnes and certificates but not the informal workers who collect and dismantle most of it.",
+   "why": "Collection targets rise to 80% from FY2027-28. The informal channel is where the missing tonnes are.",
+   "source": "The Wire",
+   "url": "https://m.thewire.in/article/labour/behind-indias-e-waste-problem-is-a-workforce-it-fails-to-count"
+  },
+  {
+   "date": "2026-10-14",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "Singapore's NEU Battery Materials raises $7.6M and opens an LFP lithium recovery plant",
+   "summary": "NEU closed a $7.6 million round co-led by Shift4Good and SGInnovate. It opened a plant in Tuas that can process about 1,300 tonnes a year of LFP scrap and black mass into battery-grade lithium. Europe and US expansion is planned from 2027.",
+   "why": "LFP is the hard case for recyclers because it holds no nickel or cobalt. Lithium-only recovery economics will matter as India's LFP volumes grow.",
+   "source": "TechNode Global",
+   "url": "https://technode.global/2026/10/14/neu-battery-materials-funding-singapore-plant"
+  },
+  {
+   "date": "2026-10-06",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "Ex-China terbium and dysprosium prices jump on US demand",
+   "summary": "Fastmarkets' CIP global terbium oxide assessment rose to $5,000–8,000/kg, up 41% in a week. Dysprosium oxide moved to $2,500–3,500/kg. China's export controls keep these heavy rare earths scarce outside China.",
+   "why": "Outside China, these magnet metals now sell at many times China's domestic price. That premium is what makes magnet recycling pay.",
+   "source": "Fastmarkets",
+   "url": "https://www.fastmarkets.com/insights/us-demand-drives-sharp-increases-in-cip-global-terbium-dysprosium-prices/"
+  },
+  {
+   "date": "2026-10-05",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "GM puts cathode made from recycled EV batteries into production vehicles",
+   "summary": "With Cirba Solutions, GM turned 80 end-of-life EV packs into black mass and then more than 12 tonnes of new cathode material for Ultium Cells. The first cars built with it have come off the line in Michigan and Tennessee.",
+   "why": "This is closed-loop proof at automaker scale. It is the benchmark Indian OEMs and recyclers will be measured against.",
+   "source": "Resource Recycling",
+   "url": "https://resource-recycling.com/e-scrap/2026/10/05/gm-launches-recycled-ev-battery-line/"
+  },
+  {
+   "date": "2026-10-02",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "US lets ABTC export up to $100M of black mass despite export controls",
+   "summary": "The US Commerce Department granted American Battery Technology Co. an exception to sell up to $100 million of recycled black mass abroad. US rules otherwise require black mass producers to sell their output domestically until August 2027.",
+   "why": "US shredding capacity has run ahead of refining. Exceptions like this decide where black mass flows, and that affects payables in Asia.",
+   "source": "Waste Dive",
+   "url": "https://www.wastedive.com/news/american-battery-granted-export-license-100m-in-black-mass/832013/"
+  },
+  {
+   "date": "2026-10-02",
+   "region": "India",
+   "topic": "E-waste",
+   "title": "Environment ministry's Special Campaign 6 targets 3,270 obsolete electronic items in its own offices",
+   "summary": "MoEFCC's October 2–31 campaign includes an SOP for scientific disposal of office e-waste. It has flagged about 3,270 items across its offices, including 1,425 IT and telecom items.",
+   "why": "Government offices are a steady source of e-waste. Campaign months are when authorised recyclers can win government lots.",
+   "source": "Indian Masterminds",
+   "url": "https://indianmasterminds.com/news/moefcc-special-campaign-6-e-waste-238612/"
+  }
+ ]
+}

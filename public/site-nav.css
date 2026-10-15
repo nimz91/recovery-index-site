@@ -1,0 +1,11 @@
+/* Shared site menu: News · Prices · EPR Calculator · Newsletter. Scoped so it works on every page. */
+.ri-nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:500 14px/1 'Inter',system-ui,-apple-system,sans-serif}
+.ri-nav a{text-decoration:none;color:inherit;opacity:.72;padding:8px 10px;border-radius:8px}
+.ri-nav a:hover{opacity:1;background:rgba(127,127,127,.12)}
+.ri-nav a[aria-current="page"]{opacity:1;font-weight:600;box-shadow:inset 0 -2px 0 currentColor;border-radius:0}
+.ri-nav a.sub{opacity:1;background:#0f5d4a;color:#fff;border-radius:8px;margin-left:4px}
+.ri-nav a:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.ri-bar{border-bottom:1px solid rgba(127,127,127,.25)}
+.ri-bar .in{max-width:1200px;margin:0 auto;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap}
+.ri-bar .brand-l{font:600 19px/1 'Source Serif 4',Georgia,serif;text-decoration:none;color:inherit}
+@media (max-width:560px){.ri-nav{font-size:13px}.ri-nav a{padding:7px 7px}}

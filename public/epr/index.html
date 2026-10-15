@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EPR Target Calculator · The Recovery Index</title>
+<meta name="description" content="Work out your e-waste EPR recycling target and certificate cost under India's E-Waste (Management) Rules, 2022.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5d4a'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="ri-bar" style="background:#fff;color:#15202B"><div class="in"><a class="brand-l" href="/news/">The Recovery Index</a><nav class="ri-nav" aria-label="Site"><a href="/news/">News</a><a href="/">Prices</a><a href="/epr/" aria-current="page">EPR Calculator</a><a class="sub" href="https://therecoveryindex.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter</a></nav></div></header>
+
+<style>:root{color-scheme:light}body{background:#F4F6F8;margin:0}.ri-calc{padding-left:max(16px, env(safe-area-inset-left, 0px))!important;padding-right:max(16px, env(safe-area-inset-right, 0px))!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<div class="ri-calc">
+<style>
+.ri-calc{--surface:#F4F6F8;--raised:#FFFFFF;--line:#D9DFE6;--ink:#15202B;--muted:#556372;--cobalt:#1F4FBF;--tint:#E6EDFB;--copper:#B8642E;--copper-text:#9A4F1E;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--sans:"Public Sans","Segoe UI",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  background:var(--surface);color:var(--ink);font:15px/1.55 var(--sans);padding:24px 16px 40px;box-sizing:border-box;text-align:left}
+.ri-calc *{box-sizing:border-box}
+.ri-calc .wrap{max-width:1120px;margin:0 auto;display:grid;gap:24px}
+.ri-calc .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cobalt)}
+.ri-calc h1{font:700 clamp(26px,4vw,38px)/1.1 var(--display);margin:8px 0;color:var(--ink);letter-spacing:-.01em}
+.ri-calc h2{font:700 18px/1.3 var(--display);margin:0;color:var(--ink)}
+.ri-calc p{margin:0}
+.ri-calc .lede{color:var(--muted);max-width:65ch}
+.ri-calc .grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+@media (max-width:880px){.ri-calc .grid{grid-template-columns:minmax(0,1fr)}}
+.ri-calc .panel{background:var(--raised);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:16px;min-width:0}
+.ri-calc .head{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+.ri-calc label{display:grid;gap:4px;font-size:12px;font-weight:600;color:var(--muted)}
+.ri-calc select,.ri-calc input{font:inherit;font-size:14px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%;min-width:0}
+.ri-calc input[type=number]{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.ri-calc select:focus-visible,.ri-calc input:focus-visible,.ri-calc button:focus-visible,.ri-calc a:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+.ri-calc .lines{display:grid;gap:12px}
+.ri-calc .line{border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:10px}
+.ri-calc .f{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr);gap:10px}
+@media (max-width:640px){.ri-calc .f{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ri-calc .f .item{grid-column:1/-1}}
+.ri-calc .foot{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.ri-calc .chip{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:5px 8px;border-radius:2px;background:var(--tint);color:var(--cobalt)}
+.ri-calc .chip.iv{background:#FBEFE6;color:var(--copper-text)}
+.ri-calc .res{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.ri-calc button{font:600 14px var(--sans);border-radius:6px;padding:9px 14px;cursor:pointer;border:1px solid var(--line);background:var(--raised);color:var(--ink)}
+.ri-calc button.primary{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.ri-calc button.link{border:0;background:none;color:var(--muted);padding:4px;font-weight:400}
+.ri-calc .big{font:500 34px/1.1 var(--mono);color:var(--copper);font-variant-numeric:tabular-nums}
+.ri-calc .big small{font:400 14px var(--sans);color:var(--muted)}
+.ri-calc dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:14px;margin:0}
+.ri-calc dt{color:var(--muted)} .ri-calc dd{margin:0;font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.ri-calc hr{border:0;border-top:1px solid var(--line);margin:0}
+.ri-calc ul.dl{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+.ri-calc ul.dl li{display:flex;justify-content:space-between;gap:12px}
+.ri-calc .d{font-family:var(--mono);white-space:nowrap}
+.ri-calc .note{font-size:12.5px;color:var(--muted)}
+.ri-calc .banner{background:#FBEFE6;color:var(--copper-text);border-radius:6px;padding:8px 12px;font-size:13px}
+.ri-calc .cta{background:var(--tint);border-radius:6px;padding:14px;display:grid;gap:6px;font-size:14px}
+.ri-calc .cta a{color:var(--cobalt);font-weight:600}
+.ri-calc input[type=range]{padding:0;accent-color:var(--cobalt);background:none;border:0}
+.ri-calc .ref{overflow-x:auto}
+.ri-calc table{border-collapse:collapse;width:100%;font-size:13px}
+.ri-calc th,.ri-calc td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ri-calc .n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.ri-calc .fine{color:var(--muted);font-size:12.5px;max-width:80ch}
+.ri-calc .fine a{color:var(--muted)}
+</style>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">The Recovery Index · E-waste EPR</div>
+    <h1>What will your e-waste EPR obligation cost this year?</h1>
+    <p class="lede">Add each product you place on the Indian market. The calculator applies the E-Waste (Management) Rules, 2022 targets, prices certificates against CPCB's band, and lists your filing dates. The lines below are an example; replace them with your own.</p>
+  </header>
+  <div class="grid">
+    <section class="panel">
+      <div class="head"><h2>Your products</h2><label style="max-width:200px">Target year<select id="ri-fy"></select></label></div>
+      <div class="lines" id="ri-lines"></div>
+      <div><button class="primary" id="ri-add" type="button">Add product</button></div>
+      <p class="note">Sales are in tonnes (MT) placed on the market. "Selling since" decides which schedule applies: a product sold for fewer years than its average life falls under Schedule IV.</p>
+    </section>
+    <aside class="panel">
+      <h2>Obligation for <span id="ri-fyl"></span></h2>
+      <div class="big"><span id="ri-tot">0</span> <small>MT to recycle</small></div>
+      <dl><dt>Certificate cost at floor</dt><dd id="ri-cf">₹0</dd><dt>Cost at ceiling</dt><dd id="ri-cc">₹0</dd><dt>Your estimate</dt><dd id="ri-ce" style="color:var(--cobalt);font-weight:500">₹0</dd></dl>
+      <label for="ri-pct">Assumed price: <span id="ri-pl">30% of EC (the floor)</span></label>
+      <input type="range" id="ri-pct" min="30" max="100" step="5" value="30">
+      <hr>
+      <h2 style="font-size:15px">Filing dates</h2>
+      <ul class="dl" id="ri-dates"></ul>
+      <p class="note">Returns are due by the end of the month after each quarter and after the year, per the Rules. CPCB can extend these, so check the portal for notices.</p>
+      <div class="cta"><strong>Track what certificates actually trade at</strong><span>The monthly Recovery Index publishes EPR certificate and black mass prices nobody else tracks.</span><a href="https://therecoveryindex.beehiiv.com/subscribe" target="_blank" rel="noopener">Subscribe free at therecoveryindex.in</a></div>
+    </aside>
+  </div>
+  <section class="panel">
+    <h2>How the numbers are built</h2>
+    <p class="note" style="font-size:14px;max-width:75ch">Schedule III target = the year's target % × tonnes you placed on the market one average life earlier (year Y − X). Targets: 60% in FY 2023-24 and 2024-25, 70% in FY 2025-26 and 2026-27, 80% from FY 2027-28. Certificates trade between 30% (floor) and 100% (ceiling) of the environmental compensation (EC) rate for the category.</p>
+    <div class="ref"><table><thead><tr><th>Category</th><th>Code</th><th class="n">EC ₹/kg</th><th class="n">Floor ₹/kg</th><th class="n">Ceiling ₹/kg</th></tr></thead><tbody id="ri-ec"></tbody></table></div>
+  </section>
+  <p class="fine">Estimates only, not legal advice. Average lives follow CPCB's published list and can be edited per line; confirm item codes, lives and your Schedule IV basis on the <a href="https://eprewastecpcb.in/" target="_blank" rel="noopener">CPCB e-waste EPR portal</a>. EC rates from CPCB's August 2024 guidelines; the certificate price band remains under challenge before the Delhi High Court.</p>
+</div>
+<script>
+(function(){
+var CATS={ITEW:{name:"IT & telecom",ec:112},CEEW:{name:"Consumer electrical & electronics",ec:74},LSEEW:{name:"Large & small appliances",ec:76},EETW:{name:"Electrical & electronic tools",ec:82},TLSEW:{name:"Toys, leisure & sports",ec:34},MDW:{name:"Medical devices",ec:135},LIW:{name:"Laboratory instruments",ec:136}};
+var ITEMS=[["ITEW15","Smartphones",5],["ITEW15","Feature phones",7],["ITEW","Laptops / notebooks",5],["ITEW21","Tablets",5],["ITEW6","Printers incl. cartridges",10],["ITEW19","Routers",5],["ITEW24","UPS up to 2 kVA",7],["ITEW25","Inverters up to 2 kVA",7],["CEEW1","Television sets",9],["CEEW2","Refrigerators",10],["CEEW3","Washing machines",9],["CEEW4","Air conditioners",10],["CEEW6","Monitors & display panels",7],["CEEW18","LED bulbs, tubes & consumer luminaires",4],["CEEW19","Digital cameras",5],["LSEEW9","Microwaves",10],["LSEEW14","Electric fans",10],["LSEEW16","Vacuum cleaners",10],["LSEEW20","Steam irons",10],["LSEEW21","Grinders & coffee machines",10],["LSEEW31","Electric kettles",5],["LSEEW32","Indoor air purifiers",5],["LSEEW33","Hair dryers",5],["EETW1","Drills",8],["TLSEW4","Handheld game consoles",5],["LIW2","Lab equipment with electronics",8]];
+function cat(c){return c.replace(/\d+$/,"");}
+function fyl(y){return "FY "+y+"-"+String((y+1)%100).padStart(2,"0");}
+function s3(y){return y<=2024?0.6:y<=2026?0.7:0.8;}
+function s4(y){return y<=2023?0.15:0.2;}
+function ob(l,Y){var life=Math.max(1,Math.round(l.life||1));if(Y-l.since<=0)return{mt:0,s:"none",p:0};
+ if(l.since+life<=Y){var p=s3(Y);return{mt:p*(l.base||0),s:"III",p:p};}var q=s4(Y);return{mt:q*(l.prev||0),s:"IV",p:q};}
+var $=function(id){return document.getElementById(id);};
+var fy=$("ri-fy");for(var y=2024;y<=2029;y++){var o=document.createElement("option");o.value=y;o.textContent=fyl(y);fy.appendChild(o);}fy.value="2026";
+var uid=0,lines=[{item:0,life:5,since:2014,base:120,prev:180},{item:11,life:10,since:2012,base:450,prev:900},{item:13,life:4,since:2023,base:0,prev:60}];
+lines.forEach(function(l){l.id=++uid;});
+function mt(n){return n.toLocaleString("en-IN",{maximumFractionDigits:1});}
+function inr(n){return "₹"+Math.round(n).toLocaleString("en-IN");}
+function renderLines(){var Y=+fy.value,box=$("ri-lines");box.innerHTML="";
+ lines.forEach(function(l){var r=ob(l,Y),iv=r.s==="IV",so="";for(var y=2000;y<=Y;y++)so+='<option value="'+y+'"'+(y===l.since?" selected":"")+">"+fyl(y)+"</option>";
+  var ec=CATS[cat(ITEMS[l.item][0])].ec,d=document.createElement("div");d.className="line";
+  d.innerHTML='<div class="f"><label class="item">Product<select data-k="item">'+ITEMS.map(function(it,i){return '<option value="'+i+'"'+(i===l.item?" selected":"")+">"+it[1]+" ("+it[0]+")</option>";}).join("")+'</select></label>'+
+  '<label>Avg life (yrs)<input data-k="life" type="number" min="1" max="25" value="'+l.life+'"></label>'+
+  '<label>Selling since<select data-k="since">'+so+'</select></label>'+
+  '<label>MT sold in '+(iv?fyl(Y-1):fyl(Y-Math.round(l.life||1)))+'<input data-k="qty" type="number" min="0" step="0.1" value="'+(iv?l.prev:l.base)+'"></label></div>'+
+  '<div class="foot"><span class="chip'+(iv?" iv":"")+'">'+(r.s==="none"?"Not yet selling":"Schedule "+r.s+" · "+Math.round(r.p*100)+"%")+'</span><span>Target <span class="res">'+mt(r.mt)+' MT</span> · floor cost <span class="res">'+inr(r.mt*1000*0.3*ec)+'</span></span><button class="link" type="button" data-k="rm">Remove</button></div>'+
+  (iv?'<div class="banner">Sold for fewer years than its '+Math.round(l.life)+'-year life, so Schedule IV applies. This assumes the % falls on the previous year\'s sales; confirm on the CPCB portal.</div>':"");
+  box.appendChild(d);
+  d.querySelector('[data-k=item]').onchange=function(e){l.item=+e.target.value;l.life=ITEMS[l.item][2];update();};
+  d.querySelector('[data-k=life]').onchange=function(e){l.life=Math.max(1,+e.target.value||1);update();};
+  d.querySelector('[data-k=since]').onchange=function(e){l.since=+e.target.value;update();};
+  d.querySelector('[data-k=qty]').onchange=function(e){var v=Math.max(0,+e.target.value||0);if(iv)l.prev=v;else l.base=v;update();};
+  d.querySelector('[data-k=rm]').onclick=function(){lines=lines.filter(function(x){return x.id!==l.id;});update();};});}
+function renderSum(){var Y=+fy.value,p=+$("ri-pct").value/100,t=0,f=0,c=0;
+ lines.forEach(function(l){var r=ob(l,Y),ec=CATS[cat(ITEMS[l.item][0])].ec;t+=r.mt;f+=r.mt*1000*ec*0.3;c+=r.mt*1000*ec;});
+ $("ri-fyl").textContent=fyl(Y);$("ri-tot").textContent=mt(t);$("ri-cf").textContent=inr(f);$("ri-cc").textContent=inr(c);$("ri-ce").textContent=inr(c*p);
+ $("ri-pl").textContent=p===0.3?"30% of EC (the floor)":p===1?"100% of EC (the ceiling)":Math.round(p*100)+"% of EC";
+ var d=[["Q1 return (Apr–Jun)","31 Jul "+Y],["Q2 return (Jul–Sep)","31 Oct "+Y],["Q3 return (Oct–Dec)","31 Jan "+(Y+1)],["Q4 return (Jan–Mar)","30 Apr "+(Y+1)],["Annual return","30 Apr "+(Y+1)]];
+ $("ri-dates").innerHTML=d.map(function(x){return "<li><span>"+x[0]+'</span><span class="d">'+x[1]+"</span></li>";}).join("");}
+function update(){renderLines();renderSum();}
+$("ri-ec").innerHTML=Object.keys(CATS).map(function(k){var c=CATS[k];return "<tr><td>"+c.name+"</td><td>"+k+'</td><td class="n">'+c.ec+'</td><td class="n">'+(c.ec*0.3).toFixed(1)+'</td><td class="n">'+c.ec+"</td></tr>";}).join("");
+fy.onchange=update;$("ri-pct").oninput=renderSum;$("ri-add").onclick=function(){lines.push({id:++uid,item:9,life:10,since:2015,base:0,prev:0});update();};
+update();})();
+</script>
+</div>
+
+</body>
+</html>
