@@ -144,6 +144,42 @@
   "basis": "Cash-settled contract; LME's physical cobalt contract prints differently"
  },
  {
+  "code": "NISO4",
+  "name": "Nickel sulphate",
+  "group": "Battery metals",
+  "unit": "USD/t",
+  "price": 4247,
+  "prev": null,
+  "date": "2026-09-23",
+  "source": "Benchmark, China EXW (RMB 28,500/t)",
+  "source_url": "https://source.benchmarkminerals.com/article/mid-year-production-quotas-and-underwhelming-ncm-demand-weaken-market-fundamentals-nickel-q3-2026-price-review",
+  "basis": "Battery-grade nickel salt; down 13% over Q3 2026. LME nickel metal is under Base metals"
+ },
+ {
+  "code": "MNSO4",
+  "name": "Manganese sulphate, battery grade",
+  "group": "Battery metals",
+  "unit": "USD/t",
+  "price": 1129.7,
+  "prev": null,
+  "date": "2026-09-30",
+  "source": "SMM battery-grade index (via Critical Minerals News)",
+  "source_url": "https://critical-minerals-news.com/manganese-price/",
+  "basis": "Mn 32% min, China"
+ },
+ {
+  "code": "EMM",
+  "name": "Electrolytic manganese metal",
+  "group": "Battery metals",
+  "unit": "USD/t",
+  "price": 2609.39,
+  "prev": null,
+  "date": "2026-09-30",
+  "source": "SMM major-areas average (via Critical Minerals News)",
+  "source_url": "https://critical-minerals-news.com/manganese-price/",
+  "basis": "Mn 99.7%, China"
+ },
+ {
   "code": "BM-NCM-CN",
   "name": "NCM black mass, EXW China",
   "group": "Black mass payables",
