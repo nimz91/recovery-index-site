@@ -25,3 +25,23 @@ id = "eac2edd0cb614e8fbfc8747d80ca77f7"
 #   ADMIN_KEY          long random string; unlocks /admin/
 #   ANTHROPIC_API_KEY  for AI photo grading at /api/grade
 # Optional plain variable: ANTHROPIC_MODEL (default claude-sonnet-5-5)
+
+# ---- Preview deployments (every branch except main, incl. staging.recovery-index-prices.pages.dev) ----
+# Previews use separate TEST storage so testing never touches live lots, buyers or bids.
+# Pages does not inherit bindings into [env.preview], so the price feed's LIVE namespace is repeated here.
+[[env.preview.kv_namespaces]]
+binding = "LIVE"
+id = "8e558ea2f5d94a4e97931e9eff7968da"
+
+[[env.preview.kv_namespaces]]
+binding = "PHOTOS"
+id = "3575ddc7ba1e438884836b45cc7d7894"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "recovery-index-itad-test"
+database_id = "6b22803b-1b56-460f-a95c-047b188345c0"
+migrations_dir = "migrations"
+
+[env.preview.vars]
+SITE_ENV = "test"

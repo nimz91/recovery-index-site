@@ -48,6 +48,11 @@ You need: a Cloudflare account (free), a metals.dev account, and this repo on Gi
 inspector grades every device and you record it in the console → *Publish auction* (sub-lots, opening, reserve, increment, times) →
 buyers bid at `/auction/` → close → you collect payment from winners and release pickup.
 
+**Test site:** every branch except `main` deploys as a preview that uses separate test storage (`recovery-index-itad-test` database,
+`recovery-index-itad-photos-test` photos), shows a red TEST SITE banner and is hidden from search engines. The `staging` branch is the
+fixed test address: https://staging.recovery-index-prices.pages.dev. Push or merge work into `staging` to update it.
+Secrets for previews are set separately: Pages → Settings → Variables and Secrets → **Preview**.
+
 **Already set up:** the D1 database `recovery-index-itad` (tables from `migrations/0001_itad.sql` are applied) and the KV namespace
 `recovery-index-itad-photos`. Both are bound in `wrangler.toml`.
 
