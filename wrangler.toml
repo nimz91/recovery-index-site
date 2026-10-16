@@ -7,3 +7,21 @@ compatibility_date = "2026-10-01"
 [[kv_namespaces]]
 binding = "LIVE"
 id = "8e558ea2f5d94a4e97931e9eff7968da"
+
+# ITAD lot valuation + live auctions (/sell/, /auction/, /admin/).
+# Lots, buyers, auctions and bids live in D1; schema in migrations/ (already applied to this database).
+[[d1_databases]]
+binding = "DB"
+database_name = "recovery-index-itad"
+database_id = "88cfe318-c666-4aec-a2a7-7207e41400aa"
+migrations_dir = "migrations"
+
+# Client photos of their lots (resized in the browser before upload).
+[[kv_namespaces]]
+binding = "PHOTOS"
+id = "eac2edd0cb614e8fbfc8747d80ca77f7"
+
+# Secrets (never stored here). Set them in the Pages project → Settings → Variables and Secrets:
+#   ADMIN_KEY          long random string; unlocks /admin/
+#   ANTHROPIC_API_KEY  for AI photo grading at /api/grade
+# Optional plain variable: ANTHROPIC_MODEL (default claude-sonnet-5-5)

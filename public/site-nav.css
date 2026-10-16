@@ -1,4 +1,4 @@
-/* Shared site menu: News · Prices · EPR Calculator · Newsletter. Scoped so it works on every page. */
+/* Shared site menu: News · Prices · EPR Calculator · Sell IT Assets · Auctions · Newsletter. Scoped so it works on every page. */
 .ri-nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:500 14px/1 'Inter',system-ui,-apple-system,sans-serif}
 .ri-nav a{text-decoration:none;color:inherit;opacity:.72;padding:8px 10px;border-radius:8px}
 .ri-nav a:hover{opacity:1;background:rgba(127,127,127,.12)}

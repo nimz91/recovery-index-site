@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Auction Console · The Recovery Index</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/itad/itad.css">
+</head>
+<body>
+<header class="ri-bar"><div class="in"><a class="brand-l" href="/news/">The Recovery Index</a><nav class="ri-nav" aria-label="Site"><a href="/sell/">Sell IT Assets</a><a href="/auction/">Auctions</a><a href="/admin/" aria-current="page">Console</a></nav></div></header>
+
+<main class="wrap">
+  <section class="row-between">
+    <div class="stack" style="gap:6px"><div class="eyebrow">Operator console</div><h1>Lots, buyers and auctions</h1></div>
+    <div id="who"></div>
+  </section>
+
+  <form id="login" class="panel" style="max-width:460px" hidden>
+    <label class="field" for="adm-key">Admin key<input id="adm-key" type="password" autocomplete="current-password" class="mono"></label>
+    <div class="row-between" style="align-items:center"><span class="msg err" id="login-msg"></span><button class="btn" type="submit">Open console</button></div>
+  </form>
+
+  <div id="app" class="stack" hidden>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="lots" aria-selected="true">Lots</button>
+      <button role="tab" data-tab="buyers" aria-selected="false">Buyers</button>
+      <button role="tab" data-tab="auctions" aria-selected="false">Auctions</button>
+    </div>
+    <div id="view" class="stack"></div>
+  </div>
+</main>
+
+<script src="/itad/engine.js"></script>
+<script src="/itad/common.js"></script>
+<script>
+const { E, $, esc, inr, lakh, when, countdown } = RI;
+const C = { key: '', tab: 'lots', poll: null, lot: null, view: { filter: 'all', q: '', open: new Set() }, dirty: false, blobs: {} };
+try { C.key = sessionStorage.getItem('ri-admin') || ''; } catch (e) {}
+const api = (p, o = {}) => RI.api('/api/admin/' + p, { ...o, token: C.key });
+
+async function start() {
+  if (!C.key) { $('login').hidden = false; $('app').hidden = true; return; }
+  try { await api('lots'); } catch (e) { $('login').hidden = false; $('app').hidden = true; $('login-msg').textContent = e.message; return; }
+  $('login').hidden = true; $('app').hidden = false;
+  $('who').innerHTML = '<button class="btn ghost small" id="logout" type="button">Lock console</button>';
+  $('logout').onclick = () => { try { sessionStorage.removeItem('ri-admin'); } catch (e) {} C.key = ''; start(); };
+  go(location.hash.slice(1) || 'lots');
+}
+$('login').onsubmit = e => { e.preventDefault(); C.key = $('adm-key').value.trim(); try { sessionStorage.setItem('ri-admin', C.key); } catch (er) {} start(); };
+document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { location.hash = b.dataset.tab; });
+window.addEventListener('hashchange', () => C.key && go(location.hash.slice(1) || 'lots'));
+
+function go(route) {
+  clearInterval(C.poll);
+  const [tab, id] = route.split('/');
+  C.tab = ['lots', 'buyers', 'auctions'].includes(tab) ? tab : 'lots';
+  document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === C.tab)));
+  $('view').innerHTML = '<p class="note">Loading…</p>';
+  const fn = { lots: id ? () => lotView(id) : lotsList, buyers: buyersList, auctions: id ? () => auctionView(id) : auctionsList }[C.tab];
+  fn().catch(e => { $('view').innerHTML = `<p class="msg err">${esc(e.message)}</p>`; });
+}
+
+/* ---------- Lots ---------- */
+async function lotsList() {
+  const { lots } = await api('lots');
+  $('view').innerHTML = `<div class="tbl-wrap"><table><thead><tr><th>Ref</th><th>Received</th><th>Company</th><th>City</th><th class="r">Units</th><th class="r">Estimate</th><th class="r">Photos</th><th>Status</th></tr></thead><tbody>
+    ${lots.map(l => `<tr class="item" data-go="lots/${l.id}" tabindex="0"><td class="mono">${esc(l.ref)}</td><td class="note">${when(l.created_at)}</td><td><b>${esc(l.company)}</b><div class="note">${esc(l.contact)}</div></td>
+      <td>${esc(l.city)}</td><td class="r mono">${l.units}</td><td class="r mono" style="white-space:nowrap">${lakh(l.est_lo)} – ${lakh(l.est_hi)}</td><td class="r mono">${l.photos}</td>
+      <td><span class="pill p-${l.status}">${esc(l.status)}</span></td></tr>`).join('') || '<tr><td colspan="8" class="note">No lots yet. They appear here when a client sends one from /sell/.</td></tr>'}
+  </tbody></table></div>`;
+}
+$('view').addEventListener('click', e => { const r = e.target.closest('[data-go]'); if (r) location.hash = r.dataset.go; });
+$('view').addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.dataset.go) location.hash = e.target.dataset.go; });
+
+async function photoURL(key) {
+  if (C.blobs[key]) return C.blobs[key];
+  const r = await fetch('/api/photo/' + key, { headers: { Authorization: 'Bearer ' + C.key } });
+  if (!r.ok) return '';
+  return (C.blobs[key] = URL.createObjectURL(await r.blob()));
+}
+
+async function lotView(id) {
+  const l = C.lot = await api('lots/' + id);
+  C.dirty = false; C.view.open.clear();
+  $('view').innerHTML = `<a href="#lots" class="note">← All lots</a>
+    <div class="panel"><div class="row-between"><div><div class="eyebrow">Lot ${esc(l.ref)} · received ${when(l.created_at)}</div><h2>${esc(l.company)}</h2>
+      <p class="note">${esc(l.contact)} · <span class="mono" style="user-select:all">${esc(l.email)}</span> · <span class="mono" style="user-select:all">${esc(l.phone)}</span>${l.gstin ? ' · GSTIN ' + esc(l.gstin) : ''}</p>
+      <p class="note">${esc(l.city)}${l.address ? ' · ' + esc(l.address) : ''}${l.file_name ? ' · file ' + esc(l.file_name) : ''}</p></div>
+      <label class="field" for="lot-status">Status<select id="lot-status">${['submitted', 'inspecting', 'ready', 'auction', 'sold', 'withdrawn'].map(s => `<option${s === l.status ? ' selected' : ''}>${s}</option>`).join('')}</select></label></div>
+      <label class="field" for="lot-notes">Notes${l.notes ? '' : ''}<textarea id="lot-notes" rows="2">${esc(l.notes || '')}</textarea></label>
+      <div class="row-between" style="align-items:center"><span class="msg" id="save-msg">Overrides and notes are saved together.</span><button class="btn" id="save-lot" type="button">Save inspection</button></div></div>
+    <div id="lot-sheet"></div>
+    ${l.photos.length ? `<section class="stack"><h2>Photos (${l.photos.length})</h2><div class="photos" id="lot-photos"></div></section>` : ''}
+    <section class="stack" id="lot-reg"><div class="row-between"><div><h2>Register</h2><p class="note">Open a row to record the inspector's status and grade. Verified rows narrow the range.</p></div>
+      <div class="chips"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="work">Working</button><button class="chip" data-f="non">Non-working</button><button class="chip" data-f="flag">Needs check</button>
+      <button class="chip" type="button" id="verify-all">Mark all verified</button></div></div>
+      <div class="tbl-wrap tall"><table><thead><tr><th>Row</th><th>Asset</th><th>Spec</th><th>Status</th><th>Grade</th><th>Issues</th><th class="r">Estimate (₹)</th><th>Conf.</th></tr></thead><tbody id="lot-items"></tbody></table></div></section>
+    <section class="panel" id="auc-panel"></section>`;
+  renderLot();
+  RI.wireRegister($('lot-items'), C.view, renderLotItems);
+  RI.wireFilters($('lot-reg'), C.view, renderLotItems);
+  $('lot-items').addEventListener('change', e => {
+    const el = e.target.closest('[data-o]'); if (!el) return;
+    const a = C.lotV.items[+el.dataset.i].a, k = el.dataset.o;
+    if (k === 'verified') a.verified = el.checked; else { a[k] = el.value; a.verified = true; if (k === 'grade') a.gradeKnown = true; }
+    C.dirty = true; $('save-msg').textContent = 'Unsaved changes.'; renderLot();
+  });
+  $('verify-all').onclick = () => { l.assets.forEach(a => a.verified = true); C.dirty = true; $('save-msg').textContent = 'Unsaved changes.'; renderLot(); };
+  $('save-lot').onclick = saveLot;
+  if (l.photos.length) {
+    $('lot-photos').innerHTML = l.photos.map((p, i) => `<div class="ph"><img id="lp-${i}" alt="Lot photo">${p.ai || p.row_no ? `<div class="b">${p.row_no ? `<span class="note">Row ${p.row_no}</span>` : ''}${p.ai ? `<div class="ai"><span class="grade">${p.ai.grade}</span><span class="note">${esc(p.ai.notes || '')}</span></div><div class="tags">${p.ai.defects.map(d => `<span class="tag">${E.DEFECT_LABEL[d]}</span>`).join('')}</div>` : ''}</div>` : ''}</div>`).join('');
+    l.photos.forEach(async (p, i) => { const u = await photoURL(p.key); const img = $('lp-' + i); if (img && u) img.src = u; });
+  }
+}
+function renderLot() {
+  const l = C.lot;
+  const v = C.lotV = E.valueLot(l.assets, E.DEFAULTS, null, {});
+  const ver = l.assets.filter(a => a.verified).length;
+  $('lot-sheet').innerHTML = RI.sheetHTML(v, { title: l.ref, meta: `${v.units} units · ${ver} verified · ${l.photos.length} photos` });
+  renderLotItems();
+  renderAuctionPanel();
+}
+const renderLotItems = () => { $('lot-items').innerHTML = RI.registerHTML(C.lotV, C.view, { override: true }); };
+async function saveLot() {
+  const msg = $('save-msg');
+  try {
+    const r = await api('lots/' + C.lot.id, { method: 'PUT', body: { status: $('lot-status').value, notes: $('lot-notes').value,
+      assets: C.lot.assets.map(a => ({ row: a.row, status: a.status, grade: a.grade, verified: !!a.verified, defects: a.defects })) } });
+    C.dirty = false; msg.textContent = `Saved. Estimate now ${lakh(r.est_lo)} – ${lakh(r.est_hi)}.`; msg.className = 'msg ok';
+  } catch (e) { msg.textContent = e.message; msg.className = 'msg err'; }
+}
+
+function localInput(t) { const d = new Date(t - new Date().getTimezoneOffset() * 60000); return d.toISOString().slice(0, 16); }
+function renderAuctionPanel() {
+  const l = C.lot, el = $('auc-panel');
+  if (l.auction_id) { el.innerHTML = `<h2>Auction</h2><p>This lot is on auction. <a href="#auctions/${esc(l.auction_id)}">Open the auction standing</a> or <a href="/auction/#a-${esc(l.auction_id)}" target="_blank" rel="noopener">see the buyer view</a>.</p>`; return; }
+  if (el.dataset.ready && C.drafts) return syncDraftEstimates();
+  C.drafts = RI.sublotDrafts(C.lotV);
+  const start = Math.ceil((Date.now() + 3600000) / 1800000) * 1800000;
+  el.dataset.ready = '1';
+  el.innerHTML = `<div><h2>Publish auction</h2><p class="note">Sub-lots, openings and reserves are drafted from the current valuation. Save the inspection first so buyers see verified grades.</p></div>
+    <div class="fields">
+      <label class="field" for="a-title">Title<input id="a-title" value="${esc(`${C.lotV.units} corporate laptops and workstations · ${l.city}`)}"></label>
+      <label class="field" for="a-city">City<input id="a-city" value="${esc(l.city)}"></label>
+      <label class="field" for="a-start">Opens<input id="a-start" type="datetime-local" value="${localInput(start)}"></label>
+      <label class="field" for="a-end">Closes<input id="a-end" type="datetime-local" value="${localInput(start + 2 * 86400000)}"></label>
+      <label class="field" for="a-soft">Extend on late bids (minutes)<input id="a-soft" type="number" min="0" max="15" value="2"></label>
+    </div>
+    <div class="tbl-wrap"><table><thead><tr><th>Sub-lot</th><th class="r">Units</th><th class="r">Estimate</th><th class="r">Opening ₹</th><th class="r">Reserve ₹</th><th class="r">Increment ₹</th></tr></thead><tbody id="a-subs"></tbody></table></div>
+    <div class="row-between" style="align-items:center"><span class="msg" id="a-msg"></span><button class="btn green" id="a-publish" type="button">Publish auction</button></div>`;
+  drawDrafts();
+  $('a-subs').addEventListener('change', e => { const [i, k] = (e.target.dataset.d || '').split(':'); if (k) C.drafts[+i][k] = k === 'label' ? e.target.value : Math.round(+e.target.value); });
+  $('a-publish').onclick = publish;
+}
+function drawDrafts() {
+  $('a-subs').innerHTML = C.drafts.map((s, i) => `<tr><td><input class="inp" data-d="${i}:label" value="${esc(s.label)}" aria-label="Sub-lot name" style="min-width:220px"></td><td class="r mono">${s.units}</td>
+    <td class="r mono" style="white-space:nowrap">${lakh(s.est_lo)} – ${lakh(s.est_hi)}</td>
+    ${['opening', 'reserve', 'increment'].map(k => `<td class="r"><input class="inp mono" type="number" data-d="${i}:${k}" value="${s[k]}" aria-label="${k}" style="width:120px;text-align:right"></td>`).join('')}</tr>`).join('');
+}
+function syncDraftEstimates() { // after overrides, refresh items and estimates but keep the operator's prices
+  const fresh = RI.sublotDrafts(C.lotV);
+  C.drafts = fresh.map(f => { const old = C.drafts.find(d => d.bucket === f.bucket); return old ? { ...f, label: old.label, opening: old.opening, reserve: old.reserve, increment: old.increment } : f; });
+  drawDrafts();
+}
+async function publish() {
+  const msg = $('a-msg');
+  if (C.dirty) { msg.textContent = 'Save the inspection first.'; msg.className = 'msg err'; return; }
+  const btn = $('a-publish'); btn.disabled = true;
+  try {
+    const r = await api(`lots/${C.lot.id}/auction`, { method: 'POST', body: {
+      title: $('a-title').value, city: $('a-city').value, starts_at: new Date($('a-start').value).getTime(), ends_at: new Date($('a-end').value).getTime(),
+      soft_close_sec: Math.round(+$('a-soft').value * 60), sublots: C.drafts } });
+    location.hash = 'auctions/' + r.id;
+  } catch (e) { msg.textContent = e.message; msg.className = 'msg err'; btn.disabled = false; }
+}
+
+/* ---------- Buyers ---------- */
+async function buyersList() {
+  const { buyers } = await api('buyers');
+  const pending = buyers.filter(b => b.status === 'pending').length;
+  $('view').innerHTML = `<p class="note">${pending} waiting for approval. Check the GSTIN on the GST portal and the registration on the CPCB EPR portal before approving.</p>
+    <div id="key-out"></div>
+    <div class="tbl-wrap"><table><thead><tr><th>Applied</th><th>Company</th><th>Type</th><th>GSTIN</th><th>Authorisation</th><th>Contact</th><th>Status</th><th class="r">Bids</th><th></th></tr></thead><tbody>
+    ${buyers.map(b => `<tr><td class="note">${when(b.created_at)}</td><td><b>${esc(b.company)}</b><div class="note">${esc(b.city || '')}${b.alias ? ' · ' + esc(b.alias) : ''}</div></td><td>${esc(b.category)}</td>
+      <td class="mono" style="user-select:all">${esc(b.gstin)}</td><td class="mono">${esc(b.authorisation || '—')}</td>
+      <td>${esc(b.contact)}<div class="note mono" style="user-select:all">${esc(b.email)}</div><div class="note mono" style="user-select:all">${esc(b.phone)}</div></td>
+      <td><span class="pill p-${b.status}">${b.status}</span></td><td class="r mono">${b.bids}</td>
+      <td style="white-space:nowrap"><button class="btn small green" data-approve="${b.id}" type="button">${b.status === 'approved' ? 'New key' : 'Approve'}</button>
+        ${b.status !== 'rejected' ? `<button class="btn small ghost" data-reject="${b.id}" type="button">Reject</button>` : ''}</td></tr>`).join('') || '<tr><td colspan="9" class="note">No applications yet.</td></tr>'}
+    </tbody></table></div>`;
+  $('view').querySelectorAll('[data-approve]').forEach(b => b.onclick = async () => {
+    try {
+      const r = await api(`buyers/${b.dataset.approve}/approve`, { method: 'POST' });
+      await buyersList();
+      $('key-out').innerHTML = `<div class="panel"><div class="eyebrow">Access key for ${esc(r.alias)}</div><div class="keybox" id="new-key">${esc(r.token)}</div>
+        <p class="note">${esc(r.message)}</p><div><button class="btn small" id="copy-key" type="button">Copy key</button></div></div>`;
+      $('copy-key').onclick = e => RI.copy(r.token, e.target);
+    } catch (e) { alertMsg(e.message); }
+  });
+  $('view').querySelectorAll('[data-reject]').forEach(b => b.onclick = async () => {
+    if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = 'Confirm reject'; return; }
+    try { await api(`buyers/${b.dataset.reject}/reject`, { method: 'POST' }); buyersList(); } catch (e) { alertMsg(e.message); }
+  });
+}
+function alertMsg(t) { const d = document.createElement('p'); d.className = 'msg err'; d.textContent = t; $('view').prepend(d); }
+
+/* ---------- Auctions ---------- */
+async function auctionsList() {
+  const { auctions } = await api('auctions');
+  $('view').innerHTML = `<div class="tbl-wrap"><table><thead><tr><th>Auction</th><th>Lot</th><th>State</th><th>Opens</th><th>Closes</th><th class="r">Bids</th><th class="r">Standing total</th><th class="r">Above reserve</th></tr></thead><tbody>
+    ${auctions.map(a => `<tr class="item" data-go="auctions/${a.id}" tabindex="0"><td><b>${esc(a.title)}</b></td><td class="mono">${esc(a.ref)}<div class="note">${esc(a.company)}</div></td>
+      <td><span class="pill p-${a.state}">${a.state}</span></td><td class="note">${when(a.starts_at)}</td><td class="note">${when(a.ends_at)}</td>
+      <td class="r mono">${a.bids}</td><td class="r mono">${inr(a.top_total)}</td><td class="r mono">${inr(a.sold_value)}</td></tr>`).join('') || '<tr><td colspan="8" class="note">No auctions yet. Publish one from a lot.</td></tr>'}
+  </tbody></table></div>`;
+}
+async function auctionView(id) {
+  const draw = async () => {
+    const a = await api('auctions/' + id);
+    const t = a.server_time;
+    const sold = a.sublots.filter(s => s.reserve_met).reduce((n, s) => n + s.top, 0);
+    $('view').innerHTML = `<a href="#auctions" class="note">← All auctions</a>
+      <div class="row-between"><div class="stack" style="gap:6px"><div class="chips"><span class="pill p-${a.state}">${a.state}</span><span class="note">${when(a.starts_at)} → ${when(a.ends_at)}</span></div><h2>${esc(a.title)}</h2>
+        <p class="note">Standing above reserve: <b class="mono">${inr(sold)}</b> of estimate ${lakh(a.est_lo)} – ${lakh(a.est_hi)} · <a href="/auction/#a-${esc(a.id)}" target="_blank" rel="noopener">buyer view</a> · <a href="#lots/${esc(a.lot_id)}">lot</a></p></div>
+        ${a.state !== 'ended' ? `<div class="chips"><button class="btn small" data-act="end" type="button">Close now</button><button class="btn small ghost" data-act="cancel" type="button">Cancel auction</button></div>` : ''}</div>
+      <div class="tbl-wrap"><table><thead><tr><th>Sub-lot</th><th class="r">Units</th><th class="r">Opening</th><th class="r">Reserve</th><th class="r">Standing</th><th>Leader</th><th class="r">Bids</th><th>Closes</th></tr></thead><tbody>
+      ${a.sublots.map(s => `<tr><td><b>${esc(s.label)}</b><div class="note">${lakh(s.est_lo)} – ${lakh(s.est_hi)}</div></td><td class="r mono">${s.units}</td><td class="r mono">${inr(s.opening)}</td><td class="r mono">${inr(s.reserve)}</td>
+        <td class="r mono">${s.top ? inr(s.top) : '—'} <span class="pill ${s.reserve_met ? 'p-met' : 'p-notmet'}">${s.reserve_met ? 'met' : 'not met'}</span></td>
+        <td>${s.leader_company ? esc(s.leader_company) + `<div class="note">${esc(s.leading_alias)}</div>` : '—'}</td><td class="r mono">${s.bids}</td>
+        <td class="note">${s.ended ? 'Closed' : countdown(s.ends_at - t)}</td></tr>
+        ${s.history.length ? `<tr><td colspan="8"><div class="hist">${s.history.map(h => `<div><span>${esc(h.company)} (${esc(h.alias)})</span><span class="mono">${inr(h.amount)}</span><span class="note">${new Date(h.at).toLocaleString('en-IN')}</span></div>`).join('')}</div></td></tr>` : ''}`).join('')}
+      </tbody></table></div>
+      <p class="note">After close: share winners and amounts with the client, collect payment from each winner within 3 working days, then release the pickup.</p>`;
+    $('view').querySelectorAll('[data-act]').forEach(b => b.onclick = async () => {
+      if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = b.dataset.act === 'end' ? 'Confirm close' : 'Confirm cancel'; return; }
+      await api(`auctions/${id}/${b.dataset.act}`, { method: 'POST' }); draw();
+    });
+  };
+  await draw();
+  C.poll = setInterval(() => !document.hidden && draw().catch(() => {}), 5000);
+}
+
+start();
+</script>
+</body>
+</html>

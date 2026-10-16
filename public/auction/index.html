@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IT Asset Auctions · The Recovery Index</title>
+<meta name="description" content="Live auctions of inspected corporate IT assets for vetted ITADs, refurbishers and authorised e-waste recyclers in India.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/itad/itad.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5d4a'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="ri-bar"><div class="in"><a class="brand-l" href="/news/">The Recovery Index</a><nav class="ri-nav" aria-label="Site"><a href="/news/">News</a><a href="/">Prices</a><a href="/epr/">EPR Calculator</a><a href="/sell/">Sell IT Assets</a><a href="/auction/" aria-current="page">Auctions</a><a class="sub" href="https://therecoveryindex.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter</a></nav></div></header>
+
+<main class="wrap">
+  <section class="row-between">
+    <div class="stack" style="gap:6px">
+      <div class="eyebrow">For ITADs, refurbishers and authorised recyclers</div>
+      <h1>IT asset auctions</h1>
+      <p class="lede">Corporate laptop, desktop and workstation lots, inspected and graded by an independent team. Bid per sub-lot, see the standing bid live, and late bids extend the close so nobody gets sniped.</p>
+    </div>
+    <div class="panel" id="acct" style="min-width:min(100%,320px)"></div>
+  </section>
+
+  <section id="list" class="stack">
+    <h2>Auctions</h2>
+    <div class="cards" id="cards"><p class="note">Loading auctions…</p></div>
+  </section>
+
+  <section id="room" class="stack" hidden></section>
+
+  <section class="panel" id="register">
+    <div><h2>Register to bid</h2><p class="note">Bidding is open to refurbishers and recyclers registered under the E-Waste (Management) Rules, 2022. We check your GSTIN and CPCB registration or SPCB authorisation. Approved buyers get an access key by phone or email, usually within one working day.</p></div>
+    <form id="reg-form" class="stack" novalidate>
+      <div class="fields">
+        <label class="field" for="b-company">Company<input id="b-company" autocomplete="organization"></label>
+        <label class="field" for="b-contact">Your name<input id="b-contact" autocomplete="name"></label>
+        <label class="field" for="b-email">Work email<input id="b-email" type="email" autocomplete="email"></label>
+        <label class="field" for="b-phone">Phone<input id="b-phone" type="tel" autocomplete="tel"></label>
+        <label class="field" for="b-city">City<input id="b-city" autocomplete="address-level2"></label>
+        <label class="field" for="b-gstin">GSTIN<input id="b-gstin" maxlength="15"></label>
+        <label class="field" for="b-cat">You are<select id="b-cat"><option value="">Choose…</option><option value="itad">ITAD company</option><option value="refurbisher">Refurbisher / reseller</option><option value="recycler">Authorised e-waste recycler</option></select></label>
+        <label class="field" for="b-auth">CPCB registration / SPCB authorisation no.<input id="b-auth"></label>
+      </div>
+      <label class="check" for="b-consent"><input type="checkbox" id="b-consent"> I accept the bidding terms: bids are binding, winning lots are paid in full before pickup within 3 working days, and recyclers process material only at authorised facilities.</label>
+      <div class="row-between" style="align-items:center"><p class="msg" id="reg-msg"></p><button class="btn green" type="submit">Apply to bid</button></div>
+    </form>
+  </section>
+</main>
+
+<script src="/itad/engine.js"></script>
+<script src="/itad/common.js"></script>
+<script>
+const { $, esc, inr, lakh, api, LS, countdown, when } = RI;
+const A = { key: LS.get('ri-buyer-key') || '', me: null, auction: null, offset: 0, timer: null, drafts: {}, msgs: {} };
+
+/* ---------- Account ---------- */
+async function checkKey() {
+  if (!A.key) { A.me = null; return renderAcct(); }
+  try { A.me = await api('/api/me', { token: A.key }); } catch (e) { A.me = null; A.keyErr = e.message; }
+  renderAcct();
+}
+function renderAcct() {
+  const el = $('acct');
+  if (A.me) {
+    el.innerHTML = `<div class="eyebrow">Bidding as</div><div><b>${esc(A.me.alias || 'Pending')}</b> <span class="note">· ${esc(A.me.company)}</span></div>
+      ${A.me.status !== 'approved' ? '<p class="msg err">Your account is not approved yet.</p>' : '<p class="note">Other bidders only see your bidder name.</p>'}
+      <button class="btn ghost small" id="signout" type="button">Sign out</button>`;
+    $('signout').onclick = () => { A.key = ''; LS.set('ri-buyer-key', ''); A.me = null; renderAcct(); refresh(); };
+    $('register').hidden = true;
+  } else {
+    el.innerHTML = `<form id="key-form" class="stack" style="gap:8px"><label class="field" for="k-in">Buyer access key<input id="k-in" class="mono" placeholder="rib_…" autocomplete="off"></label>
+      <div class="row-between" style="align-items:center"><span class="msg err" id="k-msg">${esc(A.keyErr || '')}</span><button class="btn small" type="submit">Sign in</button></div>
+      <a href="#register" class="note">No key yet? Register to bid</a></form>`;
+    $('key-form').onsubmit = async e => { e.preventDefault(); A.key = $('k-in').value.trim(); LS.set('ri-buyer-key', A.key); A.keyErr = ''; await checkKey(); refresh(); };
+    $('register').hidden = false;
+  }
+}
+
+/* ---------- List ---------- */
+async function loadList() {
+  try {
+    const r = await api('/api/auctions');
+    A.offset = r.server_time - Date.now();
+    $('cards').innerHTML = r.auctions.length ? r.auctions.map(a => `<a class="acard" href="#a-${esc(a.id)}">
+      <div class="cv" ${a.cover ? `style="background-image:url('/api/photo/${esc(a.cover)}')"` : ''}>${a.cover ? '' : esc(a.units + ' devices')}</div>
+      <div class="b"><div class="row-between" style="align-items:center"><span class="pill p-${a.state}">${a.state === 'live' ? 'Live' : a.state === 'upcoming' ? 'Opens ' + when(a.starts_at) : 'Closed'}</span>
+        ${a.state === 'ended' ? '' : `<span class="clock" data-end="${a.state === 'upcoming' ? a.starts_at : a.ends_at}">${countdown((a.state === 'upcoming' ? a.starts_at : a.ends_at) - (Date.now() + A.offset))}</span>`}</div>
+        <h3>${esc(a.title)}</h3><p class="note">${esc(a.city || '')} · ${a.units} devices · ${a.sublots.length} sub-lots · ${a.bids} bids</p>
+        <p class="mono num">${lakh(a.est_lo)} – ${lakh(a.est_hi)} <span class="note">estimate</span></p></div></a>`).join('')
+      : '<p class="note">No auctions are open right now. Registered buyers are notified when a new lot is listed.</p>';
+  } catch (e) { $('cards').innerHTML = `<p class="msg err">${esc(e.message)}</p>`; }
+}
+
+/* ---------- Room ---------- */
+async function loadRoom(id) {
+  try {
+    const a = await api('/api/auctions/' + encodeURIComponent(id), { token: A.me && A.me.status === 'approved' ? A.key : undefined });
+    A.offset = a.server_time - Date.now();
+    A.auction = a;
+    renderRoom();
+  } catch (e) { $('room').innerHTML = `<a href="#" class="note">← All auctions</a><p class="msg err">${esc(e.message)}</p>`; }
+}
+function renderRoom() {
+  const a = A.auction; if (!a) return;
+  const t = Date.now() + A.offset;
+  // keep what the buyer is typing across refreshes
+  document.querySelectorAll('#room input[data-s]').forEach(i => { if (i.value !== i.defaultValue) A.drafts[i.dataset.s] = i.value; });
+  const focused = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.s : null;
+  const canBid = A.me && A.me.status === 'approved';
+  $('room').innerHTML = `<a href="#" class="note">← All auctions</a>
+    <div class="row-between"><div class="stack" style="gap:6px"><div class="chips"><span class="pill p-${a.state}">${a.state === 'live' ? 'Live' : a.state === 'upcoming' ? 'Opens ' + when(a.starts_at) : 'Closed'}</span><span class="note">${esc(a.city || '')} · ${a.units} devices · late bids extend a sub-lot by ${Math.round(a.soft_close_sec / 60)} min</span></div>
+      <h2 style="font-size:1.8rem">${esc(a.title)}</h2></div>
+      <div style="text-align:right"><div class="eyebrow">${a.state === 'upcoming' ? 'Opens in' : 'Closes in'}</div><div class="clock big" data-end="${a.state === 'upcoming' ? a.starts_at : a.ends_at}" style="font-size:2rem">${countdown((a.state === 'upcoming' ? a.starts_at : a.ends_at) - t)}</div></div></div>
+    ${!canBid && a.state !== 'ended' ? '<div class="banner">Sign in with your buyer access key to bid. <a href="#register">Register</a> if you don\'t have one.</div>' : ''}
+    ${a.photos.length ? `<div class="photos">${a.photos.slice(0, 12).map(p => `<div class="ph"><img src="/api/photo/${esc(p.key)}" alt="Lot photo" loading="lazy">${p.ai ? `<div class="b"><div class="ai"><span class="grade">${p.ai.grade}</span><span class="note">${esc(p.ai.notes || p.ai.device)}</span></div></div>` : ''}</div>`).join('')}</div>` : ''}
+    ${a.sublots.map(s => subHTML(s, t, canBid, a.state)).join('')}
+    <p class="disc">The reserve stays hidden; you'll see when it is met. Winning bids are binding. GST is charged on the hammer price. Pickup within 3 working days of full payment.</p>`;
+  document.querySelectorAll('#room input[data-s]').forEach(i => { if (A.drafts[i.dataset.s]) i.value = A.drafts[i.dataset.s]; if (i.dataset.s === focused) i.focus(); });
+}
+function subHTML(s, t, canBid, state) {
+  const open = state === 'live' && !s.ended && s.ends_at > t;
+  const items = s.items.map(it => `<tr><td>${esc(it.name)}<div class="note mono">${esc(it.serial || '')}</div></td><td class="mono" style="font-size:.78rem">${esc(it.spec)}</td>
+    <td><span class="pill s-${it.status}">${RI.E.STATUS_LABEL[it.status] || it.status}</span></td><td><span class="grade">${esc(it.grade)}</span></td>
+    <td><div class="tags">${(it.defects || []).map(d => `<span class="tag">${esc(d)}</span>`).join('')}${it.verified ? '<span class="tag ok">Inspected</span>' : ''}</div></td><td class="r mono">${it.qty}</td></tr>`).join('');
+  const status = s.you_lead ? '<span class="pill p-live">You lead</span>' : s.you_bid ? '<span class="pill p-notmet">Outbid</span>' : '';
+  return `<article class="sub${s.you_lead ? ' lead' : ''}">
+    <div class="l"><div class="row-between" style="align-items:center"><h3>${esc(s.label)}</h3>${status}</div>
+      <p class="note">${s.units} units · estimate ${lakh(s.est_lo)} – ${lakh(s.est_hi)}</p>
+      <details class="man"><summary>Manifest (${s.items.length} line${s.items.length === 1 ? '' : 's'})</summary><div class="tbl-wrap" style="margin-top:8px;max-height:360px;overflow:auto"><table>
+        <thead><tr><th>Device</th><th>Spec</th><th>Status</th><th>Grade</th><th>Notes</th><th class="r">Qty</th></tr></thead><tbody>${items}</tbody></table></div></details></div>
+    <div class="r"><div class="row-between" style="align-items:center"><span class="eyebrow">${s.top ? 'Standing bid' : 'Opening bid'}</span>
+        <span class="clock${s.ends_at - t < 120000 && open ? ' hot' : ''}" data-end="${s.ends_at}">${open ? countdown(s.ends_at - t) : state === 'upcoming' ? '' : 'Closed'}</span></div>
+      <div class="topbid">${inr(s.top || s.opening)}</div>
+      <div class="chips"><span class="pill ${s.reserve_met ? 'p-met' : 'p-notmet'}">${s.reserve_met ? 'Reserve met' : 'Reserve not met'}</span><span class="note">${s.bids} bid${s.bids === 1 ? '' : 's'} · ${s.bidders} bidder${s.bidders === 1 ? '' : 's'}${s.leading_alias ? ' · ' + esc(s.leading_alias) + ' leads' : ''}</span></div>
+      ${open && canBid && s.you_lead ? `<p class="msg ok">You hold the top bid. You'll see it here if someone outbids you.</p>` : ''}
+      ${open && canBid && !s.you_lead ? `<form class="bidform" data-sub="${s.id}"><input class="inp" data-s="${s.id}" id="bid-${s.id}" type="number" step="${s.increment}" min="${s.next_min}" value="${s.next_min}" aria-label="Your bid in rupees">
+        <button class="btn green" type="submit">Bid</button></form>
+        <div class="chips">${[1, 2, 5].map(k => `<button class="chip" type="button" data-quick="${s.id}" data-v="${s.next_min + (k - 1) * s.increment}">${inr(s.next_min + (k - 1) * s.increment)}</button>`).join('')}</div>
+        <p class="${A.msgs[s.id] ? A.msgs[s.id].cls : 'msg'}" id="bm-${s.id}">${A.msgs[s.id] ? esc(A.msgs[s.id].text) : `Minimum ${inr(s.next_min)} · steps of ${inr(s.increment)}`}</p>` : ''}
+      ${s.history.length ? `<div class="hist">${s.history.map(h => `<div><span>${esc(h.alias)}</span><span class="mono">${inr(h.amount)}</span><span class="note">${new Date(h.at).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', second: '2-digit' })}</span></div>`).join('')}</div>` : ''}
+    </div></article>`;
+}
+$('room').addEventListener('click', e => {
+  const q = e.target.closest('[data-quick]'); if (!q) return;
+  const i = $('bid-' + q.dataset.quick); if (i) { i.value = q.dataset.v; A.drafts[q.dataset.quick] = q.dataset.v; i.focus(); }
+});
+$('room').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target.closest('form.bidform'); if (!f) return;
+  const id = f.dataset.sub, amt = Math.round(+$('bid-' + id).value), msg = $('bm-' + id);
+  const s = A.auction.sublots.find(x => x.id === id);
+  if (s && amt > s.next_min * 3 && A.confirm !== id + ':' + amt) { A.confirm = id + ':' + amt; A.msgs[id] = { text: `That is ${inr(amt)}, well above the next bid. Press Bid again to confirm.`, cls: 'msg err' }; return renderRoom(); }
+  A.confirm = null;
+  f.querySelector('button').disabled = true; msg.textContent = 'Placing bid…'; msg.className = 'msg';
+  try {
+    await api('/api/bids', { method: 'POST', token: A.key, body: { sublot_id: id, amount: amt } });
+    delete A.drafts[id];
+    A.msgs[id] = { text: `Your bid of ${inr(amt)} is in.`, cls: 'msg ok' };
+  } catch (err) {
+    A.msgs[id] = { text: err.message, cls: 'msg err' };
+  }
+  setTimeout(() => { delete A.msgs[id]; }, 8000);
+  await loadRoom(A.auction.id);
+});
+
+/* ---------- Register ---------- */
+$('reg-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim(), msg = $('reg-msg');
+  if (!$('b-consent').checked) { msg.textContent = 'Accept the bidding terms to apply.'; msg.className = 'msg err'; return; }
+  try {
+    const r = await api('/api/buyers', { method: 'POST', body: { company: v('b-company'), contact: v('b-contact'), email: v('b-email'), phone: v('b-phone'),
+      city: v('b-city'), gstin: v('b-gstin'), category: v('b-cat'), authorisation: v('b-auth'), consent: true } });
+    msg.textContent = r.message || 'Application received. We\'ll verify your details and send your access key.'; msg.className = 'msg ok';
+    $('reg-form').querySelector('button').disabled = true;
+  } catch (err) { msg.textContent = err.message; msg.className = 'msg err'; }
+});
+
+/* ---------- Routing, polling, clocks ---------- */
+function route() {
+  const m = location.hash.match(/^#a-([0-9a-f]+)$/);
+  $('list').hidden = !!m; $('room').hidden = !m;
+  clearInterval(A.timer);
+  if (m) { $('room').innerHTML = '<p class="note">Loading auction…</p>'; loadRoom(m[1]); A.timer = setInterval(() => !document.hidden && loadRoom(m[1]), 3000); }
+  else { A.auction = null; loadList(); A.timer = setInterval(() => !document.hidden && loadList(), 20000); }
+}
+function refresh() { if (A.auction) loadRoom(A.auction.id); }
+setInterval(() => {
+  const t = Date.now() + A.offset;
+  document.querySelectorAll('.clock[data-end]').forEach(c => { const left = +c.dataset.end - t; if (c.textContent !== '') c.textContent = countdown(left); });
+}, 1000);
+window.addEventListener('hashchange', route);
+checkKey().then(route);
+</script>
+</body>
+</html>
