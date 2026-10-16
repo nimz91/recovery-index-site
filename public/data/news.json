@@ -1,6 +1,56 @@
 {
- "updated": "2026-10-15",
+ "updated": "2026-10-16",
  "items": [
+  {
+   "date": "2026-10-14",
+   "region": "India",
+   "topic": "Rare earths",
+   "title": "Nexon Geochem plans ₹1,250 crore rare-earth magnet plant in Andhra Pradesh",
+   "summary": "Hyderabad-based Nexon Geochem has signed an MoU with the Andhra Pradesh Economic Development Board for a sintered NdFeB magnet plant at Thondangi in Kakinada district, with ₹750 crore in phase one and ₹500 crore in phase two. The plant is designed to make 600 tonnes of permanent magnets a year for EVs, wind turbines, industrial automation and defence.",
+   "why": "No dates were given, but a domestic sintered-magnet maker would give Indian rare-earth recyclers a potential local outlet for recovered NdPr and magnet scrap.",
+   "source": "Business Standard (via PTI)",
+   "url": "https://www.business-standard.com/industry/news/nexon-geochem-to-set-up-1-250-crore-rare-earth-magnet-plant-in-andhra-126101400554_1.html"
+  },
+  {
+   "date": "2026-10-15",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "Redwood Materials will now recycle Rivian's battery production scrap",
+   "summary": "Rivian has widened its partnership with Redwood Materials, which will recycle scrap from Rivian's battery manufacturing on top of handling end-of-life packs. Redwood is also building a 10 MWh storage system at Rivian's Normal, Illinois plant from more than 100 second-life Rivian packs.",
+   "why": "Production scrap is the cleanest, highest-value feedstock in battery recycling, and Indian recyclers chasing cell-maker scrap will face the same OEM-tied deals as gigafactories ramp up.",
+   "source": "EV Infrastructure News",
+   "url": "https://www.evinfrastructurenews.com/second-life-batteries/redwood-to-recycle-rivian-manufacturing-scrap-in-extension-of-their-partnership"
+  },
+  {
+   "date": "2026-10-15",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "China's NdFeB scrap prices hold near highs as recyclers hesitate",
+   "summary": "SMM's weekly review put recycled Pr-Nd at 755–765 yuan/kg, dysprosium at 1,230–1,250 yuan/kg and terbium at 5,600–5,800 yuan/kg, with Pr-Nd edging up mid-week alongside oxide prices. Recyclers were cautious about paying more, and SMM expects Pr-Nd scrap to consolidate at high levels.",
+   "why": "Chinese scrap prices set the benchmark for what magnet swarf and end-of-life motors from India can fetch.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104159760-scrap-prices-consolidate-at-highs-recycling-purchases-remain-cautious-smm-recycled-rare-earth-weekly-review"
+  },
+  {
+   "date": "2026-10-13",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "New South Wales consults on Australia's first mandatory solar panel recycling scheme",
+   "summary": "The NSW government has released a draft regulation and issues paper that would make solar panel brand owners pay for collecting and recycling end-of-life panels. The state has more than 1.18 million rooftop systems and about 14,000 tonnes of panel waste a year, expected to reach 89,000 tonnes by 2045.",
+   "why": "It is a live example of solar-specific producer responsibility, which is the model Indian stakeholders are now asking for.",
+   "source": "NSW Government (via Solar Now)",
+   "url": "https://now.solar/2026/10/13/nsw-leads-australia-with-new-solar-panel-recycling-mandate-nsw-government"
+  },
+  {
+   "date": "2026-10-14",
+   "region": "World",
+   "topic": "E-waste",
+   "title": "E-Waste Day 2026 targets cheap 'fast tech' like cables, earbuds and vapes",
+   "summary": "A WEEE Forum study found that only 32% of low-cost gadgets were sent for recycling or reuse, while 39% of buyers had finished with them within a month. The UN estimates 62 million tonnes of e-scrap are generated each year, with only 22.3% recycled.",
+   "why": "Small, low-value items are the hardest category to collect against EPR targets, and their embedded cells add to fire risk at recycling plants.",
+   "source": "Resource Recycling",
+   "url": "https://resource-recycling.com/e-scrap/2026/10/14/fast-tech-reduction-is-focus-of-e-waste-day/"
+  },
   {
    "date": "2026-10-15",
    "region": "India",
