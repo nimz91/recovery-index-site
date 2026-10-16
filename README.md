@@ -15,6 +15,20 @@ Live metals, scrap and e-waste prices for India, published at **prices.therecove
 The page polls `/api/live` every minute. Between daily observations, every scrap and e-waste price
 moves with its metals' live prices in rupees, so both indices update with every live price refresh.
 
+## Search pages and the daily rate card
+
+`scripts/build_static.py` turns `public/data/*.json` into plain HTML that Google can read and people can share:
+
+| Output | What it is |
+|---|---|
+| `public/rates/` | One page per Delhi scrap grade ("Copper Super D scrap rate today in Delhi") plus an index |
+| `public/card/latest.png` | 1080×1350 WhatsApp rate card (rendered by `scripts/render_card.mjs` with Playwright) |
+| `public/news/index.html` | Story list written into the page between the `STATIC-NEWS` markers |
+| `public/sitemap.xml`, `public/robots.txt` | For Google Search Console |
+
+Run `python3 scripts/build_static.py && node scripts/render_card.mjs` from the repo root. The evening price refresh does this automatically.
+Fonts for the card are self-hosted in `public/fonts/` (Inter, Source Serif 4; SIL Open Font License).
+
 ## One-time setup
 
 You need: a Cloudflare account (free), a metals.dev account, and this repo on GitHub.
