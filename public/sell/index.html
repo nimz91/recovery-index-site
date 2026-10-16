@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sell IT Assets · The Recovery Index</title>
+<meta name="description" content="Upload your IT asset register and photos, get an instant indicative price range, then sell through a live auction to vetted ITADs, refurbishers and authorised recyclers.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/itad/itad.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5d4a'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="ri-bar"><div class="in"><a class="brand-l" href="/news/">The Recovery Index</a><nav class="ri-nav" aria-label="Site"><a href="/news/">News</a><a href="/">Prices</a><a href="/epr/">EPR Calculator</a><a href="/sell/" aria-current="page">Sell IT Assets</a><a href="/auction/">Auctions</a><a class="sub" href="https://therecoveryindex.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter</a></nav></div></header>
+
+<main class="wrap">
+  <section class="stack">
+    <div class="eyebrow">For companies retiring laptops, desktops and workstations</div>
+    <h1>What are your old IT assets worth?</h1>
+    <p class="lede">Upload your asset register as it is. We read the models, specs and condition remarks, grade your photos, and give you a price range for every device and for the whole lot. If you want to sell, an independent inspector verifies the lot and vetted ITADs, refurbishers and authorised recyclers bid for it in a live auction.</p>
+  </section>
+
+  <section class="intake" aria-label="Upload">
+    <label class="drop" id="drop-sheet">
+      <span class="ico">XLS</span>
+      <span><b>Upload your asset register</b><small>.xlsx, .xls or .csv, one device per row. Any column layout works.</small><small id="sheet-msg" class="msg"></small></span>
+      <input type="file" id="f-sheet" accept=".xlsx,.xls,.csv">
+    </label>
+    <label class="drop" id="drop-photos">
+      <span class="ico">IMG</span>
+      <span><b>Add photos for AI grading</b><small>Lid, keyboard, base and screen. Name files by serial number to match them to rows.</small><small id="photo-msg" class="msg"></small></span>
+      <input type="file" id="f-photos" accept="image/*" multiple>
+    </label>
+  </section>
+
+  <div id="example-banner" class="banner" hidden>You are looking at an example lot of 36 devices. Upload your own register to price it.</div>
+
+  <div id="sheet"></div>
+
+  <section class="stack" id="photos-sec" hidden>
+    <div><h2>Photo grading</h2><p class="note">Each photo is graded A–D with any visible defects. Choose which row it shows; the grade then replaces the declared condition for that device.</p></div>
+    <div class="photos" id="photos"></div>
+  </section>
+
+  <section class="stack">
+    <div><h2>Suggested sub-lots</h2><p class="note">Splitting by condition lets refurbishers and recyclers each bid on what they can use, which usually raises the total.</p></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Sub-lot</th><th class="r">Units</th><th class="r">Range</th><th style="min-width:120px">Share</th><th>Likely bidders</th></tr></thead>
+      <tbody id="buckets"></tbody>
+    </table></div>
+  </section>
+
+  <section class="stack" id="reg">
+    <div class="row-between">
+      <div><h2>Your devices</h2><p class="note">Tap a row to see how its price was built.</p></div>
+      <div class="chips" role="group" aria-label="Filter">
+        <button class="chip" data-f="all" aria-pressed="true">All</button>
+        <button class="chip" data-f="work">Working</button>
+        <button class="chip" data-f="non">Non-working</button>
+        <button class="chip" data-f="flag">Needs check</button>
+        <input type="search" class="inp" id="q" placeholder="Search model or serial" aria-label="Search" style="width:200px;max-width:100%">
+      </div>
+    </div>
+    <div class="tbl-wrap tall"><table>
+      <thead><tr><th>Row</th><th>Asset</th><th>Spec</th><th>Status</th><th>Grade</th><th>Issues</th><th class="r">Estimate (₹)</th><th>Conf.</th></tr></thead>
+      <tbody id="items"></tbody>
+    </table></div>
+  </section>
+
+  <section class="stack" aria-label="Process">
+    <h2>How selling works</h2>
+    <div class="flow">
+      <div><span class="n">STEP 1</span><b>Upload</b><p>Your asset register and a few photos. You get the range on this page.</p></div>
+      <div><span class="n">STEP 2</span><b>Request inspection</b><p>Send the lot below. We confirm pickup location and schedule an inspector.</p></div>
+      <div><span class="n">STEP 3</span><b>Independent inspection</b><p>Every device is power-tested and graded A–D. You approve the reserve price.</p></div>
+      <div><span class="n">STEP 4</span><b>Live auction</b><p>Vetted ITADs, refurbishers and authorised recyclers bid per sub-lot.</p></div>
+      <div><span class="n">STEP 5</span><b>Pickup &amp; certificates</b><p>Paid before pickup. Data-wipe certificates and EPR paperwork follow.</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="submit-sec">
+    <div><h2>Request inspection and auction</h2><p class="note">No obligation. Nothing is sold until you approve the reserve price after inspection.</p></div>
+    <form id="lot-form" class="stack" novalidate>
+      <div class="fields">
+        <label class="field" for="s-company">Company<input id="s-company" required autocomplete="organization"></label>
+        <label class="field" for="s-contact">Your name<input id="s-contact" required autocomplete="name"></label>
+        <label class="field" for="s-email">Work email<input id="s-email" type="email" required autocomplete="email"></label>
+        <label class="field" for="s-phone">Phone<input id="s-phone" type="tel" required autocomplete="tel"></label>
+        <label class="field" for="s-city">Pickup city<input id="s-city" required autocomplete="address-level2"></label>
+        <label class="field" for="s-gstin">GSTIN (optional)<input id="s-gstin" maxlength="15"></label>
+      </div>
+      <label class="field" for="s-address">Pickup address<textarea id="s-address" rows="2"></textarea></label>
+      <label class="field" for="s-notes">Anything we should know (optional)<textarea id="s-notes" rows="2" placeholder="Hard drives already removed, lot stored on 3rd floor, need data-wipe certificates per serial…"></textarea></label>
+      <label class="check" for="s-consent"><input type="checkbox" id="s-consent"> I confirm my company owns these assets and may sell them, and that the register and photos are accurate to the best of my knowledge.</label>
+      <div class="row-between" style="align-items:center">
+        <p class="msg" id="submit-msg"></p>
+        <button class="btn green" id="submit-btn" type="submit">Send lot for inspection</button>
+      </div>
+    </form>
+    <div id="done" class="stack" hidden></div>
+  </section>
+
+  <p class="disc">Indicative only. Prices assume the declared condition is accurate and are subject to physical inspection. Not an offer to purchase. Estimates are built from public refurbished-retail listings in India and are recalibrated with realised auction prices.</p>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="/itad/engine.js"></script>
+<script src="/itad/common.js"></script>
+<script>
+const { E, $, esc, inr, lakh, api, resize, readSheet } = RI;
+
+// A made-up example lot so the page shows what it does before an upload. Not any real client's data.
+function exampleRows() {
+  const H = ['Serial No', 'Brand', 'Model', 'Processor', 'RAM/SSD', 'Functional Condition', 'Physical Condition', 'Remarks'];
+  const spec = [
+    ['Dell', 'Latitude 5420', 'i5 / 11th', '16GB / 512GB', 8], ['Dell', 'Latitude 3420', 'i5 / 11th', '8GB / 256GB', 6],
+    ['HP', 'EliteBook 840 G6', 'i5 / 8th', '16GB / 256GB', 5], ['Lenovo', 'ThinkPad T14 Gen 2', 'i7 / 11th', '16GB / 512GB', 4],
+    ['Apple', 'MacBook Air A2337', 'M1', '8GB / 256GB', 4], ['Apple', 'MacBook Pro A2442', 'M1 Pro', '16GB / 512GB', 3],
+    ['Dell', 'Precision 7550', 'i7 / 10th', '32GB / 512GB', 2], ['HP', 'ProBook 440 G8', 'i5 / 11th', '8GB / 256GB', 4],
+  ];
+  const conds = [['Working', 'Good', ''], ['Working', 'Good', 'A part minor scratch'], ['Working', 'Fair', 'Keyboard damage'], ['Not Working', 'Good', 'Dead, no power'],
+    ['Working', 'Good', 'Dot on screen'], ['Working', 'Good', 'BIOS lock'], ['Working', 'Damage', 'B/C part damage, hinge broken'], ['Working', 'Good', '']];
+  const rows = [H]; let n = 0;
+  spec.forEach(([b, m, c, r, q]) => { for (let i = 0; i < q; i++) { const k = conds[(n * 7 + i * 3) % conds.length]; n++;
+    rows.push(['EX' + String(1000 + n * 37).padStart(6, '0'), b, m, c, r, k[0], k[1], k[2]]); } });
+  return rows;
+}
+
+const S = { rows: null, fileName: '', example: true, photos: [], view: { filter: 'all', q: '', open: new Set() }, lot: null, lotTitle: '' };
+const DEFECTS = new Set(Object.keys(E.DEFECT_LABEL));
+const GRADE_ORDER = { A: 0, B: 1, C: 2, D: 3 };
+
+function hints() {
+  const h = {};
+  for (const p of S.photos) {
+    if (!p.ai || !p.row || p.ai.device === 'other' || p.ai.confidence < 0.3) continue;
+    const cur = h[p.row] || { grade: null, defects: [] };
+    if (!cur.grade || GRADE_ORDER[p.ai.grade] > GRADE_ORDER[cur.grade]) cur.grade = p.ai.grade;
+    p.ai.defects.forEach(d => { if (DEFECTS.has(d) && !cur.defects.includes(d)) cur.defects.push(d); });
+    h[p.row] = cur;
+  }
+  return h;
+}
+function applyHints(assets, h) { // same rules as functions/api/lots.js
+  for (const a of assets) {
+    const x = h[a.row]; if (!x) continue;
+    if (x.grade) { a.grade = x.grade; a.gradeKnown = true; a.aiGraded = true; }
+    x.defects.forEach(d => { if (!a.defects.includes(d)) a.defects.push(d); });
+    a.photos = Math.max(a.photos || 0, 1);
+  }
+}
+
+function render() {
+  const parsed = E.parseSheet(S.rows);
+  S.assets = parsed.assets;
+  applyHints(S.assets, hints());
+  const lot = S.lot = E.valueLot(S.assets, E.DEFAULTS, null, {});
+  const work = lot.items.filter(x => x.a.status === 'WORKING').reduce((s, x) => s + (x.a.qty || 1), 0);
+  $('sheet').innerHTML = RI.sheetHTML(lot, { title: S.lotTitle, meta: `${lot.units} units · ${work} working · ${S.photos.length} photos` });
+  $('buckets').innerHTML = RI.bucketsHTML(lot);
+  renderItems();
+  renderPhotos();
+  $('example-banner').hidden = !S.example;
+  $('submit-btn').disabled = S.example;
+  if (S.example) { $('submit-msg').textContent = 'Upload your own register to send it for inspection.'; $('submit-msg').className = 'msg'; }
+  else if ($('submit-msg').textContent.startsWith('Upload your own')) $('submit-msg').textContent = '';
+}
+const renderItems = () => { $('items').innerHTML = RI.registerHTML(S.lot, S.view); };
+RI.wireRegister($('items'), S.view, renderItems);
+RI.wireFilters($('reg'), S.view, renderItems);
+
+function load(rows, title, example) {
+  S.rows = rows; S.lotTitle = title; S.example = example; S.view.open.clear();
+  S.photos.forEach(p => { p.row = matchRow(p); });
+  render();
+}
+
+async function onSheet(file) {
+  const msg = $('sheet-msg');
+  try {
+    const rows = await readSheet(file);
+    const parsed = E.parseSheet(rows);
+    if (!parsed.assets.length) throw new Error('No device rows found. Make sure the sheet has a header row with Model or Brand.');
+    S.fileName = file.name;
+    load(rows, file.name.replace(/\.[^.]+$/, ''), false);
+    msg.textContent = `Read ${parsed.assets.length} devices · columns found: ${Object.keys(parsed.map).filter(k => k[0] !== '_').join(', ')}`; msg.className = 'msg ok';
+  } catch (e) { msg.textContent = e.message; msg.className = 'msg err'; }
+}
+$('f-sheet').addEventListener('change', e => { const f = e.target.files[0]; if (f) onSheet(f); e.target.value = ''; });
+
+/* ---------- Photos + AI grading ---------- */
+let gradingAvailable = true;
+function matchRow(p) {
+  if (p.manual) return p.row;
+  const hay = ((p.ai && p.ai.label_text) || '') + ' ' + p.name;
+  const H = hay.toUpperCase().replace(/[^A-Z0-9]/g, ' ');
+  const a = (S.assets || E.parseSheet(S.rows).assets).find(a => a.serial && a.serial.length >= 5 && H.includes(a.serial.toUpperCase()));
+  return a ? a.row : (p.row || null);
+}
+async function addPhotos(files) {
+  const list = [...files].filter(f => f.type.startsWith('image/')).slice(0, 80 - S.photos.length);
+  for (const f of list) {
+    const p = { id: Math.random().toString(36).slice(2), name: f.name, state: 'prep', ai: null, row: null, manual: false };
+    S.photos.push(p);
+    try { Object.assign(p, await resize(f)); p.state = 'queued'; } catch (e) { p.state = 'error'; p.err = 'This photo could not be opened.'; }
+    p.row = matchRow(p);
+  }
+  render();
+  gradeQueue();
+}
+let running = 0;
+async function gradeQueue() {
+  while (running < 2) {
+    const p = S.photos.find(x => x.state === 'queued');
+    if (!p) return;
+    running++; p.state = 'grading'; renderPhotos();
+    (async () => {
+      if (!gradingAvailable) { p.state = 'skipped'; }
+      else try {
+        p.ai = await api('/api/grade', { method: 'POST', body: { image: p.base64, media_type: 'image/jpeg' } });
+        p.state = 'done'; p.row = matchRow(p);
+      } catch (e) {
+        if (e.status === 503 || e.status === 404 || e.status === 405) { gradingAvailable = false; p.state = 'skipped'; $('photo-msg').textContent = 'AI grading is not switched on yet. Photos still go to the inspector.'; }
+        else if (e.status === 429) { p.state = 'skipped'; p.err = e.message; }
+        else { p.state = 'error'; p.err = e.message; }
+      }
+      running--; render(); gradeQueue();
+    })();
+  }
+}
+function renderPhotos() {
+  $('photos-sec').hidden = !S.photos.length;
+  const rowOpts = sel => '<option value="">Whole lot / not matched</option>' + (S.lot ? S.lot.items.map(({ a, v }) =>
+    `<option value="${a.row}"${a.row === sel ? ' selected' : ''}>Row ${a.row} · ${esc(v.name)}${a.serial ? ' · ' + esc(a.serial) : ''}</option>`).join('') : '');
+  $('photos').innerHTML = S.photos.map(p => {
+    let ai = '';
+    if (p.state === 'prep' || p.state === 'queued' || p.state === 'grading') ai = '<span class="note"><span class="spin"></span> Grading…</span>';
+    else if (p.state === 'done' && p.ai) {
+      const a = p.ai;
+      ai = `<div class="ai"><span class="grade">${a.grade}</span><span class="note">${a.device}${a.model_guess ? ' · ' + esc(a.model_guess) : ''} · ${Math.round(a.confidence * 100)}% sure</span></div>
+        ${a.defects.length || a.status_hint === 'locked' || a.status_hint === 'no_display' ? `<div class="tags">${a.defects.map(d => `<span class="tag">${E.DEFECT_LABEL[d]}</span>`).join('')}${a.status_hint === 'locked' ? '<span class="tag warn">Lock screen seen</span>' : ''}${a.status_hint === 'no_display' ? '<span class="tag warn">No display</span>' : ''}</div>` : ''}
+        ${a.notes ? `<p class="note">${esc(a.notes)}</p>` : ''}`;
+    } else if (p.state === 'skipped') ai = `<span class="note">${esc(p.err || 'Not graded. The inspector will grade it on site.')}</span>`;
+    else ai = `<span class="msg err">${esc(p.err || 'Grading failed.')}</span>`;
+    return `<div class="ph">${p.url ? `<img src="${p.url}" alt="${esc(p.name)}">` : ''}<div class="b">${ai}
+      <label class="field" for="pr-${p.id}">Shows<select id="pr-${p.id}" data-p="${p.id}">${rowOpts(p.row)}</select></label>
+      <button class="btn ghost small" data-rm="${p.id}" type="button">Remove</button></div></div>`;
+  }).join('');
+}
+$('photos').addEventListener('change', e => {
+  const p = S.photos.find(x => x.id === e.target.dataset.p); if (!p) return;
+  p.row = e.target.value ? +e.target.value : null; p.manual = true; render();
+});
+$('photos').addEventListener('click', e => {
+  const id = e.target.dataset.rm; if (!id) return;
+  S.photos = S.photos.filter(x => x.id !== id); render();
+});
+$('f-photos').addEventListener('change', e => { addPhotos(e.target.files); e.target.value = ''; });
+['drop-sheet', 'drop-photos'].forEach(id => {
+  const el = $(id);
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('over'); });
+  el.addEventListener('dragleave', () => el.classList.remove('over'));
+  el.addEventListener('drop', () => el.classList.remove('over'));
+});
+
+/* ---------- Submit ---------- */
+$('lot-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const msg = $('submit-msg'), btn = $('submit-btn');
+  if (S.example) return;
+  if (!$('s-consent').checked) { msg.textContent = 'Tick the declaration to continue.'; msg.className = 'msg err'; return; }
+  if (S.photos.some(p => ['prep', 'queued', 'grading'].includes(p.state))) { msg.textContent = 'Wait for the photos to finish grading.'; msg.className = 'msg err'; return; }
+  btn.disabled = true; msg.textContent = 'Sending your lot…'; msg.className = 'msg';
+  const v = id => $(id).value.trim();
+  try {
+    const r = await api('/api/lots', { method: 'POST', body: {
+      company: v('s-company'), contact: v('s-contact'), email: v('s-email'), phone: v('s-phone'), city: v('s-city'), gstin: v('s-gstin'),
+      address: v('s-address'), notes: v('s-notes'), file_name: S.fileName, rows: S.rows, hints: hints(), consent: true } });
+    let sent = 0, failed = 0;
+    for (const p of S.photos.filter(x => x.blob)) {
+      msg.textContent = `Lot received. Uploading photos ${sent + failed + 1} of ${S.photos.length}…`;
+      const fd = new FormData();
+      fd.append('lot_id', r.id); fd.append('token', r.upload_token); fd.append('file', p.blob, p.name.replace(/\.[^.]+$/, '') + '.jpg');
+      if (p.row) fd.append('row_no', String(p.row));
+      if (p.ai) fd.append('ai', JSON.stringify(p.ai));
+      try { await api('/api/photos', { method: 'POST', form: fd }); sent++; } catch (err) { failed++; }
+    }
+    $('lot-form').hidden = true;
+    $('done').hidden = false;
+    $('done').innerHTML = `<div class="banner ok">Lot <b class="mono">${esc(r.ref)}</b> received: ${r.units} devices, indicative ${lakh(r.est_lo)} – ${lakh(r.est_hi)}${S.photos.length ? `, ${sent} photo${sent === 1 ? '' : 's'} attached` : ''}.</div>
+      <p>We'll call you on ${esc(v('s-phone'))} within one working day to schedule the inspection. Quote <b class="mono">${esc(r.ref)}</b> in any message.</p>
+      ${failed ? `<p class="msg err">${failed} photo${failed === 1 ? '' : 's'} did not upload. You can send them to the inspector on the day.</p>` : ''}`;
+  } catch (err) {
+    msg.textContent = err.message; msg.className = 'msg err'; btn.disabled = false;
+  }
+});
+
+load(exampleRows(), 'Example lot · 36 devices', true);
+</script>
+</body>
+</html>
