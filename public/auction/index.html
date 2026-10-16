@@ -180,7 +180,7 @@ $('reg-form').addEventListener('submit', async e => {
 
 /* ---------- Routing, polling, clocks ---------- */
 function route() {
-  const m = location.hash.match(/^#a-([0-9a-f]+)$/);
+  const m = location.hash.match(/^#a-([A-Za-z0-9_-]+)$/);
   $('list').hidden = !!m; $('room').hidden = !m;
   clearInterval(A.timer);
   if (m) { $('room').innerHTML = '<p class="note">Loading auction…</p>'; loadRoom(m[1]); A.timer = setInterval(() => !document.hidden && loadRoom(m[1]), 3000); }
