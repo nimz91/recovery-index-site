@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Recovery Index · Metals & E-waste Prices</title>
+<title>The Recovery Index · Metals, Steel & Scrap Prices</title>
 <meta name="description" content="Live metal prices and India's secondary metals and e-waste price indices, from The Recovery Index.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
 
 <main class="wrap">
   <section class="hero">
-    <h1>Metals, scrap, e-waste and plastics prices for India</h1>
+    <h1>Metals, steel, scrap, e-waste and plastics prices for India</h1>
     <p class="lede" id="takeaway">&nbsp;</p>
   </section>
 
@@ -34,7 +34,7 @@
     <div class="index-head">
       <div>
         <h2>RI Secondary Metals Index</h2>
-        <p class="note">India non-ferrous scrap, Delhi wholesale. 16 grades of copper, aluminium, brass, lead and zinc. Base 100 = 14 Oct 2026.</p>
+        <p class="note">India non-ferrous scrap, Delhi wholesale. Index basket: 16 grades of copper, aluminium, brass, lead and zinc; the table also shows other Delhi grades (CC rod, virgin aluminium, zinc ingot, gun metal, nickel, tin). Base 100 = 14 Oct 2026.</p>
       </div>
       <div class="index-val">
         <div class="big" id="smi-live">—</div>
@@ -81,6 +81,9 @@
     </tr></thead><tbody></tbody></table></div>
   </section>
 
+  <h2 class="band">India markets: steel, stainless, other cities and MCX</h2>
+  <div class="grid" id="india"></div>
+
   <section class="card" id="intraday-card">
     <div class="card-head"><h2>Intraday</h2><select id="intraday-pick" aria-label="Metal"></select></div>
     <p class="note" id="intraday-note">Live prices every 2 hours, 9 am to 9 pm IST, Monday to Friday.</p>
@@ -101,6 +104,7 @@
     <p><b>RI Secondary Metals Index.</b> Each grade's price is the midpoint of the Delhi wholesale buy and sell rate, observed daily. A metal's sub-index is the average of its grades' prices relative to 14 Oct 2026, × 100; the composite weights copper 35%, aluminium 25%, brass 15%, lead 15%, zinc 10%. Between daily observations, the live estimate moves each grade with its metal's live price in rupees (brass with 65% copper, 35% zinc).</p>
     <p><b>RI E-waste Index.</b> Each item starts from an observed dealer buying rate and then moves with the metals it contains, in rupees: price now = observed rate × (Σ share of value from each metal × that metal's change since the observation + the share that tracks no metal). The index is the equal-weighted average of the items relative to 14 Oct 2026, × 100. Value shares are modelled estimates.</p>
     <p><b>RI Plastics Index.</b> Each recycled grade starts from an observed Indian market rate (marketplace median asking rates and dealer ranges) and moves with its virgin polymer's price: price now = observed rate × (80% × virgin price change since the observation + 20% fixed for collection and processing). Virgin prices are trade ranges for PET, HDPE, PP, LDPE and ABS. The index is the equal-weighted average of the grades relative to 14 Oct 2026, × 100. Plastics prices update when the virgin references change; the source revises them fortnightly, so the index can sit at 100 until the first revision.</p>
+    <p><b>India markets.</b> Delhi non-ferrous grades (from 15 Oct 2026), steel scrap, ingot, billet, sponge iron, pig iron, finished steel, stainless steel scrap, other-city non-ferrous scrap, MCX futures, and LME, spot and rupee reference rates come from the daily trade rate bulletins of Shree Ji Rate Service. Change is against the previous published rate for the same item.</p>
     <p><b>Other prices.</b> Base metals: LME 3-month. Precious metals: spot. Battery metals: GFEX lithium carbonate, LME cobalt, China nickel sulphate, battery-grade manganese sulphate and electrolytic manganese metal (the salts are assessed weekly to quarterly, so their dates lag). Rare earths: NdPr, dysprosium and terbium oxides, China domestic (SMM, monthly) and ex-China (Fastmarkets CIP global, weekly); the gap between them reflects China's export controls on heavy rare earths. Black mass: quarterly payables from Benchmark, as a % of contained metal value; CIF Asia NCM payables can exceed 100% because they are quoted on nickel and cobalt value, while buyers in Korea also pay for the lithium content. India scrap and e-waste observations come from dealer boards (Delhi wholesale, Jalna, MetalMandi) and are indicative, excluding 18% GST, not offers. Sources are credited and linked in each table.</p>
     <p class="muted">Prices are for information only and are not trading or investment advice.</p>
   </section>

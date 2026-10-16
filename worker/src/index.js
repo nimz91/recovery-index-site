@@ -65,6 +65,7 @@ function marketOpen(now = new Date()) {
 
 export default {
   async scheduled(event, env, ctx) {
+    await env.LIVE.put('last_cron', new Date().toISOString());
     if (!marketOpen()) return;
     ctx.waitUntil(
       update(env).catch(async (err) => {
@@ -75,10 +76,27 @@ export default {
   // GET /status shows the last update and error; useful when setting up.
   async fetch(req, env) {
     const url = new URL(req.url);
-    if (url.pathname === '/status') {
-      const [latest, err, ok] = await Promise.all([env.LIVE.get('latest', 'json'), env.LIVE.get('last_error', 'json'), env.LIVE.get('last_ok')]);
-      return Response.json({ last_ok: ok, last_error: err, latest });
+    // GET /refresh runs one update now (for setup checks). It reuses the stored
+    // result if the last successful fetch is under 20 minutes old, so it cannot
+    // burn through the metals.dev monthly quota.
+    if (url.pathname === '/refresh') {
+      const lastOk = await env.LIVE.get('last_ok');
+      if (lastOk && Date.now() - new Date(lastOk) < 20 * 60 * 1000) {
+        return Response.json({ ok: true, cached: true, latest: await env.LIVE.get('latest', 'json') });
+      }
+      try {
+        const snap = await update(env);
+        return Response.json({ ok: true, cached: false, latest: snap });
+      } catch (err) {
+        const e = { at: new Date().toISOString(), message: String(err.message || err) };
+        await env.LIVE.put('last_error', JSON.stringify(e));
+        return Response.json({ ok: false, error: e }, { status: 502 });
+      }
     }
-    return new Response('Recovery Index live updater. See /status.', { status: 200 });
+    if (url.pathname === '/status') {
+      const [latest, err, ok, cron] = await Promise.all([env.LIVE.get('latest', 'json'), env.LIVE.get('last_error', 'json'), env.LIVE.get('last_ok'), env.LIVE.get('last_cron')]);
+      return Response.json({ last_cron: cron, last_ok: ok, last_error: err, latest });
+    }
+    return new Response('Recovery Index live updater. See /status or /refresh.', { status: 200 });
   },
 };

@@ -7,8 +7,15 @@
   const BASE_DATE = '2026-10-14';
   const LIVE_MAX_AGE_H = 36; // ignore a live snapshot older than this
   const POLL_MS = 60 * 1000;
-  const SMI_EXPOSURE = { Copper: { CU: 1 }, Aluminium: { AL: 1 }, Zinc: { ZN: 1 }, Lead: { PB: 1 }, Brass: { CU: 0.65, ZN: 0.35 } };
-  const SMI_ORDER = ['Copper', 'Aluminium', 'Brass', 'Lead', 'Zinc'];
+  const SMI_EXPOSURE = { Copper: { CU: 1 }, Aluminium: { AL: 1 }, Zinc: { ZN: 1 }, Lead: { PB: 1 }, Brass: { CU: 0.65, ZN: 0.35 }, 'Gun metal': { CU: 0.88, SN: 0.10, ZN: 0.02 }, Nickel: { NI: 1 }, Tin: { SN: 1 } };
+  const SMI_ORDER = ['Copper', 'Aluminium', 'Brass', 'Lead', 'Zinc', 'Gun metal', 'Nickel', 'Tin'];
+  const PANELS = [
+    { id: 'ferrous', title: 'Steel scrap, ingot and billet', note: 'Mandi and city trade rates, ₹ per tonne, excl. GST.', sections: ['Mandi Gobindgarh', 'Melting scrap', 'HMS', 'Ingot', 'Billet', 'Sponge iron', 'Pellet', 'Pig iron (foundry grade)', 'Pig iron (steel grade)', 'Cast iron'] },
+    { id: 'finished', title: 'Finished steel', note: 'Trade rates, ₹ per tonne, excl. GST.', sections: ['Finished steel (Mandi Gobindgarh)', 'TMT 12 mm', 'HR coil', 'CR coil', 'Wire rod (5.5 mm)'] },
+    { id: 'stainless', title: 'Stainless steel scrap', note: '₹ per kg plus GST.', sections: ['Stainless steel scrap'] },
+    { id: 'cities', title: 'Non-ferrous scrap, other cities', note: 'Kolkata, Ahmedabad, Jamnagar and Hyderabad, ₹ per kg, excl. GST.', sections: ['Other city non-ferrous'] },
+    { id: 'mcx', title: 'MCX and reference rates', note: 'MCX futures in rupees, LME and spot as published, and rupee reference rates.', sections: ['MCX', 'International', 'FX'] },
+  ];
   const EW_METALS = ['CU', 'AL', 'XAU', 'XAG', 'XPD', 'NI', 'CO', 'LI2CO3'];
   const METAL_NAMES = { CU: 'Copper', AL: 'Aluminium', ZN: 'Zinc', PB: 'Lead', NI: 'Nickel', SN: 'Tin', XAU: 'Gold', XAG: 'Silver', XPT: 'Platinum', XPD: 'Palladium', CO: 'Cobalt', LI2CO3: 'Lithium', USDINR: 'USD/INR' };
   const GROUPS = [
@@ -109,11 +116,14 @@
     const lastDate = dates[dates.length - 1];
     // live estimate: each grade's latest observed mid moved by its metal's live price (in INR)
     const liveVal = {};
-    D.scrap.filter((r) => r.date === lastDate).forEach((r) => {
-      liveVal[r.code] = mid[lastDate][r.code] * factor(SMI_EXPOSURE[r.metal] || {}, SMI_EXPOSURE[r.metal] ? 0 : 1, lastDate);
+    const latestBy = {};
+    D.scrap.forEach((r) => { if (!latestBy[r.code] || r.date >= latestBy[r.code].date) latestBy[r.code] = r; });
+    const latestRows = Object.values(latestBy).sort((a, b) => SMI_ORDER.indexOf(a.metal) - SMI_ORDER.indexOf(b.metal) || D.scrap.indexOf(a) - D.scrap.indexOf(b));
+    latestRows.forEach((r) => {
+      liveVal[r.code] = mid[r.date][r.code] * factor(SMI_EXPOSURE[r.metal] || {}, SMI_EXPOSURE[r.metal] ? 0 : 1, r.date);
     });
     const live = compose((c) => liveVal[c] ?? mid[lastDate][c]);
-    return { daily, live, lastDate, mid, liveVal, weights: Object.fromEntries(Object.entries(baskets).map(([k, v]) => [k, v.w])) };
+    return { daily, live, lastDate, mid, liveVal, latestRows, weights: Object.fromEntries(Object.entries(baskets).map(([k, v]) => [k, v.w])) };
   }
 
   // ---------- e-waste index ----------
@@ -281,12 +291,12 @@
     }));
     const tb = $('#smi-table tbody');
     tb.replaceChildren();
-    D.scrap.filter((r) => r.date === smi.lastDate).sort((a, b) => SMI_ORDER.indexOf(a.metal) - SMI_ORDER.indexOf(b.metal)).forEach((r) => {
-      const m = smi.mid[smi.lastDate][r.code], lv = smi.liveVal[r.code];
+    smi.latestRows.forEach((r) => {
+      const m = (Number(r.buy) + Number(r.sell)) / 2, lv = smi.liveVal[r.code];
       const tr = tb.insertRow();
       tr.title = `${r.source}, ${dateLabel(r.date)}`;
       const add = (t, k) => { const td = tr.insertCell(); td.textContent = t; if (k) td.className = k; return td; };
-      add(r.metal, 'nm'); add(r.grade);
+      add(r.metal, 'nm'); add(r.grade + (r.date < smi.lastDate ? ' (' + dateLabel(r.date) + ')' : ''));
       add(inr(r.buy), 'r hide-sm'); add(inr(r.sell), 'r hide-sm');
       add(inr(m, m % 1 ? 2 : 0), 'r'); add(inr(lv), 'r');
       add(pctText(lv / m - 1), 'r ' + cls(lv / m - 1));
@@ -346,6 +356,55 @@
         else src.textContent = name;
       });
       tw.appendChild(t); card.appendChild(tw); host.appendChild(card);
+    });
+  }
+
+  // ---------- India market panels (market.json) ----------
+  const ITEM_FIX = { 'Us Dollar': 'US dollar', 'Ccr Rod': 'CCR rod', 'Ubc (Beer Can)': 'UBC (beer cans)', 'Crc Scrap': 'CRC scrap', 'G-PIPE': 'G-pipe', 'TMT 12MM': 'TMT 12 mm' };
+  function mktPrice(r) {
+    const p = Number(r.price);
+    if (/^USD/.test(r.unit)) return (r.unit === 'USD/t' ? fmt(p, 0) : fmt(p, 2));
+    return inr(p, p % 1 ? 2 : 0);
+  }
+  function renderIndia() {
+    const host = $('#india');
+    if (!host || !D.market) return;
+    host.replaceChildren();
+    const byKey = {};
+    D.market.forEach((r) => { (byKey[r.section + '|' + r.market + '|' + r.item] = byKey[r.section + '|' + r.market + '|' + r.item] || []).push(r); });
+    Object.values(byKey).forEach((a) => a.sort((x, y) => (x.date < y.date ? -1 : 1)));
+    PANELS.forEach((P) => {
+      const card = el('section', 'card'); card.id = 'in-' + P.id;
+      card.append(el('h2', null, P.title), el('p', 'note', P.note));
+      const tw = el('div', 'tw tall'), t = el('table');
+      const head = t.createTHead().insertRow();
+      [['Market', ''], ['Item', ''], ['Price', 'r'], ['Change', 'r'], ['As of', 'r hide-sm']].forEach(([h, k]) => { const th = el('th', k, h); head.appendChild(th); });
+      const tb = t.createTBody();
+      let n = 0;
+      P.sections.forEach((sec) => {
+        const series = Object.values(byKey).filter((a) => a[0].section === sec).sort((a, b) => a[0].market.localeCompare(b[0].market) || a[0].item.localeCompare(b[0].item));
+        if (!series.length) return;
+        const hr = tb.insertRow(); hr.className = 'sec';
+        const hc = hr.insertCell(); hc.colSpan = 5; hc.textContent = sec + ' · ' + series[0][series[0].length - 1].unit;
+        series.forEach((a) => {
+          const r = a[a.length - 1], prev = a.length > 1 ? a[a.length - 2] : null;
+          const tr = tb.insertRow(); n++;
+          tr.title = r.source + ', ' + dateLabel(r.date);
+          const add = (txt, k) => { const td = tr.insertCell(); td.textContent = txt; if (k) td.className = k; return td; };
+          add(r.market, 'nm'); add(ITEM_FIX[r.item] || r.item);
+          add(mktPrice(r), 'r');
+          const ch = prev ? Number(r.price) / Number(prev.price) - 1 : null;
+          add(ch == null ? '—' : pctText(ch), 'r ' + cls(ch));
+          add(dateLabel(r.date), 'r hide-sm');
+        });
+      });
+      if (!n) return;
+      tw.appendChild(t); card.appendChild(tw);
+      const src = D.market.find((r) => P.sections.includes(r.section));
+      const foot = el('p', 'note'); foot.append('Source: ');
+      const a = el('a', null, src.source); a.href = src.source_url; a.target = '_blank'; a.rel = 'noopener'; foot.appendChild(a);
+      card.appendChild(foot);
+      host.appendChild(card);
     });
   }
 
@@ -437,7 +496,7 @@
   function renderAll() {
     const smi = smiCompute(), ewi = ewiCompute(), pli = pliCompute();
     renderStatus(); renderTape(); renderTiles(smi, ewi, pli); renderTakeaway();
-    renderSMI(smi); renderEWI(ewi); renderPLI(pli); renderMarkets(); renderIntraday(); renderHistory(smi, ewi, pli);
+    renderSMI(smi); renderEWI(ewi); renderPLI(pli); renderIndia(); renderMarkets(); renderIntraday(); renderHistory(smi, ewi, pli);
   }
 
   async function pollLive() {
@@ -450,6 +509,7 @@
     const names = ['board', 'history', 'scrap', 'smi_basket', 'ewaste', 'plastics', 'polymers'];
     const loaded = await Promise.all(names.map((n) => getJSON(`/data/${n}.json`)));
     names.forEach((n, i) => { D[n] = loaded[i]; });
+    try { D.market = await getJSON('/data/market.json'); } catch (e) { D.market = []; }
     buildSeries();
     await pollLive();
     setInterval(pollLive, POLL_MS);
