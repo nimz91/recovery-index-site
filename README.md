@@ -18,6 +18,37 @@ Live metals, scrap and e-waste prices for India, published at **prices.therecove
 The page polls `/api/live` every minute. Between daily observations, every scrap and e-waste price
 moves with its metals' live prices in rupees, so both indices update with every live price refresh.
 
+## Evening Brief (daily email)
+
+A free email at **20:00 IST, Mon–Sat**: news stories already merged into `news.json` that no earlier brief carried
+(India first, last 4 days only) plus a price snapshot from the live worker's metals.dev readings (LME base metals, gold,
+silver, USD/INR). Third-party prices (Fastmarkets, Benchmark, SMM, dealer boards) are not emailed; the email links to the site.
+
+| Part | What it does |
+|---|---|
+| `worker/src/brief.js` | Builds and sends the brief through Brevo (cron `30 14 * * MON-SAT` in `worker/wrangler.toml`). Skips a day with nothing new, never sends twice a day, emails `ALERT_EMAIL` on failure |
+| `public/brief/` | Sign-up page with the archive of past briefs |
+| `functions/api/subscribe.js` | Sign-up → Brevo double opt-in (people get a confirmation email first) |
+| `functions/brief/[id].js` | Web copy of each sent brief at `/brief/YYYY-MM-DD` |
+
+`BRIEF_MODE` in `worker/wrangler.toml` is `preview` by default: the brief is built every evening but **not sent**.
+Look at it at `https://recovery-index-live.<subdomain>.workers.dev/brief/preview?key=<ADMIN_KEY>`, and see the last run
+under `brief` at `/status`. Switch to `send` when you're happy.
+
+**Setup (once, about 20 minutes):**
+1. Create a free Brevo account. Senders, Domains & Dedicated IPs → add and authenticate `therecoveryindex.in`
+   (add the DKIM/DMARC records Brevo shows at GoDaddy DNS), and add the sender `brief@therecoveryindex.in`.
+   Fill in the company address (Brevo shows it in the footer; required for bulk email).
+2. Contacts → Lists → create **Evening Brief**; note its ID. Templates → create a double opt-in confirmation
+   template (the confirm button must link to `{{ params.DOIurl }}`); note its ID.
+3. Brevo → SMTP & API → API keys → create a key.
+4. Worker: set `BREVO_LIST_ID` in `worker/wrangler.toml`, then from `worker/`:
+   `npx wrangler secret put BREVO_API_KEY`, `npx wrangler secret put ADMIN_KEY`, `npx wrangler secret put ALERT_EMAIL`, `npx wrangler deploy`.
+5. Pages project → Settings → Variables and secrets: `BREVO_API_KEY` (secret), `BREVO_LIST_ID`, `BREVO_DOI_TEMPLATE_ID`. Redeploy.
+6. Sign yourself up at `/brief/`, check the preview for a few evenings, then set `BRIEF_MODE = "send"` and `npx wrangler deploy`.
+
+Brevo's free plan has a daily sending cap; when the list outgrows it, move to a paid Brevo plan (no code change).
+
 ## One-time setup
 
 You need: a Cloudflare account (free), a metals.dev account, and this repo on GitHub.
