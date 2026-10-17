@@ -1,6 +1,56 @@
 {
- "updated": "2026-10-15",
+ "updated": "2026-10-17",
  "items": [
+  {
+   "date": "2026-10-14",
+   "region": "India",
+   "topic": "Battery recycling",
+   "title": "N.A.N. Silox GreenMet breaks ground on ₹1,400 crore battery recycling plant in Andhra Pradesh",
+   "summary": "The 50:50 venture between India's N.A.N. GreenMet and Belgium's Silox Group has secured Consent to Establish and started work on a lithium-ion battery recycling and critical-metals plant at Naidupeta. Capacity will be added in phases up to 40,000 tonnes a year of shredding and 20,000 tonnes a year of hydrometallurgical processing, making battery-grade salts; Vijay Pasupathy has been named CEO.",
+   "why": "A domestic hydromet buyer of this size adds competition for Indian black mass and battery scrap, and moves the country closer to refining battery salts at home instead of shipping out intermediates.",
+   "source": "Indian Chemical News",
+   "url": "https://www.indianchemicalnews.com/battery/nan-silox-greenmet-names-vijay-pasupathy-ceo-breaks-ground-on-rs-1400-crore-ap-battery-plant-32273"
+  },
+  {
+   "date": "2026-10-15",
+   "region": "India",
+   "topic": "E-waste",
+   "title": "Wayanad aims to be India's first e-waste-free district by 1 November",
+   "summary": "Kerala's Wayanad district collected 31 tonnes of e-waste from government offices in the first phase of its drive (28–30 September), including 12 tonnes each from Kalpetta and Bathery and five from Mananthawady. The material goes to the state's Clean Kerala Company, and the district is targeting e-waste-free status by Keralam Formation Day on 1 November.",
+   "why": "District drives that route institutional e-waste to a state agency show where formal recyclers can find steady volumes, and who they may be competing with for them.",
+   "source": "India Press Agency (IPA Newspack)",
+   "url": "https://ipanewspack.com/wayanad-set-to-become-first-e-waste-free-district-in-country/"
+  },
+  {
+   "date": "2026-10-16",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "Jereh plans 85,000-tonne lithium battery recycling project in Jinan, China",
+   "summary": "Jereh Resources Recycling Technology has opened environmental-impact review for a plant in Jinan, Shandong, with a 25,000 t/yr line for scrap LFP batteries and a 60,000 t/yr line for LFP and ternary batteries. The process runs from pack dismantling and crushing to oxygen-free pyrolysis and sorting, with black mass, copper and aluminium as outputs.",
+   "why": "More Chinese pre-treatment capacity means more competition for global battery scrap and black mass, which can weigh on the prices Indian sellers are offered.",
+   "source": "SMM (Shanghai Metals Market)",
+   "url": "https://news.metal.com/newscontent/104161479-jereh-launches-lithium-battery-recycling-project-in-jinan-shandong-province"
+  },
+  {
+   "date": "2026-10-15",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "China black mass payables slip after the National Day holiday as lithium and cobalt fall",
+   "summary": "SMM put ternary electrode black mass payables at about 71–73% on 15 October, around 1.2 points below the first day after the holiday, while LFP electrode black mass fell 975 yuan per lithium percentage point to 4,800–5,300 yuan. Lithium carbonate was quoted at 101,800–107,000 yuan a tonne and cobalt sulphate is down more than 4,000 yuan a tonne since the break.",
+   "why": "Chinese payables are a key reference for Indian black mass deals, so softer metal prices point to thinner margins for recyclers selling or buying this quarter.",
+   "source": "SMM (Shanghai Metals Market)",
+   "url": "https://news.metal.com/newscontent/104159754-smm-weekly-review-recycled-hydrometallurgical-recycling-market-this-week-raw-material-prices-continued-to-decline-trading-in-the-recycling-market-was-sluggish"
+  },
+  {
+   "date": "2026-10-16",
+   "region": "World",
+   "topic": "Policy",
+   "title": "Malaysia discloses battery-waste volumes for the first time, but has no EV battery EPR yet",
+   "summary": "A written parliamentary reply from Malaysia's environment ministry said 13,743 tonnes of SW103 battery waste were generated from 2021 to 2025, with seven licensed off-site recycling facilities operating as of March 2026. A mandatory EPR regime for EV battery recycling is still under study, and the Department of Environment is drafting amendments to blacklist repeat offenders.",
+   "why": "India already runs battery EPR targets; neighbours without them remain loosely regulated sources of scrap, and a policy gap to watch for Indian recyclers sourcing in the region.",
+   "source": "SMM (Shanghai Metals Market)",
+   "url": "https://news.metal.com/newscontent/104162676-malaysia-discloses-battery-waste-volume-data-for-first-time-mandatory-recycling-regime-not-yet-in-place"
+  },
   {
    "date": "2026-10-15",
    "region": "India",
