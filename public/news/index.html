@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="/site-nav.css">
+<link rel="alternate" type="application/rss+xml" title="The Recovery Index · News" href="/news/rss">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5d4a'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' stroke='%23fff' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 /* Layout: news column on the left (India first, then world), a narrow rail on the right with today's key prices and the tools. Collapses to one column on phones. */
@@ -19,7 +20,7 @@
 .filters button{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .sec-h{font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-.story{padding:18px 0;border-bottom:1px solid var(--line)}
+.story{padding:18px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
 .story .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .story .tag{font-weight:600;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;font-size:11px}
 .story h3{font:600 20px/1.3 var(--serif);margin:6px 0 6px;text-wrap:pretty}
@@ -40,6 +41,19 @@
 .tool p{font-size:13px;color:var(--muted);margin:6px 0 10px}
 .btn2{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:9px 14px;border-radius:8px;font-weight:600;font-size:14px}
 .empty{color:var(--muted);padding:16px 0}
+/* Topic chips, search and per-story share links */
+.filters.topics{margin:4px 0 6px}
+.filters.topics button{font-size:12px;padding:4px 10px}
+.search{display:flex;gap:8px;align-items:center;margin:10px 0 0}
+.search input{font:inherit;font-size:14px;flex:1;min-width:0;max-width:420px;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--fg)}
+.search .count{font-size:12px;color:var(--muted)}
+.story .new{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accent-2);border-radius:4px;padding:2px 6px}
+.story:target{background:color-mix(in srgb,var(--accent) 7%,transparent);box-shadow:-12px 0 0 color-mix(in srgb,var(--accent) 7%,transparent),12px 0 0 color-mix(in srgb,var(--accent) 7%,transparent)}
+.share{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;margin-top:2px}
+.share a,.share button{font:inherit;color:var(--muted);background:none;border:0;padding:0;cursor:pointer;text-decoration:none}
+.share a:hover,.share button:hover{color:var(--accent);text-decoration:underline}
+.rss{font-size:12px;color:var(--muted)}
+.rss a{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -59,6 +73,8 @@
         <button type="button" data-f="India" aria-pressed="false">India</button>
         <button type="button" data-f="World" aria-pressed="false">World</button>
       </div>
+      <div class="filters topics" id="topics" role="group" aria-label="Filter by topic"></div>
+      <div class="search"><input type="search" id="q" placeholder="Search, e.g. black mass or CPCB" aria-label="Search stories"><span class="count" id="count"></span></div>
       <div id="feed"></div>
     </div>
 
@@ -77,6 +93,7 @@
         <h2>The weekly brief</h2>
         <p>One email a week on the money, rules and materials in India's circular economy.</p>
         <a class="btn2" href="https://therecoveryindex.beehiiv.com/subscribe" target="_blank" rel="noopener">Subscribe free</a>
+        <p class="rss" style="margin:10px 0 0">Or follow the <a href="/news/rss">RSS feed</a>.</p>
       </section>
     </aside>
   </div>
@@ -90,36 +107,95 @@
   const $ = (s) => document.querySelector(s);
   const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
   const dl = (d) => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-  let items = [], filter = 'all';
+  // State lives in the URL (?region=India&topic=Black%20mass&q=lithium) so a filtered view can be shared.
+  const qs = new URLSearchParams(location.search);
+  let items = [], updated = '', filter = qs.get('region') || 'all', topic = qs.get('topic') || 'all', query = qs.get('q') || '';
 
+  // Stable per-story anchor (#s-xxxxxxx) from the source URL, so a story can be linked and shared.
+  const sid = (u) => { let h = 5381; for (let i = 0; i < u.length; i++) h = ((h << 5) + h + u.charCodeAt(i)) >>> 0; return 's-' + h.toString(36); };
+  const pageUrl = () => location.origin + location.pathname;
+  const daysBetween = (a, b) => (Date.parse(b + 'T00:00:00Z') - Date.parse(a + 'T00:00:00Z')) / 864e5;
+
+  function shareRow(it) {
+    const link = pageUrl() + '#' + sid(it.url);
+    const text = it.title + ' — The Recovery Index';
+    const r = el('div', 'share');
+    const wa = el('a', null, 'WhatsApp'); wa.href = 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + link); wa.target = '_blank'; wa.rel = 'noopener';
+    const li = el('a', null, 'LinkedIn'); li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(link); li.target = '_blank'; li.rel = 'noopener';
+    const cp = el('button', null, 'Copy link'); cp.type = 'button';
+    cp.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(link); cp.textContent = 'Copied'; } catch (e) { location.hash = sid(it.url); cp.textContent = 'Link in address bar'; }
+      setTimeout(() => { cp.textContent = 'Copy link'; }, 2000);
+    });
+    r.append(wa, li, cp);
+    return r;
+  }
   function story(it, lead) {
     const a = el('article', 'story' + (lead ? ' lead' : ''));
+    a.id = sid(it.url);
     const m = el('div', 'meta');
     m.append(el('span', 'tag', it.topic), el('span', null, it.region), el('time', null, dl(it.date)));
     m.lastChild.setAttribute('datetime', it.date);
+    if (updated && daysBetween(it.date, updated) <= 2) m.append(el('span', 'new', 'New'));
     const h = el('h3'); const l = el('a', null, it.title); l.href = it.url; l.target = '_blank'; l.rel = 'noopener'; h.append(l);
     const p = el('p', null, it.summary);
     const w = el('p', 'why'); w.append(el('b', null, 'Why it matters: '), it.why);
     const s = el('p', 'src'); const sl = el('a', null, it.source); sl.href = it.url; sl.target = '_blank'; sl.rel = 'noopener'; s.append('Source: ', sl);
-    a.append(m, h, p, w, s);
+    a.append(m, h, p, w, s, shareRow(it));
     return a;
   }
+  function matches(it) {
+    if (topic !== 'all' && it.topic !== topic) return false;
+    if (!query) return true;
+    const hay = (it.title + ' ' + it.summary + ' ' + it.why + ' ' + it.source + ' ' + it.topic).toLowerCase();
+    return query.toLowerCase().split(/\s+/).filter(Boolean).every((w) => hay.includes(w));
+  }
+  function syncUrl() {
+    const p = new URLSearchParams();
+    if (filter !== 'all') p.set('region', filter);
+    if (topic !== 'all') p.set('topic', topic);
+    if (query) p.set('q', query);
+    const s = p.toString();
+    history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + location.hash);
+  }
+  function renderTopics() {
+    const box = $('#topics'); box.replaceChildren();
+    const counts = {};
+    items.forEach((i) => { counts[i.topic] = (counts[i.topic] || 0) + 1; });
+    const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+    if (topic !== 'all' && !counts[topic]) topic = 'all';
+    [['all', 'All topics']].concat(names.map((n) => [n, n + ' · ' + counts[n]])).forEach(([v, label]) => {
+      const b = el('button', null, label); b.type = 'button'; b.dataset.t = v;
+      b.setAttribute('aria-pressed', String(v === topic));
+      b.addEventListener('click', () => { topic = v; box.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); render(); });
+      box.append(b);
+    });
+  }
   function render() {
+    syncUrl();
     const feed = $('#feed'); feed.replaceChildren();
-    const sorted = items.slice().sort((a, b) => (a.date < b.date ? 1 : -1));
+    const sorted = items.slice().sort((a, b) => (a.date < b.date ? 1 : -1)).filter(matches);
+    const narrowed = topic !== 'all' || query;
+    $('#count').textContent = narrowed ? sorted.length + (sorted.length === 1 ? ' story' : ' stories') : '';
     const groups = filter === 'all' ? ['India', 'World'] : [filter];
     groups.forEach((g) => {
       const list = sorted.filter((i) => i.region === g);
       if (filter === 'all') feed.append(el('h2', 'sec-h', g === 'India' ? 'India' : 'World roundup'));
-      if (!list.length) { feed.append(el('p', 'empty', 'No stories yet.')); return; }
-      list.forEach((it, i) => feed.append(story(it, i === 0)));
+      if (!list.length) { feed.append(el('p', 'empty', narrowed ? 'No matching stories.' : 'No stories yet.')); return; }
+      list.forEach((it, i) => feed.append(story(it, i === 0 && !narrowed)));
     });
   }
-  document.querySelectorAll('.filters button').forEach((b) => b.addEventListener('click', () => {
-    filter = b.dataset.f;
-    document.querySelectorAll('.filters button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    render();
-  }));
+  if (!['all', 'India', 'World'].includes(filter)) filter = 'all';
+  document.querySelectorAll('.filters button[data-f]').forEach((b) => {
+    b.setAttribute('aria-pressed', String(b.dataset.f === filter));
+    b.addEventListener('click', () => {
+      filter = b.dataset.f;
+      document.querySelectorAll('.filters button[data-f]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      render();
+    });
+  });
+  const qi = $('#q'); qi.value = query;
+  let qt; qi.addEventListener('input', () => { clearTimeout(qt); qt = setTimeout(() => { query = qi.value.trim(); render(); }, 150); });
 
   async function prices() {
     try {
@@ -142,9 +218,12 @@
 
   $('#year').textContent = new Date().getFullYear();
   fetch('/data/news.json', { cache: 'no-cache' }).then((r) => r.json()).then((d) => {
-    items = d.items || [];
+    items = d.items || []; updated = d.updated || '';
     $('#updated').textContent = 'Updated ' + dl(d.updated) + ' · ' + items.length + ' stories';
+    renderTopics();
     render();
+    // A shared story link (#s-...) arrives before the stories are drawn; scroll to it once they are.
+    if (location.hash.startsWith('#s-')) { const t = document.getElementById(location.hash.slice(1)); if (t) { t.scrollIntoView({ block: 'start' }); } }
   }).catch(() => { $('#feed').replaceChildren(el('p', 'empty', 'News could not be loaded. Please refresh.')); });
   prices();
 })();

@@ -1,0 +1,26 @@
+name: Check news
+
+# Runs on every pull request that changes the news data (including the daily news/* drafts),
+# so a broken or off-format news.json shows a red check before it can be merged.
+on:
+  pull_request:
+    paths:
+      - public/data/news.json
+      - scripts/check_news.py
+  push:
+    branches: [main]
+    paths:
+      - public/data/news.json
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 scripts/check_news.py
