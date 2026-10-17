@@ -28,7 +28,7 @@ const MAP = {
 // Captured only if present; no extra request is made.
 const INDIA = {
   'MCX-CU': ['mcx_copper'], 'MCX-AL': ['mcx_aluminum'], 'MCX-ZN': ['mcx_zinc'], 'MCX-PB': ['mcx_lead'], 'MCX-NI': ['mcx_nickel'],
-  'MCX-XAU': ['mcx_gold'], 'MCX-XAG': ['mcx_silver'], 'IBJA-XAU': ['ibja_gold'],
+  'MCX-XAU': ['mcx_gold'], 'MCX-XAG': ['mcx_silver'], 'IBJA-XAU': ['ibja_gold'], 'IBJA-XAG': ['ibja_silver'],
 };
 const PRECIOUS = new Set(['XAU', 'XAG', 'XPT', 'XPD']);
 const MAX_MOVE = { default: 0.08, USDINR: 0.02 }; // vs last accepted value

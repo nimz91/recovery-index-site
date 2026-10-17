@@ -388,7 +388,19 @@
     if (!host || !D.market) return;
     host.replaceChildren();
     const byKey = {};
-    D.market.forEach((r) => { (byKey[r.section + '|' + r.market + '|' + r.item] = byKey[r.section + '|' + r.market + '|' + r.item] || []).push(r); });
+    const liveIndia = liveOK() && LIVE.latest.india ? LIVE.latest.india : null;
+    const LIVE_ROWS = { 'MCX-XAU': ['MCX (live feed)', 'Gold', '₹/10 g'], 'MCX-XAG': ['MCX (live feed)', 'Silver', '₹/kg'], 'IBJA-XAU': ['IBJA (live feed)', 'Gold 999', '₹/10 g'], 'IBJA-XAG': ['IBJA (live feed)', 'Silver 999', '₹/kg'] };
+    const rowsIn = D.market.slice();
+    if (liveIndia) {
+      const d = todayIST();
+      Object.entries(liveIndia).forEach(([code, price]) => {
+        const m = LIVE_ROWS[code]; if (!m) return;
+        rowsIn.push({ date: d, section: 'MCX', market: m[0], item: m[1], unit: m[2], price, source: 'Live feed (metals.dev)', source_url: 'https://metals.dev', live: true });
+        const pc = Object.keys(LIVE.closes || {}).filter((x) => x < d && LIVE.closes[x].india && LIVE.closes[x].india[code] != null).sort().pop();
+        if (pc) rowsIn.push({ date: pc, section: 'MCX', market: m[0], item: m[1], unit: m[2], price: LIVE.closes[pc].india[code], source: 'Live feed (metals.dev)', source_url: 'https://metals.dev' });
+      });
+    }
+    rowsIn.forEach((r) => { (byKey[r.section + '|' + r.market + '|' + r.item] = byKey[r.section + '|' + r.market + '|' + r.item] || []).push(r); });
     Object.values(byKey).forEach((a) => a.sort((x, y) => (x.date < y.date ? -1 : 1)));
     PANELS.forEach((P) => {
       const card = el('section', 'card'); card.id = 'in-' + P.id;
@@ -456,7 +468,19 @@
       const fx = feedClose('USDINR', mcx.date) ?? officialAt('USDINR', mcx.date);
       if (!lme || !fx) continue;
       const parity = lme * fx / 1000, prem = mcx.price / parity - 1;
-      add('MCX premium over LME', n, pctText(prem, 1), prem > -0.03 && prem < 0.25, `MCX ${inr(mcx.price, 1)}/kg vs LME parity ${inr(parity, 1)}/kg, ${dateLabel(mcx.date)}`);
+      add('India premium over world price', n, pctText(prem, 1), prem > -0.03 && prem < 0.25, `MCX ${inr(mcx.price, 1)}/kg vs LME parity ${inr(parity, 1)}/kg, ${dateLabel(mcx.date)}`);
+    }
+    // 2b. Gold and silver: live feed's MCX vs the trade bulletin's MCX on the same day, and India's premium over spot.
+    const indiaOn = (code, d) => { const c = (LIVE.closes || {})[d]; return c && c.india && c.india[code] != null ? Number(c.india[code]) : null; };
+    for (const [code, n] of [['MCX-XAU', 'Gold'], ['MCX-XAG', 'Silver']]) {
+      const sj = latestMarket('MCX', 'MCX', n);
+      const fv = sj && indiaOn(code, sj.date);
+      if (fv) { const d = sj.price / fv - 1; add('MCX: live feed vs trade bulletin', n, pctText(d, 1), Math.abs(d) <= 0.01, `Bulletin ${inr(sj.price)} vs feed ${inr(fv)} on ${dateLabel(sj.date)}`); }
+    }
+    if (liveOK() && LIVE.latest.india && LIVE.latest.india['IBJA-XAU'] && LIVE.latest.prices.XAU && LIVE.latest.prices.USDINR) {
+      const parity = LIVE.latest.prices.XAU * LIVE.latest.prices.USDINR / 31.1035 * 10;
+      const prem = LIVE.latest.india['IBJA-XAU'] / parity - 1;
+      add('India premium over world price', 'Gold (IBJA vs spot)', pctText(prem, 1), prem > -0.02 && prem < 0.2, `IBJA ${inr(LIVE.latest.india['IBJA-XAU'])}/10 g vs spot parity ${inr(parity)}/10 g; the gap is import duty and local premium`);
     }
     // 3. Delhi scrap as a share of MCX, and how much that ratio moved since the previous bulletin.
     const pairs = [['CU-ARM-PLANT', 'Copper', 'Copper armature'], ['AL-WIRE', 'Aluminium', 'Aluminium wire'], ['ZN-TUKADI', 'Zinc', 'Zinc tukadi'], ['PB-SOFT', 'Lead', 'Lead soft']];
