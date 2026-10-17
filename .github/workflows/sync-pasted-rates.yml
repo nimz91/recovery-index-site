@@ -1,0 +1,25 @@
+# Nightly: copy trade rates pasted at /ingest (stored in Cloudflare KV) into public/data so they are permanent.
+name: Sync pasted rates
+on:
+  schedule:
+    - cron: '45 16 * * *'   # 22:15 IST every day
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: data-writes, cancel-in-progress: false }
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/sync_pasted_rates.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet public/data; then echo "nothing new"; exit 0; fi
+          git config user.name "Nimit Gupta"
+          git config user.email "nimz91@gmail.com"
+          git add public/data/scrap.json public/data/market.json
+          git commit -m "Pasted trade rates $(date -u +%Y-%m-%d)"
+          git push origin HEAD:main

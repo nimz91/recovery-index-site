@@ -28,8 +28,10 @@
     { g: 'FX', note: 'Indian rupees per US dollar', inr: false },
   ];
 
+  // A board row older than this (days) is flagged as stale.
+  const MAX_AGE_DAYS = { 'Base metals': 3, 'Precious metals': 3, FX: 3, 'Battery metals': 21, 'Rare earths': 21, 'Black mass payables': 120, 'India scrap & e-waste': 7 };
   const D = {};
-  let LIVE = { latest: null, intraday: [] };
+  let LIVE = { latest: null, intraday: [], closes: {} };
   let intradayCode = 'CU';
 
   // ---------- helpers ----------
@@ -55,7 +57,12 @@
   let series = {}; // code -> [{d, p}] official daily
   function buildSeries() {
     series = {};
-    D.history.forEach((h) => { (series[h.code] = series[h.code] || []).push({ d: h.date, p: Number(h.price) }); });
+    const byKey = {};
+    D.history.forEach((h) => { byKey[h.code + '|' + h.date] = { code: h.code, d: h.date, p: Number(h.price) }; });
+    // Daily closes recorded by the live feed win over hand-collected history for the same day: live prices
+    // are then always compared with a close from the same source.
+    Object.entries(LIVE.closes || {}).forEach(([d, c]) => Object.entries(c.prices || {}).forEach(([code, p]) => { byKey[code + '|' + d] = { code, d, p: Number(p) }; }));
+    Object.values(byKey).forEach((x) => { (series[x.code] = series[x.code] || []).push({ d: x.d, p: x.p }); });
     Object.values(series).forEach((s) => s.sort((a, b) => (a.d < b.d ? -1 : 1)));
   }
   function officialAt(code, date) {
@@ -65,6 +72,12 @@
     if (v == null && s.length) v = s[0].p;
     if (v == null) { const row = D.board.find((r) => r.code === code); if (row) v = Number(row.price); }
     return v;
+  }
+  // Previous trading day's close from the live feed (same source as the live price), or null.
+  function prevClose(code) {
+    const today = todayIST();
+    const days = Object.keys(LIVE.closes || {}).filter((d) => d < today && LIVE.closes[d].prices && LIVE.closes[d].prices[code] != null).sort();
+    return days.length ? { d: days[days.length - 1], p: Number(LIVE.closes[days[days.length - 1]].prices[code]) } : null;
   }
   function liveOK() {
     const l = LIVE.latest;
@@ -208,7 +221,8 @@
     const today = todayIST();
     const isLive = live != null;
     const price = isLive ? live : Number(r.price);
-    const ref = isLive ? (r.date === today ? (r.prev != null ? Number(r.prev) : null) : Number(r.price)) : (r.prev != null ? Number(r.prev) : null);
+    const pc = isLive ? prevClose(r.code) : null;
+    const ref = isLive ? (pc ? pc.p : r.date === today ? (r.prev != null ? Number(r.prev) : null) : Number(r.price)) : (r.prev != null ? Number(r.prev) : null);
     const pts = r.unit === '% payable';
     const change = ref == null ? null : pts ? price - ref : (price - ref) / ref;
     const changeText = ref == null ? '—' : pts ? ptsText(change, 1) + ' pts' : pctText(change);
@@ -217,7 +231,9 @@
     if (r.unit === 'USD/t') inrText = inr(price * fx / 1000) + '/kg';
     if (r.unit === 'USD/kg') inrText = inr(price * fx) + '/kg';
     if (r.unit === 'USD/oz') inrText = inr(price * fx / 31.1035 * 10) + '/10 g';
-    return { price, isLive, change, changeText, inrText, asOf: isLive ? timeIST(LIVE.latest.ts || LIVE.latest.fetched) : dateLabel(r.date) };
+    const age = isLive ? 0 : Math.round((new Date(today) - new Date(r.date)) / 864e5);
+    const stale = !isLive && age > (MAX_AGE_DAYS[r.group] ?? 7);
+    return { price, isLive, change, changeText, inrText, stale, age, asOf: isLive ? timeIST(LIVE.latest.ts || LIVE.latest.fetched) : dateLabel(r.date) };
   }
   function priceText(r, p) {
     if (r.unit === 'INR/kg') return inr(p);
@@ -349,7 +365,8 @@
         add(priceText(r, v.price), 'r');
         add(v.changeText, 'r ' + cls(v.change));
         if (G.inr) add(v.inrText || '—', 'r hide-sm');
-        add(v.asOf, 'hide-sm');
+        const ao = add(v.asOf + (v.stale ? ' · ' + v.age + ' d old' : ''), 'hide-sm' + (v.stale ? ' stale' : ''));
+        if (v.stale) ao.title = 'Older than usual for this market: the source has not published a newer price we could verify.';
         const src = tr.insertCell(); src.className = 'src hide-sm';
         const name = v.isLive ? 'Live feed (metals.dev)' : r.source;
         if (!v.isLive && /^https:\/\//.test(r.source_url || '')) { const a = el('a', null, name); a.href = r.source_url; a.target = '_blank'; a.rel = 'noopener'; src.appendChild(a); }
@@ -405,6 +422,93 @@
       const a = el('a', null, src.source); a.href = src.source_url; a.target = '_blank'; a.rel = 'noopener'; foot.appendChild(a);
       card.appendChild(foot);
       host.appendChild(card);
+    });
+  }
+
+  // ---------- price checks: do independent sources agree? ----------
+  const LME_NAMES = { CU: 'Copper', AL: 'Aluminium', ZN: 'Zinc', PB: 'Lead', NI: 'Nickel' };
+  function latestMarket(section, market, item, onOrBefore) {
+    let best = null;
+    (D.market || []).forEach((r) => { if (r.section === section && r.market === market && r.item === item && (!onOrBefore || r.date <= onOrBefore) && (!best || r.date > best.date || (r.date === best.date && (r.time || '') > (best.time || '')))) best = r; });
+    return best;
+  }
+  function feedClose(code, date) {
+    const c = (LIVE.closes || {})[date];
+    return c && c.prices && c.prices[code] != null ? Number(c.prices[code]) : null;
+  }
+  function checksCompute(smi) {
+    const rows = [];
+    const add = (group, name, value, ok, note) => rows.push({ group, name, value, ok, note });
+    // 1. Live feed vs the trade bulletin's LME print for the same day.
+    for (const [code, n] of Object.entries(LME_NAMES)) {
+      const sj = latestMarket('International', 'LME', n);
+      if (!sj) continue;
+      const fc = feedClose(code, sj.date);
+      if (fc == null) continue;
+      const d = sj.price / fc - 1;
+      add('LME: live feed vs trade bulletin', n, pctText(d, 1), Math.abs(d) <= 0.015, `Bulletin $${fmt(sj.price)} vs feed close $${fmt(fc)} on ${dateLabel(sj.date)}`);
+    }
+    // 2. MCX premium over LME × USD/INR (import parity before duty and freight).
+    for (const [code, n] of Object.entries(LME_NAMES)) {
+      const mcx = latestMarket('MCX', 'MCX', n);
+      if (!mcx) continue;
+      const lme = feedClose(code, mcx.date) ?? officialAt(code, mcx.date);
+      const fx = feedClose('USDINR', mcx.date) ?? officialAt('USDINR', mcx.date);
+      if (!lme || !fx) continue;
+      const parity = lme * fx / 1000, prem = mcx.price / parity - 1;
+      add('MCX premium over LME', n, pctText(prem, 1), prem > -0.03 && prem < 0.25, `MCX ${inr(mcx.price, 1)}/kg vs LME parity ${inr(parity, 1)}/kg, ${dateLabel(mcx.date)}`);
+    }
+    // 3. Delhi scrap as a share of MCX, and how much that ratio moved since the previous bulletin.
+    const pairs = [['CU-ARM-PLANT', 'Copper', 'Copper armature'], ['AL-WIRE', 'Aluminium', 'Aluminium wire'], ['ZN-TUKADI', 'Zinc', 'Zinc tukadi'], ['PB-SOFT', 'Lead', 'Lead soft']];
+    for (const [code, n, label] of pairs) {
+      const dates = Object.keys(smi.mid).filter((d) => smi.mid[d][code] != null).sort().reverse();
+      const ratios = [];
+      for (const d of dates) {
+        const m = latestMarket('MCX', 'MCX', n, d);
+        if (m && m.date >= addDays(d, -3)) ratios.push({ d, r: smi.mid[d][code] / m.price });
+        if (ratios.length === 2) break;
+      }
+      if (!ratios.length) continue;
+      const mv = ratios[1] ? ratios[0].r / ratios[1].r - 1 : null;
+      add('Delhi scrap vs MCX', label, (ratios[0].r * 100).toFixed(1) + '% of MCX', mv == null || Math.abs(mv) <= 0.03,
+        mv == null ? `${dateLabel(ratios[0].d)}; one day of data so far` : `${pctText(mv, 1)} vs ${dateLabel(ratios[1].d)}` + (Math.abs(mv) > 0.03 ? ' — scrap moved apart from MCX; check the dealer rate' : ''));
+    }
+    // 4. Day-on-day jumps in Delhi grades.
+    const ds = Object.keys(smi.mid).sort();
+    if (ds.length > 1) {
+      const a = smi.mid[ds[ds.length - 2]], b = smi.mid[ds[ds.length - 1]];
+      const big = Object.keys(b).filter((c) => a[c] && Math.abs(b[c] / a[c] - 1) > 0.06);
+      const name = (c) => { const r = D.scrap.find((x) => x.code === c); return r ? r.metal + ' ' + r.grade.toLowerCase() : c; };
+      add('Delhi scrap day-on-day', 'Grades moving more than 6%', big.length ? String(big.length) : 'None', !big.length, big.length ? big.map((c) => `${name(c)} ${pctText(b[c] / a[c] - 1, 1)}`).join(', ') : `${dateLabel(ds[ds.length - 2])} → ${dateLabel(ds[ds.length - 1])}`);
+    }
+    // 5. Freshness and live-feed health.
+    const stale = D.board.filter((r) => boardView(r).stale);
+    add('Freshness', 'Stale reference prices', String(stale.length), !stale.length, stale.length ? stale.map((r) => r.name).join(', ') : 'Every row is within its normal update window');
+    if (LIVE.latest) {
+      const h = (Date.now() - new Date(LIVE.latest.fetched || LIVE.latest.ts)) / 3600e3;
+      const held = Object.keys(LIVE.latest.held || {});
+      add('Freshness', 'Live feed', h < 1 ? 'Updated < 1 h ago' : `Updated ${Math.round(h)} h ago`, h < 30 && !held.length, held.length ? `Held back implausible prints for ${held.join(', ')} until confirmed` : 'Updates 4 times each weekday; weekend gaps are normal');
+    }
+    return rows;
+  }
+  const addDays = (d, n) => new Date(new Date(d + 'T00:00:00Z').getTime() + n * 864e5).toISOString().slice(0, 10);
+  function renderChecks(smi) {
+    const host = $('#checks-table');
+    if (!host) return;
+    const rows = checksCompute(smi);
+    const bad = rows.filter((r) => !r.ok).length;
+    $('#checks-sum').textContent = rows.length ? (bad ? `${bad} of ${rows.length} checks need a look` : `All ${rows.length} checks pass`) : 'Not enough data yet';
+    $('#checks-sum').className = 'sub ' + (bad ? 'dn' : 'up');
+    const tb = $('#checks-table tbody');
+    tb.replaceChildren();
+    let g = null;
+    rows.forEach((r) => {
+      if (r.group !== g) { g = r.group; const hr = tb.insertRow(); hr.className = 'sec'; const c = hr.insertCell(); c.colSpan = 4; c.textContent = g; }
+      const tr = tb.insertRow();
+      const add = (t, k) => { const td = tr.insertCell(); td.textContent = t; if (k) td.className = k; return td; };
+      add(r.name, 'nm'); add(r.value, 'r');
+      add(r.ok ? 'OK' : 'Check', 'r ' + (r.ok ? 'up' : 'dn'));
+      add(r.note, 'src hide-sm');
     });
   }
 
@@ -496,11 +600,12 @@
   function renderAll() {
     const smi = smiCompute(), ewi = ewiCompute(), pli = pliCompute();
     renderStatus(); renderTape(); renderTiles(smi, ewi, pli); renderTakeaway();
-    renderSMI(smi); renderEWI(ewi); renderPLI(pli); renderIndia(); renderMarkets(); renderIntraday(); renderHistory(smi, ewi, pli);
+    renderSMI(smi); renderEWI(ewi); renderPLI(pli); renderIndia(); renderChecks(smi); renderMarkets(); renderIntraday(); renderHistory(smi, ewi, pli);
   }
 
   async function pollLive() {
-    try { LIVE = await getJSON('/api/live'); } catch (e) { /* stay on daily data */ }
+    try { LIVE = await getJSON('/api/live'); LIVE.closes = LIVE.closes || {}; } catch (e) { /* stay on daily data */ }
+    buildSeries();
     renderAll();
   }
 
@@ -510,6 +615,14 @@
     const loaded = await Promise.all(names.map((n) => getJSON(`/data/${n}.json`)));
     names.forEach((n, i) => { D[n] = loaded[i]; });
     try { D.market = await getJSON('/data/market.json'); } catch (e) { D.market = []; }
+    // Rates pasted through /ingest (stored in KV) fill days not yet committed to the data files.
+    try {
+      const extra = await getJSON('/api/market');
+      const hasS = new Set(D.scrap.map((r) => r.date + '|' + r.code));
+      const hasM = new Set(D.market.map((r) => [r.date, r.section, r.market, r.item].join('|')));
+      (extra.scrap || []).forEach((r) => { if (!hasS.has(r.date + '|' + r.code)) D.scrap.push(r); });
+      (extra.market || []).forEach((r) => { if (!hasM.has([r.date, r.section, r.market, r.item].join('|'))) D.market.push(r); });
+    } catch (e) { /* data files only */ }
     buildSeries();
     await pollLive();
     setInterval(pollLive, POLL_MS);
@@ -517,6 +630,6 @@
   }
 
   // Exposed for tests.
-  window.RI = { D, pliCompute, get LIVE() { return LIVE; }, set LIVE(v) { LIVE = v; }, smiCompute, ewiCompute, factor, buildSeries, renderAll };
+  window.RI = { D, pliCompute, checksCompute, get LIVE() { return LIVE; }, set LIVE(v) { LIVE = v; }, smiCompute, ewiCompute, factor, buildSeries, renderAll };
   init().catch((e) => { $('#live-label').textContent = 'Could not load prices'; console.error(e); });
 })();

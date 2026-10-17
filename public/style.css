@@ -95,3 +95,5 @@ td.src a { color: var(--muted); }
 
 .band { font-size: 15px; font-weight: 600; color: var(--muted); margin: 22px 0 10px; letter-spacing: .01em; }
 tr.sec td { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--bg) 60%, var(--panel)); padding-top: 10px; }
+#checks.index-card { border-top-color: var(--accent-2); }
+td.stale { color: var(--accent-2); }

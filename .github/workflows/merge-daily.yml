@@ -1,0 +1,24 @@
+# The evening Claude update pushes its data to a branch named daily/YYYY-MM-DD (scheduled runs cannot push to
+# main directly). This merges that branch into main, which redeploys the site, then deletes the branch.
+name: Merge daily update
+on:
+  push:
+    branches: ['daily/**']
+permissions:
+  contents: write
+concurrency: { group: data-writes, cancel-in-progress: false }
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main, fetch-depth: 0 }
+      - name: Merge into main
+        run: |
+          git config user.name "Nimit Gupta"
+          git config user.email "nimz91@gmail.com"
+          git fetch origin "$GITHUB_REF"
+          git merge --no-edit FETCH_HEAD -m "Merge ${GITHUB_REF_NAME} into main"
+          for f in public/data/*.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || { echo "::error::$f is not valid JSON"; exit 1; }; done
+          git push origin HEAD:main
+          git push origin --delete "${GITHUB_REF_NAME}"
