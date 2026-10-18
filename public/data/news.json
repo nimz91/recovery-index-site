@@ -1,6 +1,36 @@
 {
- "updated": "2026-10-15",
+ "updated": "2026-10-18",
  "items": [
+  {
+   "date": "2026-10-18",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "Thailand plans dedicated industrial zones for recycling solar panels and EV batteries",
+   "summary": "Thailand's Industry Ministry wants to group solar-panel and EV-battery recyclers with hazardous-waste facilities in controlled zones with shared wastewater treatment and round-the-clock monitoring, warning that panels installed about a decade ago could become significant waste within one to two years. It is also reviewing decades-old laws that cap dumping fines at 200,000 baht, with fines of up to tens of millions of baht and asset seizures under discussion.",
+   "why": "India faces the same wave of first-generation solar panels and has no separate solar-waste rulebook yet, so Thailand's zone-plus-penalty model is a template Indian recyclers and regulators may be asked to match.",
+   "source": "Bangkok Post (via Now.Solar)",
+   "url": "https://now.solar/2026/10/18/thailands-industry-ministry-promotes-industrial-zones-for-recycling-solar-panels-and-batteries-bangkok-post-ua-news"
+  },
+  {
+   "date": "2026-10-16",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "Ex-China rare earth prices hold steady as Lynas agrees A$968 million Meteoric deal",
+   "summary": "SMM's ex-China weekly review put Pr-Nd oxide at $115-129/kg FOB and terbium oxide at $1,161-1,249/kg FOB, down $20/kg, with most other prices flat and trading thin. Lynas agreed to buy Meteoric Resources for about A$968 million to add Brazil's Caldeira ionic clay project, while Arafura raised its binding NdPr oxide offtake to 850 tonnes a year.",
+   "why": "Ex-China oxide prices set the value of recovered Nd, Pr and Tb in magnet scrap, so Indian magnet recyclers and the new magnet-scheme bidders should track these benchmarks rather than Chinese domestic prices.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104162623-prices-outside-china-remained-stable-this-week-with-approvals-and-mergers-progressing-on-the-resource-side-smm-rare-earth-ex-china-weekly-review"
+  },
+  {
+   "date": "2026-10-14",
+   "region": "World",
+   "topic": "E-waste",
+   "title": "EU sold 14.6 million tonnes of electronics in 2024 but collected only 5.5 million tonnes of e-waste",
+   "summary": "Citing Eurostat data for 2024, the European Environmental Bureau and other NGOs said electronics sales in the EU have risen 91% since 2012, while e-waste collection grew about 6% year on year to 5.5 million tonnes. Germany's collection rate was 28.7%, and preparing-for-reuse rates stay below 2%, as the groups push for tougher rules in the WEEE Directive revision.",
+   "why": "A tighter EU WEEE regime will shape the compliance costs of global brands that also sell in India, and Europe's weak collection numbers are a reminder that EPR targets only work when collection is enforced.",
+   "source": "European Environmental Bureau",
+   "url": "https://eeb.org/en/europes-growing-e-waste-crisis-demands-urgent-action-ngos-warn"
+  },
   {
    "date": "2026-10-15",
    "region": "India",
