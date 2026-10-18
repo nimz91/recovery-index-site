@@ -51,9 +51,15 @@ export async function onRequestPost({ request, env }) {
     }),
   });
   if (!res.ok) {
-    const t = await res.text();
-    console.log('grade error', res.status, t.slice(0, 300));
-    return bad('The grading service did not respond. Try again in a minute.', 502);
+    let e = {};
+    try { e = (await res.json()).error || {}; } catch {}
+    console.log('grade error', res.status, e.type, e.message);
+    // Plain-language reason for the operator; never includes the key itself.
+    const why = res.status === 401 ? 'the API key was not accepted'
+      : res.status === 404 ? `the model "${env.ANTHROPIC_MODEL || 'claude-sonnet-5-5'}" was not found`
+      : res.status === 429 ? 'the API rate limit was hit' : res.status === 529 ? 'the API is overloaded'
+      : /credit/i.test(e.message || '') ? 'the API account is out of credit' : `the API returned ${res.status}`;
+    return json({ error: `Photo grading is unavailable: ${why}. The inspector will grade on site.`, upstream: { status: res.status, type: e.type || null, message: String(e.message || '').slice(0, 200) } }, 502);
   }
   const out = await res.json();
   const text = (out.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
