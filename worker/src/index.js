@@ -10,7 +10,10 @@
 //    machine-recorded daily history that does not depend on anyone copying numbers by hand.
 //  - Quota guard: metals.dev requests are counted per month and never exceed MONTHLY_LIMIT.
 
+import { runBrief } from './brief.js';
+
 const TROY_OZ_KG = 0.0311034768;
+const BRIEF_CRON = '30 14 * * MON-SAT'; // Evening Brief, 20:00 IST — must match wrangler.toml
 
 // Our instrument code -> metals.dev keys to try, in order of preference.
 const MAP = {
@@ -144,6 +147,10 @@ function weekday(now = new Date()) {
 
 export default {
   async scheduled(event, env, ctx) {
+    if (event.cron === BRIEF_CRON) {
+      ctx.waitUntil(runBrief(env).then((r) => env.LIVE.put('brief:last_run', JSON.stringify({ at: new Date().toISOString(), ...r }))));
+      return;
+    }
     await env.LIVE.put('last_cron', new Date().toISOString());
     if (!weekday()) return;
     ctx.waitUntil(
@@ -169,10 +176,20 @@ export default {
         return Response.json({ ok: false, error: e }, { status: 502 });
       }
     }
+    // GET /brief/preview?key=... rebuilds today's Evening Brief as a preview (never sends) and shows it.
+    if (url.pathname === '/brief/preview') {
+      if (!env.ADMIN_KEY || url.searchParams.get('key') !== env.ADMIN_KEY) return new Response('Forbidden', { status: 403 });
+      const r = await runBrief({ ...env, BRIEF_MODE: 'preview' }, { force: true });
+      const p = await env.LIVE.get('brief:preview', 'json');
+      if (!p) return Response.json(r, { status: 500 });
+      return new Response(p.html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Brief-Subject': encodeURIComponent(p.subject) } });
+    }
     if (url.pathname === '/status') {
       const keys = ['latest', 'last_error', 'last_ok', 'last_cron', 'anomalies', 'raw_keys', monthKey()];
       const [latest, err, ok, cron, anomalies, raw, used] = await Promise.all(keys.map((k) => (/^(latest|last_error|anomalies|raw_keys)$/.test(k) ? env.LIVE.get(k, 'json') : env.LIVE.get(k))));
+      const [briefRun, briefLast, briefErr] = await Promise.all(['brief:last_run', 'brief:last', 'brief:last_error'].map((k) => env.LIVE.get(k, 'json')));
       return Response.json({
+        brief: { mode: env.BRIEF_MODE || 'preview', last_run: briefRun, last_sent: briefLast, last_error: briefErr },
         last_cron: cron, last_ok: ok, last_error: err,
         calls_this_month: Number(used || 0), monthly_limit: Number(env.MONTHLY_LIMIT || MONTHLY_LIMIT_DEFAULT),
         recent_anomalies: (anomalies || []).slice(-10), api_fields: raw, latest,
