@@ -9,11 +9,28 @@ Live metals, scrap and e-waste prices for India, published at **prices.therecove
 | `public/` | The website: price board and indices at `/`, news at `/news/`, EPR Target Calculator at `/epr/`; shared menu in `site-nav.css` | Cloudflare Pages |
 | `public/data/news.json` | News stories (own-words summaries + source links). Drafted daily by the Claude scheduled task "Recovery Index daily news draft" as a pull request; merging the PR publishes it | Pull request → main |
 | `public/data/*.json` | Daily prices (scrap grades, e-waste observations, plastics grades and virgin polymer references, battery metals, black mass, history) | Committed to this repo every weekday evening by the Claude scheduled task; each commit redeploys the site |
-| `worker/` | Fetches metal prices + USD/INR from metals.dev (every 2 hours, 9 am–9 pm IST, Mon–Fri) and stores them in KV | Cloudflare Worker (cron) |
+| `worker/` | Fetches metal prices + USD/INR from metals.dev (4×/weekday: 10:00, 14:00, 18:00, 21:30 IST), holds back implausible jumps until confirmed, keeps a daily close per IST day, caps requests at `MONTHLY_LIMIT` | Cloudflare Worker (cron) |
+| `functions/api/ingest.js`, `public/ingest/` | Paste page for Shree Ji Rate Service WhatsApp bulletins: parses them (`lib/shreeji.js`) and stores the rates in KV; needs the `INGEST_TOKEN` secret on the Pages project | Cloudflare Pages Function |
+| `functions/api/market.js` | Serves pasted rates (last 3 weeks) to the page | Cloudflare Pages Function |
+| `.github/workflows/` | `merge-daily.yml` merges the evening update's `daily/*` branch into main; `sync-pasted-rates.yml` copies pasted rates into `public/data` nightly | GitHub Actions |
 | `functions/api/live.js` | Serves the latest live prices to the page at `/api/live` | Cloudflare Pages Function |
 
 The page polls `/api/live` every minute. Between daily observations, every scrap and e-waste price
 moves with its metals' live prices in rupees, so both indices update with every live price refresh.
+
+## Search pages and the daily rate card
+
+`scripts/build_static.py` turns `public/data/*.json` into plain HTML that Google can read and people can share:
+
+| Output | What it is |
+|---|---|
+| `public/rates/` | One page per Delhi scrap grade ("Copper Super D scrap rate today in Delhi") plus an index |
+| `public/card/latest.png` | 1080×1350 WhatsApp rate card (rendered by `scripts/render_card.mjs` with Playwright) |
+| `public/news/index.html` | Story list written into the page between the `STATIC-NEWS` markers |
+| `public/sitemap.xml`, `public/robots.txt` | For Google Search Console |
+
+Run `python3 scripts/build_static.py && node scripts/render_card.mjs` from the repo root. The evening price refresh does this automatically.
+Fonts for the card are self-hosted in `public/fonts/` (Inter, Source Serif 4; SIL Open Font License).
 
 ## One-time setup
 
@@ -36,6 +53,10 @@ You need: a Cloudflare account (free), a metals.dev account, and this repo on Gi
 5. **Domain.** In the Pages project: Custom domains → Set up a domain → `prices.therecoveryindex.in`.
    Cloudflare shows a CNAME target (`<project>.pages.dev`). At GoDaddy → DNS for therecoveryindex.in → add
    a **CNAME** record: name `prices`, value `<project>.pages.dev`. The main domain's forwarding to the newsletter is unaffected.
+
+## Pasting trade rates
+
+Open `/ingest`, paste one or more Shree Ji bulletins (copied from WhatsApp or a chat export), press Preview, check the warnings, then Save. Rates show on the page within a minute and are committed to `public/data` at 22:15 IST. Test the parser with `node scripts/test_shreeji.mjs <chat export>`.
 
 ## Daily data
 

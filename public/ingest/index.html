@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Add Rates · The Recovery Index</title>
+<link rel="stylesheet" href="/style.css">
+<style>
+  .ing { max-width: 760px; margin: 0 auto; padding: 24px 16px 40px; }
+  .ing h1 { font-family: var(--serif); font-weight: 400; font-size: 28px; margin: 0 0 6px; }
+  .ing label { display: block; font-size: 13px; color: var(--muted); margin: 14px 0 6px; }
+  .ing textarea, .ing input { width: 100%; font: inherit; font-size: 14px; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); }
+  .ing textarea { min-height: 220px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .row > div { flex: 1 1 200px; }
+  .acts { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .acts button { font: inherit; font-weight: 600; padding: 10px 18px; border-radius: 8px; border: 1px solid var(--accent); cursor: pointer; }
+  #preview { background: var(--panel); color: var(--accent); }
+  #save { background: var(--accent); color: #fff; }
+  #save:disabled { opacity: .45; cursor: not-allowed; }
+  .msg { margin-top: 16px; font-size: 14px; }
+  .msg.err { color: var(--dn); }
+  .warn { border-left: 3px solid var(--accent-2); padding: 8px 12px; background: color-mix(in srgb, var(--accent-2) 8%, var(--panel)); margin: 10px 0; font-size: 13px; }
+  .ok { color: var(--up); font-weight: 600; }
+</style>
+</head>
+<body>
+<main class="ing">
+  <h1>Add today's trade rates</h1>
+  <p class="note">Paste Shree Ji Rate Service bulletins: copy them from WhatsApp (select several messages, then Copy), or paste a chat export. Preview first, then save. Saved rates appear on the price page within a minute.</p>
+
+  <label for="text">Bulletins</label>
+  <textarea id="text" placeholder="📍 *DELHI SCRAP METAL RATES* …"></textarea>
+
+  <div class="row">
+    <div><label for="date">Date for messages without a date line</label><input id="date" type="date"></div>
+    <div><label for="token">Access code</label><input id="token" type="password" autocomplete="current-password"></div>
+  </div>
+
+  <div class="acts"><button id="preview" type="button">Preview</button><button id="save" type="button" disabled>Save rates</button></div>
+  <div id="out" class="msg" aria-live="polite"></div>
+</main>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const today = new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10);
+  $('#date').value = today;
+  try { $('#token').value = localStorage.getItem('ri-ingest') || ''; } catch (e) {}
+  let lastText = null;
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  async function send(save) {
+    const out = $('#out');
+    out.className = 'msg'; out.textContent = save ? 'Saving…' : 'Reading…';
+    try { localStorage.setItem('ri-ingest', $('#token').value); } catch (e) {}
+    const res = await fetch('/api/ingest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + $('#token').value },
+      body: JSON.stringify({ text: $('#text').value, date: $('#date').value, save }),
+    }).catch((e) => ({ ok: false, json: async () => ({ error: String(e) }) }));
+    const j = await res.json().catch(() => ({ error: 'Unexpected reply' }));
+    if (!res.ok || !j.ok) { out.className = 'msg err'; out.textContent = j.error || 'Something went wrong.'; $('#save').disabled = true; return; }
+    const dates = [...new Set([...Object.keys(j.delhi_counts), ...Object.keys(j.market_counts)])].sort();
+    let h = save ? `<p class="ok">Saved rates for ${dates.join(', ')}.</p>` : '';
+    h += `<p>${j.messages} message(s) · ${dates.map((d) => `<b>${d}</b>: ${j.delhi_counts[d] || 0} Delhi grades, ${j.market_counts[d] || 0} other rates`).join(' · ') || 'no rates found'}</p>`;
+    if (j.sections.length) h += `<p class="note">Sections: ${j.sections.map(esc).join(', ')}</p>`;
+    j.warnings.forEach((w) => { h += `<div class="warn">Check <b>${esc(w.grade)}</b>: ₹${w.from} → ₹${w.to} (${w.move > 0 ? '+' : ''}${w.move}%) since ${w.since}.</div>`; });
+    j.dropped.forEach((d) => { h += `<div class="warn">Left out as a likely typo: ${esc(d.section)} · ${esc(d.market)} · ${esc(d.item)} = ${esc(d.value)} (${esc(d.reason)}).</div>`; });
+    if (j.unknown.length) h += `<div class="warn">New Delhi grades not yet mapped (not saved): ${j.unknown.map(esc).join(', ')}</div>`;
+    if (j.delhi.length) {
+      h += '<div class="tw"><table><thead><tr><th>Date</th><th>Grade</th><th class="r">Buy</th><th class="r">Sell</th></tr></thead><tbody>';
+      j.delhi.forEach((r) => { h += `<tr><td>${r.date}</td><td>${esc(r.metal)} · ${esc(r.grade)}</td><td class="r">₹${r.buy}</td><td class="r">₹${r.sell}</td></tr>`; });
+      h += '</tbody></table></div>';
+    }
+    out.innerHTML = h;
+    lastText = $('#text').value;
+    $('#save').disabled = save || !dates.length;
+  }
+  $('#preview').addEventListener('click', () => send(false));
+  $('#save').addEventListener('click', () => { if ($('#text').value === lastText) send(true); else send(false); });
+  $('#text').addEventListener('input', () => { $('#save').disabled = true; });
+})();
+</script>
+</body>
+</html>

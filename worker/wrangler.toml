@@ -2,11 +2,16 @@ name = "recovery-index-live"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 
-# Every 2 hours during Indian business hours, Mon–Fri: 9:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00 IST
-# (cron is in UTC; IST = UTC+5:30). Use day NAMES: Cloudflare numbers days 1 = Sunday, so "1-5" meant Sun–Thu.
-# For 5-minute updates use: crons = ["*/5 * * * MON-FRI"]
+# 4 updates each weekday at 10:00, 14:00, 18:00 and 21:30 IST (cron is UTC; IST = UTC+5:30).
+# 21:30 IST is after the LME close in London, so the last run of the day is the daily close.
+# That is ~88 requests a month, inside the metals.dev free plan (100). With a paid plan, raise
+# MONTHLY_LIMIT and use e.g. ["30 3-15/2 * * MON-FRI"] (every 2 hours) or ["*/5 * * * MON-FRI"].
+# Use day NAMES: Cloudflare numbers days 1 = Sunday, so "1-5" means Sun–Thu.
 [triggers]
-crons = ["30 3-15/2 * * MON-FRI"]
+crons = ["30 4,8,12 * * MON-FRI", "0 16 * * MON-FRI"]
+
+[vars]
+MONTHLY_LIMIT = "92"   # hard cap on metals.dev requests per calendar month (UTC)
 
 # Keep invocation logs so failed runs can be diagnosed in the dashboard.
 [observability]
