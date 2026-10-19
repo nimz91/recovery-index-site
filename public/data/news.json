@@ -1,6 +1,46 @@
 {
- "updated": "2026-10-15",
+ "updated": "2026-10-19",
  "items": [
+  {
+   "date": "2026-10-15",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "EU names cylib's Dormagen battery recycling plant a Strategic Project",
+   "summary": "The European Commission picked German recycler cylib's project as a Strategic Project under the Critical Raw Materials Act; its hydrometallurgical plant in Dormagen, now under construction, is designed to handle up to 140,000 EV batteries a year. The label backs the Act's aim of meeting at least 25% of EU strategic raw material demand from recycling by 2030.",
+   "why": "Europe is lining up permitting and finance support for domestic battery recycling, which will shape where black mass and recycled metals flow and the standard Indian recyclers selling into EU supply chains will be compared against.",
+   "source": "chemeurope.com",
+   "url": "https://www.chemeurope.com/en/news/1190084/cylib-selected-as-strategic-project-under-eu-critical-raw-materials-act.html"
+  },
+  {
+   "date": "2026-10-14",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "Ionic Rare Earths files plans for a commercial magnet recycling plant in Belfast",
+   "summary": "Ionic Rare Earths submitted a planning application to Belfast City Council on 19 September for a commercial magnet recycling facility at Queen's Island. A decision is expected in Q1 2027, construction is planned from Q3 2027, and the company is working to secure a £12 million UK government capital grant.",
+   "why": "Magnet-to-oxide recycling outside China is moving towards commercial scale, which is useful as a benchmark for Indian firms eyeing rare earth recovery from e-waste and motor scrap.",
+   "source": "Mining Technology",
+   "url": "https://www.mining-technology.com/?p=718641"
+  },
+  {
+   "date": "2026-10-14",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "Fastmarkets restarts US black mass payables after export exemptions free up flows",
+   "summary": "Fastmarkets resumed its ex-works US nickel and cobalt black mass payable assessments on 14 October. It had suspended them on 1 September, after a US Commerce Department rule banning black mass exports took effect on 27 August.",
+   "why": "With the US price reference back, Indian buyers and refiners can again track US black mass against Asian payables. It also shows US export exemptions are letting some material move.",
+   "source": "Fastmarkets",
+   "url": "https://www.fastmarkets.com/insights/fastmarkets-resumes-us-black-mass-prices/"
+  },
+  {
+   "date": "2026-10-13",
+   "region": "World",
+   "topic": "EPR",
+   "title": "Sri Lanka moves towards an EPR-based national e-waste system",
+   "summary": "Sri Lanka's Environment Ministry is preparing amendments to the National Environmental Act and seeking approval for a national e-waste policy built around extended producer responsibility. Specific producer obligations have not yet been announced.",
+   "why": "Another South Asian market adopting producer responsibility could open compliance and recycling work for Indian EPR service providers and recyclers next door.",
+   "source": "Business News (Sri Lanka)",
+   "url": "https://businessnews.lk/2026/10/13/government-moves-towards-new-national-e-waste-management-system/"
+  },
   {
    "date": "2026-10-15",
    "region": "India",
