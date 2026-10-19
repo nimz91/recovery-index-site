@@ -90,7 +90,7 @@ export function renderBrief({ today, stories, prices, site, web = false }) {
   const priceBlock = !priceRows ? '' : `
 <tr><td style="${F}font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#67706b;padding:22px 0 6px;border-bottom:1px solid #e3e1da;">Prices · ${esc(shortDate(prices.day))}${prices.prevDay ? ` <span style="text-transform:none;letter-spacing:0;font-weight:400;">change vs ${esc(shortDate(prices.prevDay))} close</span>` : ''}</td></tr>
 <tr><td><table role="presentation" width="100%" cellspacing="0" cellpadding="0">${priceRows}</table>
-<div style="${F}font-size:13px;margin-top:10px;"><a href="${site}/" style="color:#0f5d4a;font-weight:600;">Scrap rates, black mass, rare earths and the RI indices →</a></div></td></tr>`;
+<div style="${F}font-size:13px;margin-top:10px;"><a href="${site}/prices/" style="color:#0f5d4a;font-weight:600;">Scrap rates, black mass, rare earths and the RI indices →</a></div></td></tr>`;
 
   const intro = total
     ? `${total} ${total === 1 ? 'story' : 'stories'} today${stories.india.length ? `, ${stories.india.length} from India` : ''}, and the day's closing prices.`
@@ -114,7 +114,7 @@ ${section('India', stories.india)}
 ${section('World roundup', stories.world)}
 </table></td></tr>
 <tr><td style="padding:16px 24px 22px;${F}font-size:13px;line-height:1.6;color:#67706b;">
-  <a href="${newsPage}" style="color:#0f5d4a;">All news</a> · <a href="${site}/" style="color:#0f5d4a;">Prices</a> · <a href="${site}/epr/" style="color:#0f5d4a;">EPR calculator</a><br>
+  <a href="${newsPage}" style="color:#0f5d4a;">All news</a> · <a href="${site}/prices/" style="color:#0f5d4a;">Prices</a> · <a href="${site}/rates/" style="color:#0f5d4a;">Delhi scrap rates</a> · <a href="${site}/epr/" style="color:#0f5d4a;">EPR calculator</a><br>
   Summaries are written by The Recovery Index; original reporting belongs to the linked publishers. Metal prices: metals.dev, latest reading of the day (LME base metals); indicative, not trading advice.<br>
   ${footer}
 </td></tr>
