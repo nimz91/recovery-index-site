@@ -37,7 +37,7 @@ under `brief` at `/status`. Switch to `send` when you're happy.
 
 **Setup (once, about 20 minutes):**
 1. Create a free Brevo account. Senders, Domains & Dedicated IPs → add and authenticate `therecoveryindex.in`
-   (add the DKIM/DMARC records Brevo shows at GoDaddy DNS), and add the sender `brief@therecoveryindex.in`.
+   (add the DKIM/DMARC records Brevo shows in Cloudflare → therecoveryindex.in → DNS; the domain's DNS moved to Cloudflare on 16 Oct), and add the sender `brief@therecoveryindex.in`.
    Fill in the company address (Brevo shows it in the footer; required for bulk email).
 2. Contacts → Lists → create **Evening Brief**; note its ID. Templates → create a double opt-in confirmation
    template (the confirm button must link to `{{ params.DOIurl }}`); note its ID.
@@ -48,6 +48,20 @@ under `brief` at `/status`. Switch to `send` when you're happy.
 6. Sign yourself up at `/brief/`, check the preview for a few evenings, then set `BRIEF_MODE = "send"` and `npx wrangler deploy`.
 
 Brevo's free plan has a daily sending cap; when the list outgrows it, move to a paid Brevo plan (no code change).
+
+## Search pages and the daily rate card
+
+`scripts/build_static.py` turns `public/data/*.json` into plain HTML that Google can read and people can share:
+
+| Output | What it is |
+|---|---|
+| `public/rates/` | One page per Delhi scrap grade ("Copper Super D scrap rate today in Delhi") plus an index |
+| `public/card/latest.png` | 1080×1350 WhatsApp rate card (rendered by `scripts/render_card.mjs` with Playwright) |
+| `public/news/index.html` | Story list written into the page between the `STATIC-NEWS` markers |
+| `public/sitemap.xml`, `public/robots.txt` | For Google Search Console |
+
+Run `python3 scripts/build_static.py && node scripts/render_card.mjs` from the repo root. The evening price refresh does this automatically.
+Fonts for the card are self-hosted in `public/fonts/` (Inter, Source Serif 4; SIL Open Font License).
 
 ## One-time setup
 
