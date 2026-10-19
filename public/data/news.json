@@ -2,6 +2,26 @@
  "updated": "2026-10-19",
  "items": [
   {
+   "date": "2026-10-19",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "China's black mass output fell about 15% in September as LFP supply tightened",
+   "summary": "SMM estimates China produced roughly 56,000 tonnes of lithium battery black mass in September, about 15% less than in August, with LFP black mass driving most of the drop. Stricter rules on reusing old batteries, plant maintenance and sellers holding back scrap all cut volumes, while falling lithium carbonate and cobalt sulfate prices squeezed recycler margins.",
+   "why": "Lower Chinese black mass output and thinner margins affect the payables and export demand Indian battery recyclers see for their own black mass.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104165141-september-lithium-battery-black-mass-output-down-mom-lfp-pulls-back-notablysmm-analysis"
+  },
+  {
+   "date": "2026-10-19",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "POSCO's Korean recycling plant turns 12,000 tonnes of black mass a year into battery salts",
+   "summary": "POSCO's battery recycling unit says its South Korean hydrometallurgy plant processes about 12,000 tonnes of black mass a year into 2,500 tonnes of lithium carbonate, 12,000 tonnes of nickel sulfate, 3,800 tonnes of cobalt sulfate and 2,000 tonnes of manganese sulfate. The plant reports recovering over 90% of the main valuable metals, and SNE Research expects used-battery volumes to grow from 44 GWh in 2025 to 3,339 GWh in 2040.",
+   "why": "It is a benchmark for the scale and recovery rates Indian black mass refiners will need to compete with as they move beyond shredding.",
+   "source": "MoneyToday",
+   "url": "https://www.mt.co.kr/en/industry/2026/10/19/2026101510161421779"
+  },
+  {
    "date": "2026-10-18",
    "region": "World",
    "topic": "Solar waste",
