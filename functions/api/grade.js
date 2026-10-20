@@ -59,7 +59,8 @@ export async function onRequestPost({ request, env }) {
       : res.status === 404 ? `the model "${env.ANTHROPIC_MODEL || 'claude-sonnet-5-5'}" was not found`
       : res.status === 429 ? 'the API rate limit was hit' : res.status === 529 ? 'the API is overloaded'
       : /credit/i.test(e.message || '') ? 'the API account is out of credit' : `the API returned ${res.status}`;
-    return json({ error: `Photo grading is unavailable: ${why}. The inspector will grade on site.`, upstream: { status: res.status, type: e.type || null, message: String(e.message || '').slice(0, 200) } }, 502);
+    const looksRight = /^sk-ant-/.test(String(env.ANTHROPIC_API_KEY || '').trim());
+    return json({ error: `Photo grading is unavailable: ${why}. The inspector will grade on site.`, key_looks_like_anthropic_key: looksRight, upstream: { status: res.status, type: e.type || null, message: String(e.message || '').slice(0, 200) } }, 502);
   }
   const out = await res.json();
   const text = (out.content || []).filter(c => c.type === 'text').map(c => c.text).join('');

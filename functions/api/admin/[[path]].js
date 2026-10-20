@@ -17,7 +17,11 @@ import { loadAuction, stateOf } from '../../_lib/auction.js';
 export async function onRequest({ request, env, params }) {
   const miss = needDb(env); if (miss) return miss;
   if (!env.ADMIN_KEY) return bad('Set the ADMIN_KEY secret to use the console.', 503);
-  if (!isAdmin(request, env)) return bad('Wrong admin key.', 401);
+  if (!isAdmin(request, env)) {
+    // Never reveals the key; only flags the common mix-up of pasting the Anthropic key into ADMIN_KEY.
+    const swapped = /^sk-ant-/.test(String(env.ADMIN_KEY).trim());
+    return bad(swapped ? 'The ADMIN_KEY secret holds an Anthropic API key. Put your console password in ADMIN_KEY and the sk-ant- key in ANTHROPIC_API_KEY.' : 'Wrong admin key.', 401);
+  }
   const parts = Array.isArray(params.path) ? params.path : params.path ? [params.path] : [];
   const [res, id, action] = parts;
   const m = request.method;
