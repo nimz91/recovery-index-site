@@ -368,10 +368,11 @@ def story(it, lead):
             f'<p class="src">Source: <a href="{e(it["url"])}" target="_blank" rel="noopener">{e(it["source"])}</a></p></article>')
 
 
-static = ""
+# Newest stories first, whatever the region, so each update shows at the top.
+static = '<h2 class="sec-h">Latest</h2>' + "".join(story(i, n == 0) for n, i in enumerate(items[:4]))
 for region, head in (("India", "India"), ("World", "World roundup")):
-    lst = [i for i in items if i["region"] == region]
-    static += f'<h2 class="sec-h">{head}</h2>' + ("".join(story(i, n == 0) for n, i in enumerate(lst)) or '<p class="empty">No stories yet.</p>')
+    lst = [i for i in items[4:] if i["region"] == region]
+    static += f'<h2 class="sec-h">{head}</h2>' + ("".join(story(i, False) for i in lst) or '<p class="empty">No stories yet.</p>')
 np = PUB / "news" / "index.html"
 nhtml = np.read_text()
 block = f"<!--STATIC-NEWS-START-->{static}<!--STATIC-NEWS-END-->"
