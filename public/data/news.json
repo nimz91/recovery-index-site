@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-19",
+ "updated": "2026-10-20",
  "items": [
+  {
+   "date": "2026-10-20",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "Korea's recyclers struggle to make money from LFP batteries as their share of EVs grows",
+   "summary": "LFP cells held over 65% of the global EV cathode market in January–August 2026, but their recoverable value rests mostly on lithium (about $9.59/kg last year) rather than cobalt ($34.21/kg) or nickel ($15.2/kg). Korea recovered 65.9% of mandatory-return EV batteries between 2021 and August 2026, and industry is asking for recycled-content mandates and clarity on who pays to treat low-value LFP packs.",
+   "why": "India's EV and storage fleet is leaning heavily on LFP, so Indian recyclers and EPR planners face the same question of how to fund recycling of chemistries with little cobalt or nickel to sell.",
+   "source": "MoneyToday (Korea)",
+   "url": "https://mt.co.kr/en/industry/2026/10/20/2026101917393690614"
+  },
   {
    "date": "2026-10-19",
    "region": "World",
