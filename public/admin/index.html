@@ -43,13 +43,13 @@ const api = (p, o = {}) => RI.api('/api/admin/' + p, { ...o, token: C.key });
 
 async function start() {
   if (!C.key) { $('login').hidden = false; $('app').hidden = true; return; }
-  try { await api('lots'); } catch (e) { $('login').hidden = false; $('app').hidden = true; $('login-msg').textContent = e.message; return; }
+  try { await api('lots'); } catch (e) { $('login').hidden = false; $('app').hidden = true; $('login-msg').textContent = e.status === 401 ? 'That key does not match the ADMIN_KEY secret for this site. Check for typos and capital letters.' : e.message; try { sessionStorage.removeItem('ri-admin'); } catch (er) {} C.key = ''; return; }
   $('login').hidden = true; $('app').hidden = false;
   $('who').innerHTML = '<button class="btn ghost small" id="logout" type="button">Lock console</button>';
   $('logout').onclick = () => { try { sessionStorage.removeItem('ri-admin'); } catch (e) {} C.key = ''; start(); };
   go(location.hash.slice(1) || 'lots');
 }
-$('login').onsubmit = e => { e.preventDefault(); C.key = $('adm-key').value.trim(); try { sessionStorage.setItem('ri-admin', C.key); } catch (er) {} start(); };
+$('login').onsubmit = e => { e.preventDefault(); C.key = $('adm-key').value.trim(); $('login-msg').textContent = 'Checking…'; try { sessionStorage.setItem('ri-admin', C.key); } catch (er) {} start(); };
 document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { location.hash = b.dataset.tab; });
 window.addEventListener('hashchange', () => C.key && go(location.hash.slice(1) || 'lots'));
 

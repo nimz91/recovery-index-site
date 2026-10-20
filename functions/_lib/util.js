@@ -42,8 +42,10 @@ export function sameKey(a, b) {
   return d === 0;
 }
 
+// Both sides are trimmed: secrets pasted into the dashboard often carry a trailing newline or space.
 export function isAdmin(request, env) {
-  return !!env.ADMIN_KEY && sameKey(bearer(request), env.ADMIN_KEY);
+  const key = String(env.ADMIN_KEY || '').trim();
+  return !!key && sameKey(bearer(request).trim(), key);
 }
 
 export async function buyerFromRequest(request, env) {
