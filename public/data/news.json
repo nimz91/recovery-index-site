@@ -1,6 +1,26 @@
 {
- "updated": "2026-10-21",
+ "updated": "2026-10-22",
  "items": [
+  {
+   "date": "2026-10-20",
+   "region": "India",
+   "topic": "Policy",
+   "title": "Mines Ministry panel to rewrite the 2019 National Mineral Policy, naming recycling and critical minerals as priorities",
+   "summary": "The Mines Ministry has formed a nine-member panel, chaired by an Additional Secretary, to review the National Mineral Policy, 2019 and recommend a comprehensive revision within two months, PTI reports citing sources. Recycling, critical minerals and deep-sea resources are named as the new priorities, alongside a planned recast of the MMDR Act, 1957.",
+   "why": "If recycling gets a formal place in national mineral policy, it could shape future incentives and rules for India's e-waste and battery recyclers.",
+   "source": "Business Standard (via PTI)",
+   "url": "https://www.business-standard.com/amp/industry/news/govt-to-review-2019-mineral-policy-amid-new-sector-priorities-126102000533_1.html"
+  },
+  {
+   "date": "2026-10-20",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "China's rare earth magnet exports hit a 2026 high of about 6,165 tonnes in September",
+   "summary": "China exported 6,165 tonnes of rare earth permanent magnets in September, up 23% from August and 6.7% from a year earlier, the highest monthly figure this year, as backlogged orders were released, according to SMM. Exports for January to September totalled 48,055 tonnes, up 20% year on year.",
+   "why": "SMM counts India among the markets driving demand, and steadier Chinese magnet supply sets the price bar that India's planned magnet plants and magnet recyclers must compete with.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104168834-backlog-orders-concentrated-release-combined-with-consultations-landing-september-rare-earth-permanent-magnet-exports-hit-a-new-high-for-the-year-smm-analysis"
+  },
   {
    "date": "2026-10-20",
    "region": "World",
