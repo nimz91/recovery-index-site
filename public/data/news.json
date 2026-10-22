@@ -2,6 +2,16 @@
  "updated": "2026-10-22",
  "items": [
   {
+   "date": "2026-10-22",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "China's NdFeB scrap Pr-Nd prices keep sliding as oxide prices weaken",
+   "summary": "Shanghai Metals Market says praseodymium-neodymium recovered from NdFeB magnet scrap fell again this week to 735-745 yuan/kg, tracking lower Pr-Nd oxide prices, while scrap dysprosium closed at 1,230-1,250 yuan/kg and terbium at 5,600-5,800 yuan/kg. Recyclers cut their quotes and bought less, holders were reluctant to sell, and SMM expects prices to stay weak in the short term.",
+   "why": "Chinese scrap magnet prices set the benchmark for what Indian e-waste and motor recyclers can expect for recovered magnets, so a falling market squeezes margins on magnet recovery projects.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104173670-scrap-pr-nd-continues-to-pull-back-overall-market-trading-remains-light-smm-recycled-rare-earth-weekly-review"
+  },
+  {
    "date": "2026-10-20",
    "region": "India",
    "topic": "Policy",
