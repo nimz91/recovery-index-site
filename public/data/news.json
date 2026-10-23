@@ -3,6 +3,26 @@
  "items": [
   {
    "date": "2026-10-22",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "GM ends magnet supply deal with VAC's new $500 million South Carolina plant",
+   "summary": "General Motors terminated its strategic sourcing agreement with e-VAC Magnetics, the US unit of Germany's Vacuumschmelze, effective 1 July 2026; the plant has capacity of just under 2,000 tonnes a year and was meant to send 90% of its output to GM. VAC has begun arbitration seeking damages, and Energy Fuels, which agreed in June to buy VAC for $1.9 billion, says the price could be adjusted depending on the outcome.",
+   "why": "Weaker carmaker demand for non-Chinese magnets shapes the market Indian magnet makers and rare-earth recyclers are planning to sell into.",
+   "source": "Reuters via StreetInsider",
+   "url": "https://www.streetinsider.com/Reuters/Exclusive-GM+cancels+deal+with+new+US+rare-earth+magnet+plant,+documents+say/27223620.html"
+  },
+  {
+   "date": "2026-10-22",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "Neo Performance Materials wins up to €126 million in EU funding to expand its Estonian magnet plant",
+   "summary": "The EU Innovation Fund grant will help lift Neo's magnet capacity in Estonia from 2,000 to about 5,000 tonnes a year, with a third of the new output aimed at EU offshore wind. The grant agreement is due to be signed in March 2027, and construction is expected to take two to three years.",
+   "why": "Europe is paying to build magnet capacity outside China, a benchmark for the incentives India offers its own rare-earth magnet and recycling projects.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104173529-neo-performance-materials-secures-%E2%82%AC126m-eu-fund-for-rare-earth-expansion-in-estonia"
+  },
+  {
+   "date": "2026-10-22",
    "region": "India",
    "topic": "EPR",
    "title": "Bhupender Yadav says over 86,000 producers and 4,880 recyclers are now registered under India's EPR rules",
