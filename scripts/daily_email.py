@@ -6,7 +6,7 @@
 Writes the HTML email to --out (default: daily-email.html) and prints a JSON line with the subject,
 how many stories it carries and the story URLs, so the sender can skip a day with nothing new.
 
-News: stories in public/data/news.json dated within the last 2 days (India first), newest first.
+News: stories in public/data/news.json dated within the last 2 days (India first), newest first; with\n--new-since 24, only stories added to news.json in the last 24 hours (so days don't repeat).
 Prices: public, dated prints from public/data/board.json (LME base metals, precious metals, USD/INR,
 Indian exchange/benchmark rates). Third-party assessments (Fastmarkets, Benchmark, SMM, dealer boards,
 Shree Ji trade rates) are NOT copied into the email; it links to the price board instead.
@@ -14,6 +14,7 @@ Shree Ji trade rates) are NOT copied into the email; it links to the price board
 import argparse
 import html
 import json
+import subprocess
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -55,12 +56,29 @@ def unit_label(unit):
     return {"USD/t": "/t", "USD/oz": "/oz", "INR/kg": "/kg", "INR/10 g": "/10 g", "INR per USD": " per $"}.get(unit, " " + unit)
 
 
-def build(today):
+def urls_before(hours):
+    """URLs in news.json as of the last commit older than `hours` (needs git history; None if unavailable)."""
+    try:
+        sha = subprocess.run(["git", "-C", str(ROOT), "log", "-1", f"--until={hours} hours ago", "--format=%H", "--",
+                              "public/data/news.json"], capture_output=True, text=True, check=True).stdout.strip()
+        if not sha:
+            return None
+        old = subprocess.run(["git", "-C", str(ROOT), "show", f"{sha}:public/data/news.json"],
+                             capture_output=True, text=True, check=True).stdout
+        return {i["url"] for i in json.loads(old).get("items", [])}
+    except Exception:
+        return None
+
+
+def build(today, new_since=None):
     news = json.loads((DATA / "news.json").read_text())
     board = json.loads((DATA / "board.json").read_text())
 
     cutoff = (date.fromisoformat(today) - timedelta(days=2)).isoformat()
     fresh = [i for i in news.get("items", []) if cutoff <= i["date"] <= today]
+    seen = urls_before(new_since) if new_since else None
+    if seen is not None:  # only stories added since the previous email
+        fresh = [i for i in news.get("items", []) if i["url"] not in seen and i["date"] <= today]
     fresh.sort(key=lambda i: (i["region"] != "India", i["date"]), reverse=False)
     india = sorted([i for i in fresh if i["region"] == "India"], key=lambda i: i["date"], reverse=True)
     world = sorted([i for i in fresh if i["region"] != "India"], key=lambda i: i["date"], reverse=True)
@@ -146,8 +164,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=datetime.now(timezone(timedelta(hours=5, minutes=30))).date().isoformat())
     ap.add_argument("--out", default="daily-email.html")
+    ap.add_argument("--new-since", type=int, default=None,
+                    help="only include stories added to news.json in the last N hours (uses git history)")
     a = ap.parse_args()
-    out, meta = build(a.date)
+    out, meta = build(a.date, a.new_since)
     Path(a.out).write_text(out)
     print(json.dumps(meta))
 
