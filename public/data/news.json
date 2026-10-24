@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-23",
+ "updated": "2026-10-24",
  "items": [
+  {
+   "date": "2026-10-24",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "South Korea starts recycling solar panels on site with mobile trailer plants as panel waste climbs",
+   "summary": "Waste solar panels processed in South Korea rose from 152 tonnes in 2023 to 2,300 tonnes in 2026, and the first on-site recycling with trailer-mounted units ran this week under a regulatory sandbox that exempts it from the Wastes Control Act. A recycler says processing at the solar plant can cut transport costs to about one-sixth, while a blade-based method that separates glass from cells lifts silver and copper recovery four- to fivefold.",
+   "why": "As India's early solar fleet ages, on-site processing and better silver recovery show Indian recyclers ways to cut the freight costs that make panel recycling hard to pay for.",
+   "source": "SBS News",
+   "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008812842"
+  },
   {
    "date": "2026-10-22",
    "region": "World",
