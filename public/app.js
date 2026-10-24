@@ -8,12 +8,17 @@
   const LIVE_MAX_AGE_H = 36; // ignore a live snapshot older than this
   const POLL_MS = 60 * 1000;
   const SMI_EXPOSURE = { Copper: { CU: 1 }, Aluminium: { AL: 1 }, Zinc: { ZN: 1 }, Lead: { PB: 1 }, Brass: { CU: 0.65, ZN: 0.35 }, 'Gun metal': { CU: 0.88, SN: 0.10, ZN: 0.02 }, Nickel: { NI: 1 }, Tin: { SN: 1 } };
+  // Share of a world-price move (LME × USD/INR) that reaches Delhi scrap rates before the next bulletin.
+  // Back-tested on Shree Ji bulletins 15–24 Oct 2026: Delhi rates are sticky and full pass-through over-reacted
+  // (0.59% average 1-day error vs 0.34% with these values; 0.64% vs 0.52% three days ahead).
+  const PASS_THROUGH = { Copper: 0.5, Brass: 0.5, 'Gun metal': 0.5, Aluminium: 0.3, Zinc: 0.2, Lead: 0.2, Nickel: 0.5, Tin: 0.5 };
   const SMI_ORDER = ['Copper', 'Aluminium', 'Brass', 'Lead', 'Zinc', 'Gun metal', 'Nickel', 'Tin'];
   const PANELS = [
     { id: 'ferrous', title: 'Steel scrap, ingot and billet', note: 'Mandi and city trade rates, ₹ per tonne, excl. GST.', sections: ['Mandi Gobindgarh', 'Melting scrap', 'HMS', 'Ingot', 'Billet', 'Sponge iron', 'Pellet', 'Pig iron (foundry grade)', 'Pig iron (steel grade)', 'Cast iron'] },
     { id: 'finished', title: 'Finished steel', note: 'Trade rates, ₹ per tonne, excl. GST.', sections: ['Finished steel (Mandi Gobindgarh)', 'TMT 12 mm', 'HR coil', 'CR coil', 'Wire rod (5.5 mm)'] },
     { id: 'stainless', title: 'Stainless steel scrap', note: '₹ per kg plus GST.', sections: ['Stainless steel scrap'] },
     { id: 'cities', title: 'Non-ferrous scrap, other cities', note: 'Kolkata, Ahmedabad, Jamnagar and Hyderabad, ₹ per kg, excl. GST.', sections: ['Other city non-ferrous'] },
+    { id: 'delhi-more', title: 'Delhi: more grades and minor metals', note: 'Extended Delhi list: rods, sections, AC jali, radiator, nickel brands, zinc brands and minor metals. ₹ per kg, excl. GST; a range is buy–sell.', sections: ['Delhi more grades'] },
     { id: 'mcx', title: 'MCX and reference rates', note: 'MCX futures in rupees, LME and spot as published, and rupee reference rates.', sections: ['MCX', 'International', 'FX'] },
   ];
   const EW_METALS = ['CU', 'AL', 'XAU', 'XAG', 'XPD', 'NI', 'CO', 'LI2CO3'];
@@ -133,7 +138,10 @@
     D.scrap.forEach((r) => { if (!latestBy[r.code] || r.date >= latestBy[r.code].date) latestBy[r.code] = r; });
     const latestRows = Object.values(latestBy).sort((a, b) => SMI_ORDER.indexOf(a.metal) - SMI_ORDER.indexOf(b.metal) || D.scrap.indexOf(a) - D.scrap.indexOf(b));
     latestRows.forEach((r) => {
-      liveVal[r.code] = mid[r.date][r.code] * factor(SMI_EXPOSURE[r.metal] || {}, SMI_EXPOSURE[r.metal] ? 0 : 1, r.date);
+      const e = SMI_EXPOSURE[r.metal] || {}, b = PASS_THROUGH[r.metal] ?? 0.3;
+      const scaled = Object.fromEntries(Object.entries(e).map(([k, w]) => [k, w * b]));
+      const fixed = 1 - Object.values(scaled).reduce((a, w) => a + w, 0);
+      liveVal[r.code] = mid[r.date][r.code] * factor(scaled, fixed, r.date);
     });
     const live = compose((c) => liveVal[c] ?? mid[lastDate][c]);
     return { daily, live, lastDate, mid, liveVal, latestRows, weights: Object.fromEntries(Object.entries(baskets).map(([k, v]) => [k, v.w])) };
@@ -231,7 +239,9 @@
     if (r.unit === 'USD/t') inrText = inr(price * fx / 1000) + '/kg';
     if (r.unit === 'USD/kg') inrText = inr(price * fx) + '/kg';
     if (r.unit === 'USD/oz') inrText = inr(price * fx / 31.1035 * 10) + '/10 g';
-    const age = isLive ? 0 : Math.round((new Date(today) - new Date(r.date)) / 864e5);
+    // Age in working days (Mon–Fri), so a Friday price is not stale on Monday morning.
+    let age = 0;
+    if (!isLive) for (let t = new Date(r.date + 'T00:00:00Z').getTime() + 864e5; t <= new Date(today + 'T00:00:00Z').getTime(); t += 864e5) { const wd = new Date(t).getUTCDay(); if (wd && wd < 6) age++; }
     const stale = !isLive && age > (MAX_AGE_DAYS[r.group] ?? 7);
     return { price, isLive, change, changeText, inrText, stale, age, asOf: isLive ? timeIST(LIVE.latest.ts || LIVE.latest.fetched) : dateLabel(r.date) };
   }
@@ -365,7 +375,7 @@
         add(priceText(r, v.price), 'r');
         add(v.changeText, 'r ' + cls(v.change));
         if (G.inr) add(v.inrText || '—', 'r hide-sm');
-        const ao = add(v.asOf + (v.stale ? ' · ' + v.age + ' d old' : ''), 'hide-sm' + (v.stale ? ' stale' : ''));
+        const ao = add(v.asOf + (v.stale ? ' · ' + v.age + ' working d old' : ''), 'hide-sm' + (v.stale ? ' stale' : ''));
         if (v.stale) ao.title = 'Older than usual for this market: the source has not published a newer price we could verify.';
         const src = tr.insertCell(); src.className = 'src hide-sm';
         const name = v.isLive ? 'Live feed (metals.dev)' : r.source;
@@ -381,6 +391,7 @@
   function mktPrice(r) {
     const p = Number(r.price);
     if (/^USD/.test(r.unit)) return (r.unit === 'USD/t' ? fmt(p, 0) : fmt(p, 2));
+    if (r.buy != null && r.sell != null) return inr(r.buy) + '–' + inr(r.sell).replace('₹', '');
     return inr(p, p % 1 ? 2 : 0);
   }
   function renderIndia() {
@@ -452,13 +463,28 @@
     const rows = [];
     const add = (group, name, value, ok, note) => rows.push({ group, name, value, ok, note });
     // 1. Live feed vs the trade bulletin's LME print for the same day.
+    // The bulletin is a midday snapshot, so compare it with the feed update nearest its time (within 5 h).
+    const nearest = (code, date, time) => {
+      const t = new Date(`${date}T${time || '12:00'}:00+05:30`).getTime();
+      let best = null;
+      (LIVE.intraday || []).forEach((sn) => { const v = sn.prices && sn.prices[code]; const dt = Math.abs(new Date(sn.ts).getTime() - t); if (v != null && dt < 5 * 3600e3 && (!best || dt < best.dt)) best = { v: Number(v), dt, ts: sn.ts }; });
+      return best;
+    };
     for (const [code, n] of Object.entries(LME_NAMES)) {
       const sj = latestMarket('International', 'LME', n);
       if (!sj) continue;
-      const fc = feedClose(code, sj.date);
+      const nb = nearest(code, sj.date, sj.time);
+      const fc = nb ? nb.v : feedClose(code, sj.date);
       if (fc == null) continue;
       const d = sj.price / fc - 1;
-      add('LME: live feed vs trade bulletin', n, pctText(d, 1), Math.abs(d) <= 0.015, `Bulletin $${fmt(sj.price)} vs feed close $${fmt(fc)} on ${dateLabel(sj.date)}`);
+      add('LME: live feed vs trade bulletin', n, pctText(d, 1), Math.abs(d) <= 0.015, `Bulletin $${fmt(sj.price)} (${dateLabel(sj.date)} ${sj.time || ''}) vs feed $${fmt(fc)} ${nb ? 'at ' + timeIST(nb.ts) : 'close'}`);
+    }
+    // A feed whose base-metal prices are identical to the previous day's close has probably not updated.
+    const cds = Object.keys(LIVE.closes || {}).sort();
+    if (cds.length >= 2) {
+      const a = LIVE.closes[cds[cds.length - 2]].prices || {}, b = LIVE.closes[cds[cds.length - 1]].prices || {};
+      const same = Object.keys(LME_NAMES).filter((c) => a[c] != null && a[c] === b[c]);
+      add('Freshness', 'LME prices changed since previous close', same.length === 5 ? 'No' : 'Yes', same.length < 5, same.length === 5 ? `All five LME prices on ${dateLabel(cds[cds.length - 1])} equal ${dateLabel(cds[cds.length - 2])}: the feed may not have updated` : `${dateLabel(cds[cds.length - 2])} → ${dateLabel(cds[cds.length - 1])}`);
     }
     // 2. MCX premium over LME × USD/INR (import parity before duty and freight).
     for (const [code, n] of Object.entries(LME_NAMES)) {

@@ -65,7 +65,7 @@
     let h = save ? `<p class="ok">Saved rates for ${dates.join(', ')}.</p>` : '';
     h += `<p>${j.messages} message(s) · ${dates.map((d) => `<b>${d}</b>: ${j.delhi_counts[d] || 0} Delhi grades, ${j.market_counts[d] || 0} other rates`).join(' · ') || 'no rates found'}</p>`;
     if (j.sections.length) h += `<p class="note">Sections: ${j.sections.map(esc).join(', ')}</p>`;
-    j.warnings.forEach((w) => { h += `<div class="warn">Check <b>${esc(w.grade)}</b>: ₹${w.from} → ₹${w.to} (${w.move > 0 ? '+' : ''}${w.move}%) since ${w.since}.</div>`; });
+    j.warnings.forEach((w) => { h += `<div class="warn">${w.held ? 'Left out as a likely typo' : 'Check'} <b>${esc(w.grade)}</b>: ₹${w.from} → ₹${w.to} (${w.move > 0 ? '+' : ''}${w.move}%) since ${w.since}.</div>`; });
     j.dropped.forEach((d) => { h += `<div class="warn">Left out as a likely typo: ${esc(d.section)} · ${esc(d.market)} · ${esc(d.item)} = ${esc(d.value)} (${esc(d.reason)}).</div>`; });
     if (j.unknown.length) h += `<div class="warn">New Delhi grades not yet mapped (not saved): ${j.unknown.map(esc).join(', ')}</div>`;
     if (j.delhi.length) {

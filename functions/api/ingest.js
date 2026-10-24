@@ -53,6 +53,14 @@ export async function onRequestPost({ request, env }) {
     if (Math.abs(move) > MOVE_WARN) warnings.push({ code: r.code, grade: `${r.metal} ${r.grade}`, from: a, to: b, since: p.date, move: Math.round(move * 1000) / 10 });
   }
 
+  // A jump this large is almost always a typo in the bulletin (e.g. ₹226 → ₹326): leave those rows out unless
+  // the person confirms with force=true.
+  const typos = warnings.filter((w) => Math.abs(w.move) > 25);
+  if (typos.length && !body.force) {
+    const bad = new Set(typos.map((w) => w.code));
+    out.scrap = out.scrap.filter((r) => !bad.has(r.code));
+    typos.forEach((w) => { w.held = true; });
+  }
   let saved = null;
   if (body.save) {
     const byDate = {};
