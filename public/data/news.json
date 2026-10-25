@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "items": [
+  {
+   "date": "2026-10-22",
+   "region": "World",
+   "topic": "Policy",
+   "title": "Thailand proposes banning metal scrap imports to curb e-waste smuggling",
+   "summary": "Thailand's Customs Department on 21 October proposed a ban on imports of ferrous, copper, aluminium and rubber scrap, with a 6–12 month transition period, to fight smuggling of electronic and hazardous waste. Customs has already stepped up physical checks on containers declared as metal scrap, though the ban itself is still only a proposal.",
+   "why": "A Thai ban would push more scrap toward other Asian importers such as India and signals tighter regional policing of e-waste shipped as metal scrap.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104173488-smm-aluminum-flash-newsthailand-tightens-scrap-import-inspections-proposes-ban-on-aluminium-and-copper-scrap"
+  },
   {
    "date": "2026-10-24",
    "region": "World",
