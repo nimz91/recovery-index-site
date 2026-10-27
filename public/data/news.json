@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-26",
+ "updated": "2026-10-27",
  "items": [
+  {
+   "date": "2026-10-27",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "HyProMag USA plans three more US magnet recycling plants to quadruple output to about 4,200 tonnes a year",
+   "summary": "A pre-feasibility study puts new plants in South Carolina, Nevada and a second Texas site at about $623–656 million, lifting salable NdFeB magnet output to roughly 4,192 tonnes a year by 2034 from about 1,048 tonnes at its first plant in Northlake, Texas. The study, which modelled a recycled-scrap-only case among others, estimates a post-tax NPV of $1.85–2.06 billion; Northlake's first phase is due in mid-2028 and no offtake deals are signed yet.",
+   "why": "Magnet scrap is becoming a contested feedstock outside China, which matters for Indian recyclers that collect NdFeB scrap from motors and electronics and for India's planned magnet plants.",
+   "source": "Investing.com",
+   "url": "https://in.investing.com/news/stock-market-news/exclusive-hypromag-usa-maps-three-new-magnet-plants-to-quadruple-us-capacity-5655233"
+  },
   {
    "date": "2026-10-24",
    "region": "World",
@@ -390,16 +400,6 @@
    "why": "US shredding capacity has run ahead of refining. Exceptions like this decide where black mass flows, and that affects payables in Asia.",
    "source": "Waste Dive",
    "url": "https://www.wastedive.com/news/american-battery-granted-export-license-100m-in-black-mass/832013/"
-  },
-  {
-   "date": "2026-10-02",
-   "region": "India",
-   "topic": "E-waste",
-   "title": "Environment ministry's Special Campaign 6 targets 3,270 obsolete electronic items in its own offices",
-   "summary": "MoEFCC's October 2–31 campaign includes an SOP for scientific disposal of office e-waste. It has flagged about 3,270 items across its offices, including 1,425 IT and telecom items.",
-   "why": "Government offices are a steady source of e-waste. Campaign months are when authorised recyclers can win government lots.",
-   "source": "Indian Masterminds",
-   "url": "https://indianmasterminds.com/news/moefcc-special-campaign-6-e-waste-238612/"
   }
  ]
 }
