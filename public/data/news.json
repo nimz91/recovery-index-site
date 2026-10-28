@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "items": [
+  {
+   "date": "2026-10-27",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "Korean black mass payables drop to their lowest since January as LME Week mood sours",
+   "summary": "Fastmarkets' NCM black mass payables (cif South Korea) fell to 88-94% for nickel and cobalt on 21 October, from 92-96% a week earlier, the weakest it has recorded since 21 January 2026. Traders at LME Week pointed to Korean cellmakers moving to LFP, with one recycler saying Korean pCAM and CAM plants are running at only about 20% capacity.",
+   "why": "Lower Asian payables cut what Indian recyclers can earn by exporting NCM black mass and strengthen the case for refining it at home.",
+   "source": "Fastmarkets",
+   "url": "https://fastmarkets.com/insights/recycled-battery-metal-markets-battle-headwinds-during-damp-lme-week"
+  },
   {
    "date": "2026-10-27",
    "region": "World",
@@ -390,16 +400,6 @@
    "why": "This is closed-loop proof at automaker scale. It is the benchmark Indian OEMs and recyclers will be measured against.",
    "source": "Resource Recycling",
    "url": "https://resource-recycling.com/e-scrap/2026/10/05/gm-launches-recycled-ev-battery-line/"
-  },
-  {
-   "date": "2026-10-02",
-   "region": "World",
-   "topic": "Black mass",
-   "title": "US lets ABTC export up to $100M of black mass despite export controls",
-   "summary": "The US Commerce Department granted American Battery Technology Co. an exception to sell up to $100 million of recycled black mass abroad. US rules otherwise require black mass producers to sell their output domestically until August 2027.",
-   "why": "US shredding capacity has run ahead of refining. Exceptions like this decide where black mass flows, and that affects payables in Asia.",
-   "source": "Waste Dive",
-   "url": "https://www.wastedive.com/news/american-battery-granted-export-license-100m-in-black-mass/832013/"
   }
  ]
 }
