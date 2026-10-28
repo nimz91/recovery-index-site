@@ -2,6 +2,26 @@
  "updated": "2026-10-28",
  "items": [
   {
+   "date": "2026-10-28",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "Australia's A$24.7 million solar panel recycling pilot has been on hold for over five months",
+   "summary": "The federal pilot, meant to set up as many as 100 collection sites for old panels, was suspended on 15 May after a single complaint under procurement rules, and the environment department could not say when it will restart. Australia had about 3 million panels (60,000 tonnes) reach end of life in 2025, a figure that could hit 50 million panels (1 million tonnes) by 2035, with as little as 17% recycled.",
+   "why": "India's own solar fleet will throw up similar volumes, and Australia shows how slowly collection systems get built without a clear, enforced rulebook.",
+   "source": "AAP via Solar Now",
+   "url": "https://now.solar/2026/10/28/in-the-dark-solar-recycling-scheme-delayed-for-months-aapnews-aap-com-au/"
+  },
+  {
+   "date": "2026-10-26",
+   "region": "World",
+   "topic": "Policy",
+   "title": "African governments move towards EPR for solar panels and batteries as installations surge",
+   "summary": "Nigeria has validated a policy that would make producers, distributors and importers of off-grid solar gear responsible for it at end of life, pending cabinet approval, and ECOWAS energy ministers adopted a regional framework on handling and recycling storage batteries. Ember expects Africa to install a record 17 GW of solar in 2026, roughly 100,000 panels a day.",
+   "why": "New EPR regimes in fast-growing solar markets could open export and partnership routes for Indian panel and battery recyclers.",
+   "source": "Climate Home News",
+   "url": "https://climatechangenews.com/2026/10/26/african-governments-strengthen-waste-rules-as-solar-and-battery-use-surges"
+  },
+  {
    "date": "2026-10-27",
    "region": "World",
    "topic": "Black mass",
@@ -380,26 +400,6 @@
    "why": "It is a live example of solar-specific producer responsibility, which is the model Indian stakeholders are now asking for.",
    "source": "NSW Government (via Solar Now)",
    "url": "https://now.solar/2026/10/13/nsw-leads-australia-with-new-solar-panel-recycling-mandate-nsw-government"
-  },
-  {
-   "date": "2026-10-06",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "Ex-China terbium and dysprosium prices jump on US demand",
-   "summary": "Fastmarkets' CIP global terbium oxide assessment rose to $5,000–8,000/kg, up 41% in a week. Dysprosium oxide moved to $2,500–3,500/kg. China's export controls keep these heavy rare earths scarce outside China.",
-   "why": "Outside China, these magnet metals now sell at many times China's domestic price. That premium is what makes magnet recycling pay.",
-   "source": "Fastmarkets",
-   "url": "https://www.fastmarkets.com/insights/us-demand-drives-sharp-increases-in-cip-global-terbium-dysprosium-prices/"
-  },
-  {
-   "date": "2026-10-05",
-   "region": "World",
-   "topic": "Battery recycling",
-   "title": "GM puts cathode made from recycled EV batteries into production vehicles",
-   "summary": "With Cirba Solutions, GM turned 80 end-of-life EV packs into black mass and then more than 12 tonnes of new cathode material for Ultium Cells. The first cars built with it have come off the line in Michigan and Tennessee.",
-   "why": "This is closed-loop proof at automaker scale. It is the benchmark Indian OEMs and recyclers will be measured against.",
-   "source": "Resource Recycling",
-   "url": "https://resource-recycling.com/e-scrap/2026/10/05/gm-launches-recycled-ev-battery-line/"
   }
  ]
 }
