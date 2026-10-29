@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "items": [
+  {
+   "date": "2026-10-28",
+   "region": "India",
+   "topic": "EPR",
+   "title": "India's official e-waste numbers and TERI's estimate are still far apart, and EPR checks rely largely on paperwork",
+   "summary": "CPCB figures given to the Lok Sabha show India generated about 1.397 million tonnes of e-waste in 2024-25 and recycled about 1.159 million tonnes, while a TERI report prepared with NITI Aayog support estimates 6.19 million tonnes for 2024, with only 22% reaching authorised recyclers. TERI, which counts 381 registered recyclers and 128 refurbishers, says EPR audits rely mostly on paper checklists and that the GSTN and EPR portals are not linked, weakening invoice tracing.",
+   "why": "If regulators move to material-balance tests or third-party audits of recyclers, as industry voices in the piece propose, the supply and price of EPR certificates that producers buy could shift.",
+   "source": "BW Businessworld",
+   "url": "https://www.businessworld.in/article/india-says-it-recycles-most-of-its-e-waste-proving-it-is-the-hard-part-630895"
+  },
   {
    "date": "2026-10-28",
    "region": "World",
@@ -390,16 +400,6 @@
    "why": "Another South Asian market adopting producer responsibility could open compliance and recycling work for Indian EPR service providers and recyclers next door.",
    "source": "Business News (Sri Lanka)",
    "url": "https://businessnews.lk/2026/10/13/government-moves-towards-new-national-e-waste-management-system/"
-  },
-  {
-   "date": "2026-10-13",
-   "region": "World",
-   "topic": "Solar waste",
-   "title": "New South Wales consults on Australia's first mandatory solar panel recycling scheme",
-   "summary": "The NSW government has released a draft regulation and issues paper that would make solar panel brand owners pay for collecting and recycling end-of-life panels. The state has more than 1.18 million rooftop systems and about 14,000 tonnes of panel waste a year, expected to reach 89,000 tonnes by 2045.",
-   "why": "It is a live example of solar-specific producer responsibility, which is the model Indian stakeholders are now asking for.",
-   "source": "NSW Government (via Solar Now)",
-   "url": "https://now.solar/2026/10/13/nsw-leads-australia-with-new-solar-panel-recycling-mandate-nsw-government"
   }
  ]
 }
