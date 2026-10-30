@@ -3,6 +3,36 @@
  "items": [
   {
    "date": "2026-10-29",
+   "region": "India",
+   "topic": "Deals",
+   "title": "Gravita's September-quarter revenue rises 38% to ₹1,427 crore as its new copper business adds volume",
+   "summary": "Gravita India reported Q2 FY27 consolidated revenue of ₹1,427 crore and net profit of ₹102 crore (up 6%), with the integrated copper business contributing ₹420 crore. Lead recycling volume fell 11.3% to 39,203 tonnes on scrap shortages linked to West Asia and Red Sea shipping delays, and the company plans ₹1,680 crore of capex through FY29, including ₹865 crore for new verticals such as copper and lithium-ion battery recycling.",
+   "why": "A listed Indian recycler is committing capital to lithium-ion and copper recycling, while its lead numbers show how exposed scrap-fed recyclers are to import supply disruptions.",
+   "source": "Business Today",
+   "url": "https://www.businesstoday.in/markets/stocks/story/gravita-india-shares-rise-4-as-axis-securities-emkay-retain-buy-rating-564516-2026-10-29"
+  },
+  {
+   "date": "2026-10-27",
+   "region": "India",
+   "topic": "Critical minerals",
+   "title": "MIDHANI signs MoU with BARC and the Heavy Water Board to recover nickel and cobalt from plant reverts",
+   "summary": "Defence PSU Mishra Dhatu Nigam (MIDHANI) signed a three-way MoU with the Heavy Water Board and BARC to develop efficient recovery processes for nickel and cobalt from its plant reverts. The pact is a cooperation framework; no capacity, investment or timeline was disclosed.",
+   "why": "It brings state research labs into recovering nickel and cobalt from secondary material, the same metals India's battery recyclers and the critical-minerals push are targeting.",
+   "source": "PSU Watch",
+   "url": "https://psuwatch.com/defencewatch/midhani-signs-mou-with-hwb-barc-to-recover-nickel-and-cobalt-from-plant-reverts"
+  },
+  {
+   "date": "2026-10-29",
+   "region": "World",
+   "topic": "Policy",
+   "title": "European clean-tech groups ask the EU to weigh export fees on black mass as most of it leaves the bloc",
+   "summary": "Transport & Environment, Recharge, Clean Tech for Europe and EIES urged the EU to assess export fees or tariffs on black mass and untreated battery waste in its Circular Economy Act, along with a single customs code and end-of-waste criteria for the material. T&E estimates at least 60% of Europe's black mass is exported for refining and says over half of the region's battery recycling capacity is at risk.",
+   "why": "Curbs on European black mass exports would shrink the traded supply that refiners elsewhere, including India's new hydrometallurgy plants, compete for.",
+   "source": "Transport & Environment via CleanTechnica",
+   "url": "https://cleantechnica.com/2026/10/29/scaling-european-battery-recycling-via-the-circular-economy-act"
+  },
+  {
+   "date": "2026-10-29",
    "region": "World",
    "topic": "Black mass",
    "title": "China black mass payables slip again as lithium carbonate falls back to about 90,000 yuan a tonne",
@@ -370,36 +400,6 @@
    "why": "A domestic hydromet buyer of this size adds competition for Indian black mass and battery scrap, and moves the country closer to refining battery salts at home instead of shipping out intermediates.",
    "source": "Indian Chemical News",
    "url": "https://www.indianchemicalnews.com/battery/nan-silox-greenmet-names-vijay-pasupathy-ceo-breaks-ground-on-rs-1400-crore-ap-battery-plant-32273"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "India",
-   "topic": "Rare earths",
-   "title": "Nexon Geochem plans ₹1,250 crore rare-earth magnet plant in Andhra Pradesh",
-   "summary": "Hyderabad-based Nexon Geochem has signed an MoU with the Andhra Pradesh Economic Development Board for a sintered NdFeB magnet plant at Thondangi in Kakinada district, with ₹750 crore in phase one and ₹500 crore in phase two. The plant is designed to make 600 tonnes of permanent magnets a year for EVs, wind turbines, industrial automation and defence.",
-   "why": "No dates were given, but a domestic sintered-magnet maker would give Indian rare-earth recyclers a potential local outlet for recovered NdPr and magnet scrap.",
-   "source": "Business Standard (via PTI)",
-   "url": "https://www.business-standard.com/industry/news/nexon-geochem-to-set-up-1-250-crore-rare-earth-magnet-plant-in-andhra-126101400554_1.html"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "World",
-   "topic": "E-waste",
-   "title": "E-Waste Day 2026 targets cheap 'fast tech' like cables, earbuds and vapes",
-   "summary": "A WEEE Forum study found that only 32% of low-cost gadgets were sent for recycling or reuse, while 39% of buyers had finished with them within a month. The UN estimates 62 million tonnes of e-scrap are generated each year, with only 22.3% recycled.",
-   "why": "Small, low-value items are the hardest category to collect against EPR targets, and their embedded cells add to fire risk at recycling plants.",
-   "source": "Resource Recycling",
-   "url": "https://resource-recycling.com/e-scrap/2026/10/14/fast-tech-reduction-is-focus-of-e-waste-day/"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "India",
-   "topic": "E-waste",
-   "title": "India reports 13.98 lakh tonnes of e-waste for 2024-25, but still doesn't count the informal workforce",
-   "summary": "Published on International E-Waste Day, this piece notes the environment ministry's estimate of 13.98 lakh tonnes generated in 2024-25, with 70.7% reported as processed. It argues India tracks tonnes and certificates but not the informal workers who collect and dismantle most of it.",
-   "why": "Collection targets rise to 80% from FY2027-28. The informal channel is where the missing tonnes are.",
-   "source": "The Wire",
-   "url": "https://m.thewire.in/article/labour/behind-indias-e-waste-problem-is-a-workforce-it-fails-to-count"
   }
  ]
 }
