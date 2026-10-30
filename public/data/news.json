@@ -1,6 +1,26 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "items": [
+  {
+   "date": "2026-10-29",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "China black mass payables slip again as lithium carbonate falls back to about 90,000 yuan a tonne",
+   "summary": "Lithium carbonate futures jumped early in the week but were back near 90,000 yuan a tonne by 29 October, SMM reports, and LFP black mass prices held at first before easing with them. Ternary and LCO payable indicators edged down alongside nickel, cobalt and lithium and now sit near their lowest in about a year, with cobalt payables settling below nickel and lithium.",
+   "why": "Chinese payables are the benchmark for black mass sold out of India, so weaker payables cut what Indian shredders can earn on their output.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104186273-smm-weekly-review-new-energy-hydrometallurgical-disassembly-recycling-this-week-lithium-chemical-prices-pulled-back-recycled-material-prices-under-pressure-with-weak-transactions"
+  },
+  {
+   "date": "2026-10-29",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "China's recycled Pr-Nd from magnet scrap slips to 715–720 yuan/kg as oxide prices weaken",
+   "summary": "SMM says recycled Pr-Nd from NdFeB scrap fell through the week to 715–720 yuan/kg as recyclers cut their quotes in step with lower Pr-Nd oxide, while dysprosium (1,230–1,250 yuan/kg) and terbium (5,600–5,800 yuan/kg) held steady. Suppliers resisted selling at lower prices, trading stayed thin, and SMM expects scrap prices to remain weak in the short term.",
+   "why": "Scrap Pr-Nd prices shape the economics of the magnet-recycling capacity Indian firms are planning alongside the rare earth magnet scheme.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104186354-scrap-pr-nd-follows-the-decline-remaining-weak-in-the-short-term-smm-recycled-rare-earth-weekly-review"
+  },
   {
    "date": "2026-10-28",
    "region": "India",
@@ -380,26 +400,6 @@
    "why": "Collection targets rise to 80% from FY2027-28. The informal channel is where the missing tonnes are.",
    "source": "The Wire",
    "url": "https://m.thewire.in/article/labour/behind-indias-e-waste-problem-is-a-workforce-it-fails-to-count"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "World",
-   "topic": "Battery recycling",
-   "title": "Singapore's NEU Battery Materials raises $7.6M and opens an LFP lithium recovery plant",
-   "summary": "NEU closed a $7.6 million round co-led by Shift4Good and SGInnovate. It opened a plant in Tuas that can process about 1,300 tonnes a year of LFP scrap and black mass into battery-grade lithium. Europe and US expansion is planned from 2027.",
-   "why": "LFP is the hard case for recyclers because it holds no nickel or cobalt. Lithium-only recovery economics will matter as India's LFP volumes grow.",
-   "source": "TechNode Global",
-   "url": "https://technode.global/2026/10/14/neu-battery-materials-funding-singapore-plant"
-  },
-  {
-   "date": "2026-10-13",
-   "region": "World",
-   "topic": "EPR",
-   "title": "Sri Lanka moves towards an EPR-based national e-waste system",
-   "summary": "Sri Lanka's Environment Ministry is preparing amendments to the National Environmental Act and seeking approval for a national e-waste policy built around extended producer responsibility. Specific producer obligations have not yet been announced.",
-   "why": "Another South Asian market adopting producer responsibility could open compliance and recycling work for Indian EPR service providers and recyclers next door.",
-   "source": "Business News (Sri Lanka)",
-   "url": "https://businessnews.lk/2026/10/13/government-moves-towards-new-national-e-waste-management-system/"
   }
  ]
 }
