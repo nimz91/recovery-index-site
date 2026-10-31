@@ -2,6 +2,16 @@
  "updated": "2026-10-31",
  "items": [
   {
+   "date": "2026-10-29",
+   "region": "India",
+   "topic": "Rare earths",
+   "title": "Odisha plans a rare-earth corridor around Gopalpur, from beach-sand mining to magnet making",
+   "summary": "Odisha is drawing up an integrated rare-earth cluster on the Ganjam-Puri coast covering extraction, separation, metals and permanent magnets, building on its roughly 3.16 million tonnes of monazite (of 13.15 million tonnes nationally). The state has approved five projects with proposed investment of about ₹26,450 crore and around 18,450 jobs, while the Mining Corporation of Odisha is acquiring new beach-sand blocks.",
+   "why": "Rare earth chloride from IREL's Odisha plant is now processed elsewhere, so a local magnet supply chain would create domestic offtake, and future scrap streams, for India's planned magnet recyclers.",
+   "source": "Business Standard",
+   "url": "https://www.business-standard.com/economy/news/odisha-plans-integrated-rare-earth-corridor-to-boost-mineral-processing-126102901903_1.html"
+  },
+  {
    "date": "2026-10-30",
    "region": "World",
    "topic": "Solar waste",
@@ -390,16 +400,6 @@
    "why": "With the US price reference back, Indian buyers and refiners can again track US black mass against Asian payables. It also shows US export exemptions are letting some material move.",
    "source": "Fastmarkets",
    "url": "https://www.fastmarkets.com/insights/fastmarkets-resumes-us-black-mass-prices/"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "World",
-   "topic": "E-waste",
-   "title": "EU sold 14.6 million tonnes of electronics in 2024 but collected only 5.5 million tonnes of e-waste",
-   "summary": "Citing Eurostat data for 2024, the European Environmental Bureau and other NGOs said electronics sales in the EU have risen 91% since 2012, while e-waste collection grew about 6% year on year to 5.5 million tonnes. Germany's collection rate was 28.7%, and preparing-for-reuse rates stay below 2%, as the groups push for tougher rules in the WEEE Directive revision.",
-   "why": "A tighter EU WEEE regime will shape the compliance costs of global brands that also sell in India, and Europe's weak collection numbers are a reminder that EPR targets only work when collection is enforced.",
-   "source": "European Environmental Bureau",
-   "url": "https://eeb.org/en/europes-growing-e-waste-crisis-demands-urgent-action-ngos-warn"
   }
  ]
 }
