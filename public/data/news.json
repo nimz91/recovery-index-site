@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-30",
+ "updated": "2026-10-31",
  "items": [
+  {
+   "date": "2026-10-30",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "Australia faces 1.1 million tonnes of dead solar panels by 2035 and needs national rules now, RAND–RMIT brief warns",
+   "summary": "A policy brief by RAND and RMIT University, sponsored by Australia's industry department, projects cumulative end-of-life solar waste of 1.1 million tonnes by 2035, possibly tripling by 2050, and urges a national PV circularity framework by mid-2027 and federal funding for recycling plants by 2028. It values recoverable silver at more than A$6 billion (about US$4.2 billion) a year by 2035 and finds a 2,500-tonne-a-year recycling plant could pay back in 7.2 to 8 years in five states.",
+   "why": "India's solar fleet is growing far faster than Australia's, so the brief's plant economics and reuse-first approach are a useful benchmark for Indian recyclers planning panel capacity.",
+   "source": "pv magazine Australia via Now.Solar",
+   "url": "https://now.solar/2026/10/30/panel-recycling-laws-needed-now-as-2035-million-tonne-solar-waste-mountain-looms-pv-magazine-australia"
+  },
   {
    "date": "2026-10-29",
    "region": "India",
@@ -390,16 +400,6 @@
    "why": "A tighter EU WEEE regime will shape the compliance costs of global brands that also sell in India, and Europe's weak collection numbers are a reminder that EPR targets only work when collection is enforced.",
    "source": "European Environmental Bureau",
    "url": "https://eeb.org/en/europes-growing-e-waste-crisis-demands-urgent-action-ngos-warn"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "India",
-   "topic": "Battery recycling",
-   "title": "N.A.N. Silox GreenMet breaks ground on ₹1,400 crore battery recycling plant in Andhra Pradesh",
-   "summary": "The 50:50 venture between India's N.A.N. GreenMet and Belgium's Silox Group has secured Consent to Establish and started work on a lithium-ion battery recycling and critical-metals plant at Naidupeta. Capacity will be added in phases up to 40,000 tonnes a year of shredding and 20,000 tonnes a year of hydrometallurgical processing, making battery-grade salts; Vijay Pasupathy has been named CEO.",
-   "why": "A domestic hydromet buyer of this size adds competition for Indian black mass and battery scrap, and moves the country closer to refining battery salts at home instead of shipping out intermediates.",
-   "source": "Indian Chemical News",
-   "url": "https://www.indianchemicalnews.com/battery/nan-silox-greenmet-names-vijay-pasupathy-ceo-breaks-ground-on-rs-1400-crore-ap-battery-plant-32273"
   }
  ]
 }
