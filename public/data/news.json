@@ -1,6 +1,16 @@
 {
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "items": [
+  {
+   "date": "2026-10-30",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "China's GEM recycled 50,105 tonnes of EV batteries in January–September, up over 36%",
+   "summary": "GEM, one of China's largest battery recyclers, says it recycled and dismantled 50,105 tonnes of power batteries in the first three quarters of 2026. That is more than 36% higher than a year earlier, according to its third-quarter report.",
+   "why": "Fast-growing Chinese recyclers set the scale and cost benchmark that Indian battery recyclers and black mass buyers will have to compete against.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/104188693-gem-recycles-50105-mt-of-power-batteries-in-q1-q3-2026-up-36-yoy"
+  },
   {
    "date": "2026-10-29",
    "region": "India",
@@ -390,16 +400,6 @@
    "why": "Magnet-to-oxide recycling outside China is moving towards commercial scale, which is useful as a benchmark for Indian firms eyeing rare earth recovery from e-waste and motor scrap.",
    "source": "Mining Technology",
    "url": "https://www.mining-technology.com/?p=718641"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "World",
-   "topic": "Black mass",
-   "title": "Fastmarkets restarts US black mass payables after export exemptions free up flows",
-   "summary": "Fastmarkets resumed its ex-works US nickel and cobalt black mass payable assessments on 14 October. It had suspended them on 1 September, after a US Commerce Department rule banning black mass exports took effect on 27 August.",
-   "why": "With the US price reference back, Indian buyers and refiners can again track US black mass against Asian payables. It also shows US export exemptions are letting some material move.",
-   "source": "Fastmarkets",
-   "url": "https://www.fastmarkets.com/insights/fastmarkets-resumes-us-black-mass-prices/"
   }
  ]
 }
