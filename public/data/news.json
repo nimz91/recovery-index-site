@@ -1,6 +1,16 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-02",
  "items": [
+  {
+   "date": "2026-10-31",
+   "region": "India",
+   "topic": "Policy",
+   "title": "GST reverse charge now applies to e-waste scrap bought from unregistered sellers",
+   "summary": "From 1 November 2026, a registered business that buys electrical and electronic waste and scrap (tariff item 8549) from an unregistered supplier must pay the GST itself under reverse charge, under Notification No. 04/2026 dated 27 October 2026. The same change covers plastic scrap, tyre scrap and used cooking oil, and was made on the GST Council's recommendation.",
+   "why": "Recyclers and dismantlers that source e-waste from informal kabadiwalas now carry the GST liability and paperwork on those purchases, which changes sourcing costs and pushes the chain toward registered suppliers.",
+   "source": "SCC Times (SCC Online)",
+   "url": "https://www.scconline.com/blog/post/2026/10/31/gst-reverse-charge-waste-scrap-unregistered-persons-2026/"
+  },
   {
    "date": "2026-10-30",
    "region": "World",
@@ -390,16 +400,6 @@
    "why": "Solar panels sit inside the e-waste rules today. A separate framework would change who pays, and what recyclers can claim.",
    "source": "The Hindu (via Solar Now)",
    "url": "https://now.solar/2026/10/15/speakers-pitch-for-new-environment-framework-for-handling-solar-panel-waste-the-hindu/"
-  },
-  {
-   "date": "2026-10-14",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "Ionic Rare Earths files plans for a commercial magnet recycling plant in Belfast",
-   "summary": "Ionic Rare Earths submitted a planning application to Belfast City Council on 19 September for a commercial magnet recycling facility at Queen's Island. A decision is expected in Q1 2027, construction is planned from Q3 2027, and the company is working to secure a £12 million UK government capital grant.",
-   "why": "Magnet-to-oxide recycling outside China is moving towards commercial scale, which is useful as a benchmark for Indian firms eyeing rare earth recovery from e-waste and motor scrap.",
-   "source": "Mining Technology",
-   "url": "https://www.mining-technology.com/?p=718641"
   }
  ]
 }
