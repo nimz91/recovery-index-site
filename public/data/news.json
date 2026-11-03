@@ -2,6 +2,26 @@
  "updated": "2026-11-03",
  "items": [
   {
+   "date": "2026-11-03",
+   "region": "India",
+   "topic": "EPR",
+   "title": "Lead industry body wants India's battery dealers made accountable for collecting spent batteries",
+   "summary": "India Lead Zinc Development Association executive director L Pugazhenthy says the Battery Waste Management Rules 2022 leave dealers' duties unclear, and wants dealers registered, collections reported and recyclers audited regularly rather than approved once. About 30% of India's recycled lead still comes from the informal sector and about 65% from authorised recyclers, even though authorised capacity of about 3.5 million tonnes is well above secondary lead output of about 1.6 million tonnes.",
+   "why": "Tighter dealer and audit rules would steer more spent lead-acid batteries to authorised recyclers and change how producers meet their battery EPR targets.",
+   "source": "Batteries International",
+   "url": "https://www.batteriesinternational.com/news/india-must-tighten-dealer-rules-to-tackle-informal-lead-recycling/"
+  },
+  {
+   "date": "2026-11-02",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "Japan proposes that owners scrapping 50 tonnes or more of solar panels file disposal plans in advance",
+   "summary": "Japan's environment ministry and METI favour a 50-tonne threshold that would cover about 7,398 facilities and roughly 38% of expected panel waste from 2027 to 2050, under a solar recycling law due to take effect around December 2027. Panel waste is now projected to peak at up to about 500,000 tonnes a year in the 2040s, well above earlier estimates.",
+   "why": "Japan's volume-based trigger is a working template for India as it decides how to make large solar plant owners handle their own coming wave of end-of-life modules.",
+   "source": "pv magazine via Solar Now",
+   "url": "https://now.solar/2026/11/02/japan-proposes-50-metric-ton-trigger-for-solar-panel-recycling-plans-pv-magazine-global/"
+  },
+  {
    "date": "2026-11-02",
    "region": "World",
    "topic": "Black mass",
@@ -380,26 +400,6 @@
    "why": "Europe is lining up permitting and finance support for domestic battery recycling, which will shape where black mass and recycled metals flow and the standard Indian recyclers selling into EU supply chains will be compared against.",
    "source": "chemeurope.com",
    "url": "https://www.chemeurope.com/en/news/1190084/cylib-selected-as-strategic-project-under-eu-critical-raw-materials-act.html"
-  },
-  {
-   "date": "2026-10-15",
-   "region": "India",
-   "topic": "E-waste",
-   "title": "Wayanad aims to be India's first e-waste-free district by 1 November",
-   "summary": "Kerala's Wayanad district collected 31 tonnes of e-waste from government offices in the first phase of its drive (28–30 September), including 12 tonnes each from Kalpetta and Bathery and five from Mananthawady. The material goes to the state's Clean Kerala Company, and the district is targeting e-waste-free status by Keralam Formation Day on 1 November.",
-   "why": "District drives that route institutional e-waste to a state agency show where formal recyclers can find steady volumes, and who they may be competing with for them.",
-   "source": "India Press Agency (IPA Newspack)",
-   "url": "https://ipanewspack.com/wayanad-set-to-become-first-e-waste-free-district-in-country/"
-  },
-  {
-   "date": "2026-10-15",
-   "region": "World",
-   "topic": "Black mass",
-   "title": "China black mass payables slip after the National Day holiday as lithium and cobalt fall",
-   "summary": "SMM put ternary electrode black mass payables at about 71–73% on 15 October, around 1.2 points below the first day after the holiday, while LFP electrode black mass fell 975 yuan per lithium percentage point to 4,800–5,300 yuan. Lithium carbonate was quoted at 101,800–107,000 yuan a tonne and cobalt sulphate is down more than 4,000 yuan a tonne since the break.",
-   "why": "Chinese payables are a key reference for Indian black mass deals, so softer metal prices point to thinner margins for recyclers selling or buying this quarter.",
-   "source": "SMM (Shanghai Metals Market)",
-   "url": "https://news.metal.com/newscontent/104159754-smm-weekly-review-recycled-hydrometallurgical-recycling-market-this-week-raw-material-prices-continued-to-decline-trading-in-the-recycling-market-was-sluggish"
   }
  ]
 }
