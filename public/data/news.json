@@ -1,6 +1,36 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "items": [
+  {
+   "date": "2026-11-02",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "Sumitomo moves past an MoU to study black mass processing at Livium's Melbourne site",
+   "summary": "Sumitomo Corporation and Livium's Envirostream unit are now evaluating technology, equipment, economics and approvals for expanding black mass output at Derrimut, Victoria, with possible refining in Japan. Sumitomo has started onboarding for a potential black mass purchase, but no binding deal, volumes or pricing are agreed, and Envirostream's existing SungEel HiTech offtake runs to June 2027.",
+   "why": "Japanese trading houses lining up black mass from smaller markets is the same feedstock competition Indian recyclers face as they try to keep black mass at home.",
+   "source": "Mining.com.au",
+   "url": "https://mining.com.au/livium-advances-sumitomo-black-mass-talks"
+  },
+  {
+   "date": "2026-11-02",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "Fraunhofer and TU Freiberg test two new routes to recover neodymium from hard-drive magnets",
+   "summary": "The four-year, Horizon Europe-funded NEO-CYCLE project is trialling solid-state chlorination with ammonium chloride and an electrochemical process to separate neodymium, iron and boron from scrapped magnets, with a pilot plant already being planned. Fraunhofer notes about 90% of Europe's neodymium comes from China and most magnets collected in Europe are shipped there for reprocessing.",
+   "why": "Hard drives are a large part of India's e-waste stream, so low-chemical magnet recovery routes are directly relevant to recyclers eyeing rare earths under the critical-mineral recycling scheme.",
+   "source": "Fraunhofer-Gesellschaft",
+   "url": "https://www.fraunhofer.de/en/press/research-news/2026/november-2026/new-processes-for-recovering-rare-earth-elements-from-magnets.html"
+  },
+  {
+   "date": "2026-11-03",
+   "region": "World",
+   "topic": "Deals",
+   "title": "Malaysian battery recycler Econili adds Vynn Capital, taking total funding to RM8 million",
+   "summary": "Econili, one of five licensed battery-recycling operators in Malaysia, has 24,000 tonnes a year of battery treatment and 12,000 tonnes of critical-mineral recovery capacity in Ipoh, recovering lithium, nickel and cobalt. The undisclosed Vynn Capital cheque brings total funding to about RM8 million (US$1.96 million), to be used to buy more feedstock and raise throughput.",
+   "why": "Southeast Asian recyclers raising money to buy more battery scrap adds to regional competition for the feedstock Indian recyclers also import.",
+   "source": "Digital News Asia",
+   "url": "https://www.digitalnewsasia.com/startups/econili-secures-vynn-capital-backing-bringing-total-funding-us196mil"
+  },
   {
    "date": "2026-10-31",
    "region": "India",
@@ -370,36 +400,6 @@
    "why": "Chinese payables are a key reference for Indian black mass deals, so softer metal prices point to thinner margins for recyclers selling or buying this quarter.",
    "source": "SMM (Shanghai Metals Market)",
    "url": "https://news.metal.com/newscontent/104159754-smm-weekly-review-recycled-hydrometallurgical-recycling-market-this-week-raw-material-prices-continued-to-decline-trading-in-the-recycling-market-was-sluggish"
-  },
-  {
-   "date": "2026-10-15",
-   "region": "World",
-   "topic": "Battery recycling",
-   "title": "Redwood Materials will now recycle Rivian's battery production scrap",
-   "summary": "Rivian has widened its partnership with Redwood Materials, which will recycle scrap from Rivian's battery manufacturing on top of handling end-of-life packs. Redwood is also building a 10 MWh storage system at Rivian's Normal, Illinois plant from more than 100 second-life Rivian packs.",
-   "why": "Production scrap is the cleanest, highest-value feedstock in battery recycling, and Indian recyclers chasing cell-maker scrap will face the same OEM-tied deals as gigafactories ramp up.",
-   "source": "EV Infrastructure News",
-   "url": "https://www.evinfrastructurenews.com/second-life-batteries/redwood-to-recycle-rivian-manufacturing-scrap-in-extension-of-their-partnership"
-  },
-  {
-   "date": "2026-10-15",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "China's NdFeB scrap prices hold near highs as recyclers hesitate",
-   "summary": "SMM's weekly review put recycled Pr-Nd at 755–765 yuan/kg, dysprosium at 1,230–1,250 yuan/kg and terbium at 5,600–5,800 yuan/kg, with Pr-Nd edging up mid-week alongside oxide prices. Recyclers were cautious about paying more, and SMM expects Pr-Nd scrap to consolidate at high levels.",
-   "why": "Chinese scrap prices set the benchmark for what magnet swarf and end-of-life motors from India can fetch.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104159760-scrap-prices-consolidate-at-highs-recycling-purchases-remain-cautious-smm-recycled-rare-earth-weekly-review"
-  },
-  {
-   "date": "2026-10-15",
-   "region": "India",
-   "topic": "Solar waste",
-   "title": "Chennai workshop calls for a separate rulebook for end-of-life solar panels",
-   "summary": "Speakers at a Consumer and Civic Action Group workshop in Chennai said India needs a dedicated solar recycling policy, modelled on its e-waste rules. With a 280 GW solar target, they argued EPR alone has not delivered safe panel dismantling.",
-   "why": "Solar panels sit inside the e-waste rules today. A separate framework would change who pays, and what recyclers can claim.",
-   "source": "The Hindu (via Solar Now)",
-   "url": "https://now.solar/2026/10/15/speakers-pitch-for-new-environment-framework-for-handling-solar-panel-waste-the-hindu/"
   }
  ]
 }
