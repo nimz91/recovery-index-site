@@ -1,6 +1,26 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "items": [
+  {
+   "date": "2026-11-04",
+   "region": "India",
+   "topic": "Critical minerals",
+   "title": "Cabinet clears ₹2,814 crore capex subsidy for two lithium and two nickel processing plants",
+   "summary": "The five-year scheme (FY27 to FY31) offers a 30% capital subsidy to four units, each lithium plant needing at least 30,000 tonnes of capacity and each nickel plant at least 50,000 tonnes, with cobalt recovered as a by-product of nickel. Support is capped at ₹500 crore per lithium beneficiary and ₹900 crore per nickel beneficiary, picked through technical qualification followed by bidding on the lowest capital support sought.",
+   "why": "It funds the step of turning ores and intermediates into high-purity battery compounds, which India largely lacks today; whether recycled intermediates such as black mass qualify will decide how much it helps Indian battery recyclers.",
+   "source": "Business Standard",
+   "url": "https://www.business-standard.com/amp/economy/news/cabinet-approves-five-year-2-814-cr-push-for-critical-mineral-processing-126110401052_1.html"
+  },
+  {
+   "date": "2026-10-31",
+   "region": "India",
+   "topic": "E-waste",
+   "title": "Wayanad gathers 80 tonnes of e-waste in a 50-day drive to become India's first e-waste-free district",
+   "summary": "The Kerala campaign, launched on 10 September, covered all 23 village panchayats and three municipalities, with government offices handing in 31 tonnes and Noolpuzha becoming the first e-waste-free panchayat on 27 October after collecting 5,423 kg. A buffer period with a complaints call centre runs to 10 November, before a formal declaration at Kalpetta on 20 November.",
+   "why": "If other districts copy this government-led model, more household and office e-waste could move into formal collection, the feedstock India's EPR-registered recyclers compete for.",
+   "source": "Onmanorama",
+   "url": "https://www.onmanorama.com/news/kerala/2026/10/31/wayanad-set-become-india-first-e-waste-free-district-from-november-1.html"
+  },
   {
    "date": "2026-11-03",
    "region": "India",
@@ -380,26 +400,6 @@
    "why": "More Chinese pre-treatment capacity means more competition for global battery scrap and black mass, which can weigh on the prices Indian sellers are offered.",
    "source": "SMM (Shanghai Metals Market)",
    "url": "https://news.metal.com/newscontent/104161479-jereh-launches-lithium-battery-recycling-project-in-jinan-shandong-province"
-  },
-  {
-   "date": "2026-10-16",
-   "region": "World",
-   "topic": "Policy",
-   "title": "Malaysia discloses battery-waste volumes for the first time, but has no EV battery EPR yet",
-   "summary": "A written parliamentary reply from Malaysia's environment ministry said 13,743 tonnes of SW103 battery waste were generated from 2021 to 2025, with seven licensed off-site recycling facilities operating as of March 2026. A mandatory EPR regime for EV battery recycling is still under study, and the Department of Environment is drafting amendments to blacklist repeat offenders.",
-   "why": "India already runs battery EPR targets; neighbours without them remain loosely regulated sources of scrap, and a policy gap to watch for Indian recyclers sourcing in the region.",
-   "source": "SMM (Shanghai Metals Market)",
-   "url": "https://news.metal.com/newscontent/104162676-malaysia-discloses-battery-waste-volume-data-for-first-time-mandatory-recycling-regime-not-yet-in-place"
-  },
-  {
-   "date": "2026-10-15",
-   "region": "World",
-   "topic": "Battery recycling",
-   "title": "EU names cylib's Dormagen battery recycling plant a Strategic Project",
-   "summary": "The European Commission picked German recycler cylib's project as a Strategic Project under the Critical Raw Materials Act; its hydrometallurgical plant in Dormagen, now under construction, is designed to handle up to 140,000 EV batteries a year. The label backs the Act's aim of meeting at least 25% of EU strategic raw material demand from recycling by 2030.",
-   "why": "Europe is lining up permitting and finance support for domestic battery recycling, which will shape where black mass and recycled metals flow and the standard Indian recyclers selling into EU supply chains will be compared against.",
-   "source": "chemeurope.com",
-   "url": "https://www.chemeurope.com/en/news/1190084/cylib-selected-as-strategic-project-under-eu-critical-raw-materials-act.html"
   }
  ]
 }
