@@ -1,6 +1,26 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "items": [
+  {
+   "date": "2026-11-04",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "Wagga residents press NSW planning commission to reject a 3,000-tonne lithium-ion battery recycling hub",
+   "summary": "The NSW Independent Planning Commission held public meetings on 3 and 4 November on Calibre Metals' proposed battery recycling hub in East Wagga, which the developer says could process at most 3,000 tonnes a year. The planning department received more than 50 community submissions opposing it, with flood risk a recurring concern, and written submissions stay open until 11 November.",
+   "why": "Local opposition over fire and flood risk is a hurdle Indian battery recyclers also face when siting plants, and shows why site choice and safety cases matter for approvals.",
+   "source": "The Daily Advertiser",
+   "url": "https://www.dailyadvertiser.com.au/story/9384915/community-heard-on-wagga-battery-recycling-plant-development/"
+  },
+  {
+   "date": "2026-11-01",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "Comstock Metals says its Nevada solar panel recycling line now runs continuously",
+   "summary": "Comstock Metals reports that its solar panel recycling system at Silver Springs, Nevada has moved to continuous operation across four shift teams and will now ramp up production. It also says extra storage for incoming panels is in place at its Hanford, California and Cambridge, Ohio sites.",
+   "why": "Commercial-scale panel recycling running round the clock in the US is a reference point for India, which has yet to build dedicated capacity for its own coming wave of solar waste.",
+   "source": "American Recycler via Now.Solar",
+   "url": "https://now.solar/2026/11/01/comstock-metals-commences-operations-for-solar-panel-recycling-american-recycler/"
+  },
   {
    "date": "2026-11-04",
    "region": "India",
@@ -380,26 +400,6 @@
    "why": "India faces the same wave of first-generation solar panels and has no separate solar-waste rulebook yet, so Thailand's zone-plus-penalty model is a template Indian recyclers and regulators may be asked to match.",
    "source": "Bangkok Post (via Now.Solar)",
    "url": "https://now.solar/2026/10/18/thailands-industry-ministry-promotes-industrial-zones-for-recycling-solar-panels-and-batteries-bangkok-post-ua-news"
-  },
-  {
-   "date": "2026-10-16",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "Ex-China rare earth prices hold steady as Lynas agrees A$968 million Meteoric deal",
-   "summary": "SMM's ex-China weekly review put Pr-Nd oxide at $115-129/kg FOB and terbium oxide at $1,161-1,249/kg FOB, down $20/kg, with most other prices flat and trading thin. Lynas agreed to buy Meteoric Resources for about A$968 million to add Brazil's Caldeira ionic clay project, while Arafura raised its binding NdPr oxide offtake to 850 tonnes a year.",
-   "why": "Ex-China oxide prices set the value of recovered Nd, Pr and Tb in magnet scrap, so Indian magnet recyclers and the new magnet-scheme bidders should track these benchmarks rather than Chinese domestic prices.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104162623-prices-outside-china-remained-stable-this-week-with-approvals-and-mergers-progressing-on-the-resource-side-smm-rare-earth-ex-china-weekly-review"
-  },
-  {
-   "date": "2026-10-16",
-   "region": "World",
-   "topic": "Black mass",
-   "title": "Jereh plans 85,000-tonne lithium battery recycling project in Jinan, China",
-   "summary": "Jereh Resources Recycling Technology has opened environmental-impact review for a plant in Jinan, Shandong, with a 25,000 t/yr line for scrap LFP batteries and a 60,000 t/yr line for LFP and ternary batteries. The process runs from pack dismantling and crushing to oxygen-free pyrolysis and sorting, with black mass, copper and aluminium as outputs.",
-   "why": "More Chinese pre-treatment capacity means more competition for global battery scrap and black mass, which can weigh on the prices Indian sellers are offered.",
-   "source": "SMM (Shanghai Metals Market)",
-   "url": "https://news.metal.com/newscontent/104161479-jereh-launches-lithium-battery-recycling-project-in-jinan-shandong-province"
   }
  ]
 }
