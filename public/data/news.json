@@ -1,6 +1,16 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-08",
  "items": [
+  {
+   "date": "2026-11-05",
+   "region": "World",
+   "topic": "Policy",
+   "title": "US EPA says its draft universal-waste rule for lithium-ion batteries and solar panels may be out for comment in spring",
+   "summary": "EPA officials told state waste regulators that the draft rule, first promised in 2023, is still being written and could be proposed for public comment in the spring, with the federal agenda pencilling in a final rule for August 2027. State officials estimate only about 5% of US lithium batteries are recycled, and a House-passed bill would force EPA to finish a lithium-ion rule within 18 months.",
+   "why": "Clearer US rules on collecting and storing spent lithium-ion batteries and end-of-life panels would change how much feedstock stays with US recyclers, which shapes export competition and partnership openings for Indian battery and solar recyclers.",
+   "source": "Waste Dive",
+   "url": "https://www.wastedive.com/news/resource-conservation-recovery-act-epa-battery-solar-universal-waste/873841/"
+  },
   {
    "date": "2026-11-05",
    "region": "India",
@@ -390,16 +400,6 @@
    "why": "India's EV and storage fleet is leaning heavily on LFP, so Indian recyclers and EPR planners face the same question of how to fund recycling of chemistries with little cobalt or nickel to sell.",
    "source": "MoneyToday (Korea)",
    "url": "https://mt.co.kr/en/industry/2026/10/20/2026101917393690614"
-  },
-  {
-   "date": "2026-10-19",
-   "region": "World",
-   "topic": "Black mass",
-   "title": "China's black mass output fell about 15% in September as LFP supply tightened",
-   "summary": "SMM estimates China produced roughly 56,000 tonnes of lithium battery black mass in September, about 15% less than in August, with LFP black mass driving most of the drop. Stricter rules on reusing old batteries, plant maintenance and sellers holding back scrap all cut volumes, while falling lithium carbonate and cobalt sulfate prices squeezed recycler margins.",
-   "why": "Lower Chinese black mass output and thinner margins affect the payables and export demand Indian battery recyclers see for their own black mass.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104165141-september-lithium-battery-black-mass-output-down-mom-lfp-pulls-back-notablysmm-analysis"
   }
  ]
 }
