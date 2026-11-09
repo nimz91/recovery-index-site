@@ -1,6 +1,16 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "items": [
+  {
+   "date": "2026-11-09",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "China extends its pause on wider rare earth export controls by two months, to 10 January",
+   "summary": "China's Ministry of Commerce said on 9 November that the one-year suspension of its October 2025 expansion of rare earth export controls, which also covered lithium battery technology, will run two more months until 10 January. The move is part of a wider pause in trade countermeasures as Beijing negotiates a lasting deal with Washington ahead of an expected Xi–Trump meeting at APEC in Shenzhen.",
+   "why": "A short two-month window keeps rare earth and magnet supply uncertain, which supports the case for Indian magnet and battery recyclers building domestic sources of these materials.",
+   "source": "Reuters via Investing.com",
+   "url": "https://www.investing.com/news/commodities-news/china-extends-suspension-of-new-rare-earth-controls-until-january-5010878"
+  },
   {
    "date": "2026-11-05",
    "region": "World",
@@ -390,16 +400,6 @@
    "why": "It gives Indian policymakers and recyclers a benchmark for how much recycling can offset imported lithium, cobalt and nickel as India builds out its own critical-mineral recycling incentives.",
    "source": "Resource Recycling",
    "url": "https://resource-recycling.com/e-scrap/2026/10/20/study-finds-path-toward-mineral-independence-exists"
-  },
-  {
-   "date": "2026-10-20",
-   "region": "World",
-   "topic": "Battery recycling",
-   "title": "Korea's recyclers struggle to make money from LFP batteries as their share of EVs grows",
-   "summary": "LFP cells held over 65% of the global EV cathode market in January–August 2026, but their recoverable value rests mostly on lithium (about $9.59/kg last year) rather than cobalt ($34.21/kg) or nickel ($15.2/kg). Korea recovered 65.9% of mandatory-return EV batteries between 2021 and August 2026, and industry is asking for recycled-content mandates and clarity on who pays to treat low-value LFP packs.",
-   "why": "India's EV and storage fleet is leaning heavily on LFP, so Indian recyclers and EPR planners face the same question of how to fund recycling of chemistries with little cobalt or nickel to sell.",
-   "source": "MoneyToday (Korea)",
-   "url": "https://mt.co.kr/en/industry/2026/10/20/2026101917393690614"
   }
  ]
 }
