@@ -1,6 +1,26 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "items": [
+  {
+   "date": "2026-11-09",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "China's black mass payables fell through October, with LCO dropping hardest",
+   "summary": "SMM says the lithium payable for LCO black mass slid from above 70% to about 63% in October, while ternary black mass cobalt payables fell from 73.46% to 68.9% and lithium payables to 70.02%. The cuts followed a month in which lithium carbonate fell more than 20% and cobalt sulfate over 25%.",
+   "why": "Lower Chinese payables set the benchmark Indian black mass sellers are quoted against, squeezing margins for recyclers that sell rather than refine.",
+   "source": "SMM (Shanghai Metals Market)",
+   "url": "https://news.metal.com/newscontent/4TE6NZYWDOWOGIJ5E3L6XQXRJBHI4F3OZBVENVA-smm-analysis-black-mass-payables-for-ternary-and-lco-dropped-in-october-lco-leading-amid-thin-trading"
+  },
+  {
+   "date": "2026-11-10",
+   "region": "World",
+   "topic": "Deals",
+   "title": "Rivian widens Redwood Materials deal to cover scrap, end-of-life packs and second-life storage",
+   "summary": "Redwood Materials will recycle Rivian's production scrap and retired EV batteries collected through Rivian's service centres, deciding pack by pack whether to reuse or recycle. An earlier April 2026 deal is already deploying 10 MWh of storage built from repurposed Rivian packs at its Normal, Illinois plant, and Redwood says it recovers over 95% of lithium, nickel, cobalt and copper.",
+   "why": "It shows the full-lifecycle OEM–recycler contract that Indian EV makers may need to meet battery EPR targets, combining reuse and recycling under one partner.",
+   "source": "Business Wire via Batteries News",
+   "url": "https://batteriesnews.com/rivian-and-redwood-materials-expand-partnership-to-span-the-lifecycle-of-the-battery/"
+  },
   {
    "date": "2026-11-09",
    "region": "World",
@@ -380,26 +400,6 @@
    "why": "SMM counts India among the markets driving demand, and steadier Chinese magnet supply sets the price bar that India's planned magnet plants and magnet recyclers must compete with.",
    "source": "Shanghai Metals Market (SMM)",
    "url": "https://news.metal.com/newscontent/104168834-backlog-orders-concentrated-release-combined-with-consultations-landing-september-rare-earth-permanent-magnet-exports-hit-a-new-high-for-the-year-smm-analysis"
-  },
-  {
-   "date": "2026-10-20",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "Phoenix Tailings plans $375 million rare earth separation plant in New York that will also take recycled feed",
-   "summary": "Phoenix Tailings will build a plant in Rochester, New York, to process more than 18,000 tons a year of mined and recycled rare earth feedstock into over 4,400 tons of separated oxides, ramping up in 2027 and reaching full capacity in 2028. It is part of a $1.2 billion project backed by a $500 million conditional loan commitment from the US Office of Strategic Capital.",
-   "why": "Large Western separation capacity that accepts recycled feed creates more buyers for magnet scrap outside China, a market Indian magnet recyclers could target.",
-   "source": "MINING.COM",
-   "url": "https://mining.com/phoenix-tailings-to-build-375m-rare-earth-plant-in-new-york"
-  },
-  {
-   "date": "2026-10-20",
-   "region": "World",
-   "topic": "Critical minerals",
-   "title": "Öko-Institut study says recycling batteries in the EU could cut virgin cobalt demand by 60-70%",
-   "summary": "An Öko-Institut study commissioned by members of the EU Raw Materials Coalition finds that recycling lithium-ion batteries inside the EU could reduce virgin demand by 25-50% for lithium, 60-70% for cobalt and 35-50% for nickel. It also says smaller EVs and lighter batteries could trim mineral needs by about 17% by 2035, and calls for specific recycling targets and more funding for recycling plants.",
-   "why": "It gives Indian policymakers and recyclers a benchmark for how much recycling can offset imported lithium, cobalt and nickel as India builds out its own critical-mineral recycling incentives.",
-   "source": "Resource Recycling",
-   "url": "https://resource-recycling.com/e-scrap/2026/10/20/study-finds-path-toward-mineral-independence-exists"
   }
  ]
 }
