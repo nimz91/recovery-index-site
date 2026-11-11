@@ -2,6 +2,36 @@
  "updated": "2026-11-11",
  "items": [
   {
+   "date": "2026-11-11",
+   "region": "India",
+   "topic": "Black mass",
+   "title": "India bans exports of lithium-ion battery black mass with immediate effect",
+   "summary": "A DGFT notification moves battery waste and scrap under ITC (HS) code 85491400 from 'Free' to 'Prohibited' until further orders, covering unsorted scrap free of lead, cadmium and mercury, which the notice identifies as lithium-ion black mass. The change is limited to that category and is not a blanket ban on all battery material.",
+   "why": "Indian shredders that sold black mass abroad must now find domestic refiners, which should shift payables and favour recyclers with their own hydrometallurgy capacity.",
+   "source": "ANI",
+   "url": "https://aninews.in/news/business/govt-bans-export-of-specified-lithium-ion-battery-waste-and-scrap-with-immediate-effect20261111110842/"
+  },
+  {
+   "date": "2026-11-10",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "LS MnM opens an Ulsan battery materials plant that can take black mass as well as MHP",
+   "summary": "The South Korean smelter completed the plant at its Onsan site on 10 November, with nickel sulfate capacity equal to 24,000 tonnes of contained nickel a year. It will also make cobalt sulfate, manganese sulfate and lithium hydroxide for precursor makers.",
+   "why": "More Korean refining capacity that accepts black mass adds to the buyers Asian recyclers can sell to, a market Indian exporters are now shut out of.",
+   "source": "SMM (Shanghai Metals Market)",
+   "url": "https://news.metal.com/newscontent/E7BIVSEBJAQWN3A3R57CFWZZSI5C7NTKOZVYEPQ-ls-mnm-completes-ulsan-battery-materials-plant-with-black-mass-processing"
+  },
+  {
+   "date": "2026-11-11",
+   "region": "World",
+   "topic": "Battery recycling",
+   "title": "Germany's Tozero makes first delivery of recycled lithium carbonate under a long-term contract",
+   "summary": "Tozero shipped lithium carbonate from its Gendorf demonstration plant, sized for about 500 tonnes of battery waste a year, to ceramic-colour maker Botz under a binding supply deal. The startup aims to recover over 80% of the lithium in used batteries and sells mainly to construction, ceramics and lubricant buyers for now.",
+   "why": "It shows small black-mass refiners can earn early revenue from non-battery lithium buyers while working towards battery grade, a path open to Indian start-ups too.",
+   "source": "electrive",
+   "url": "https://www.electrive.com/2026/11/11/tozero-announces-first-delivery-of-recycled-lithium-carbonate-to-customers/"
+  },
+  {
    "date": "2026-11-10",
    "region": "World",
    "topic": "Solar waste",
@@ -370,36 +400,6 @@
    "why": "The minister tied EPR certificate transfers to recycler income and capacity growth, signalling the government sees the certificate market as the main lever for formal recycling.",
    "source": "ThePrint (via PTI)",
    "url": "https://theprint.in/india/centre-strengthened-law-governing-waste-management-bhupender-yadav/3079085/"
-  },
-  {
-   "date": "2026-10-22",
-   "region": "World",
-   "topic": "Black mass",
-   "title": "China black mass payables slide again as lithium carbonate falls about 3,000 yuan in a week",
-   "summary": "SMM's weekly recycling review says lithium carbonate started the week near 100,000 yuan/mt and was quoted about 3,000 yuan lower by 22 October, dragging recycled material prices down. Ternary black mass payables kept grinding lower, while LCO black mass payables fell faster on weak demand.",
-   "why": "Chinese payables set the reference for Asian black mass trade, so falling coefficients squeeze margins for Indian recyclers selling or importing black mass.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104173716-smm-weekly-review-this-week-in-new-energy-hydrometallurgical-disassembly-recycling-lower-raw-material-prices-dragged-down-the-overall-recycled-materials-market"
-  },
-  {
-   "date": "2026-10-22",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "China's NdFeB scrap Pr-Nd prices keep sliding as oxide prices weaken",
-   "summary": "Shanghai Metals Market says praseodymium-neodymium recovered from NdFeB magnet scrap fell again this week to 735-745 yuan/kg, tracking lower Pr-Nd oxide prices, while scrap dysprosium closed at 1,230-1,250 yuan/kg and terbium at 5,600-5,800 yuan/kg. Recyclers cut their quotes and bought less, holders were reluctant to sell, and SMM expects prices to stay weak in the short term.",
-   "why": "Chinese scrap magnet prices set the benchmark for what Indian e-waste and motor recyclers can expect for recovered magnets, so a falling market squeezes margins on magnet recovery projects.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104173670-scrap-pr-nd-continues-to-pull-back-overall-market-trading-remains-light-smm-recycled-rare-earth-weekly-review"
-  },
-  {
-   "date": "2026-10-20",
-   "region": "India",
-   "topic": "Policy",
-   "title": "Mines Ministry panel to rewrite the 2019 National Mineral Policy, naming recycling and critical minerals as priorities",
-   "summary": "The Mines Ministry has formed a nine-member panel, chaired by an Additional Secretary, to review the National Mineral Policy, 2019 and recommend a comprehensive revision within two months, PTI reports citing sources. Recycling, critical minerals and deep-sea resources are named as the new priorities, alongside a planned recast of the MMDR Act, 1957.",
-   "why": "If recycling gets a formal place in national mineral policy, it could shape future incentives and rules for India's e-waste and battery recyclers.",
-   "source": "Business Standard (via PTI)",
-   "url": "https://www.business-standard.com/amp/industry/news/govt-to-review-2019-mineral-policy-amid-new-sector-priorities-126102000533_1.html"
   }
  ]
 }
