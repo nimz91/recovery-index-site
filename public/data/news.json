@@ -1,6 +1,16 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "items": [
+  {
+   "date": "2026-11-10",
+   "region": "World",
+   "topic": "Solar waste",
+   "title": "Ecoprogetti's automated solar panel recycling line is running in northern Italy",
+   "summary": "Ecoprogetti has supplied a fully automated module recycling line to a site in Sale, Italy, run by Raee.man, a subsidiary of Haiki+. The line can handle up to 120 panels an hour and has reported 94% uptime since it began operating in early 2025.",
+   "why": "Indian module makers and recyclers preparing for MNRE's coming solar recycling guidelines can use this as a benchmark for what a commercial automated line delivers.",
+   "source": "PV Tech",
+   "url": "https://www.pv-tech.org/ecoprogretti-deploys-solar-module-recycling-plant-italy/"
+  },
   {
    "date": "2026-11-09",
    "region": "World",
@@ -390,16 +400,6 @@
    "why": "If recycling gets a formal place in national mineral policy, it could shape future incentives and rules for India's e-waste and battery recyclers.",
    "source": "Business Standard (via PTI)",
    "url": "https://www.business-standard.com/amp/industry/news/govt-to-review-2019-mineral-policy-amid-new-sector-priorities-126102000533_1.html"
-  },
-  {
-   "date": "2026-10-20",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "China's rare earth magnet exports hit a 2026 high of about 6,165 tonnes in September",
-   "summary": "China exported 6,165 tonnes of rare earth permanent magnets in September, up 23% from August and 6.7% from a year earlier, the highest monthly figure this year, as backlogged orders were released, according to SMM. Exports for January to September totalled 48,055 tonnes, up 20% year on year.",
-   "why": "SMM counts India among the markets driving demand, and steadier Chinese magnet supply sets the price bar that India's planned magnet plants and magnet recyclers must compete with.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104168834-backlog-orders-concentrated-release-combined-with-consultations-landing-september-rare-earth-permanent-magnet-exports-hit-a-new-high-for-the-year-smm-analysis"
   }
  ]
 }
