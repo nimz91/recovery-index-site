@@ -1,6 +1,16 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "items": [
+  {
+   "date": "2026-11-12",
+   "region": "India",
+   "topic": "Deals",
+   "title": "COSMO AM&T and Carbon Resources plan a ₹40 billion LFP cathode plant in Andhra Pradesh",
+   "summary": "Andhra Pradesh's cabinet on 10 November approved a ₹40 billion plan by South Korea's COSMO AM&T and India's Carbon Resources for a battery materials plant at Naidupeta in Tirupati district. The first phase, targeted for mid-2028, would make 30,000 tonnes a year each of iron phosphate precursor and LFP cathode material, rising to 180,000 tonnes each (360,000 tonnes combined) by 2031.",
+   "why": "A large domestic LFP cathode maker would be a natural local buyer for lithium recovered by Indian recyclers, which matters more now that black mass can no longer be exported.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/WHJZJMSJAYGOUCZQ2JLHRDZ4ZUTWRW63WZE2FLI-cosmo-amt-and-carbon-resources-plan-inr-40-billion-lfp-materials-plant-in-india"
+  },
   {
    "date": "2026-11-11",
    "region": "India",
@@ -390,16 +400,6 @@
    "why": "Europe is paying to build magnet capacity outside China, a benchmark for the incentives India offers its own rare-earth magnet and recycling projects.",
    "source": "Shanghai Metals Market (SMM)",
    "url": "https://news.metal.com/newscontent/104173529-neo-performance-materials-secures-%E2%82%AC126m-eu-fund-for-rare-earth-expansion-in-estonia"
-  },
-  {
-   "date": "2026-10-22",
-   "region": "India",
-   "topic": "EPR",
-   "title": "Bhupender Yadav says over 86,000 producers and 4,880 recyclers are now registered under India's EPR rules",
-   "summary": "Speaking at a CII Circular Economy Conference in New Delhi, the Environment Minister said more than 86,043 producers and 4,880 recyclers are registered under EPR frameworks covering plastic, battery, e-waste and tyre waste. He said nearly 499.60 lakh tonnes of waste have been processed across these regulated streams so far.",
-   "why": "The minister tied EPR certificate transfers to recycler income and capacity growth, signalling the government sees the certificate market as the main lever for formal recycling.",
-   "source": "ThePrint (via PTI)",
-   "url": "https://theprint.in/india/centre-strengthened-law-governing-waste-management-bhupender-yadav/3079085/"
   }
  ]
 }
