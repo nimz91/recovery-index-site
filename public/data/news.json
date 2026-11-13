@@ -4,6 +4,26 @@
   {
    "date": "2026-11-13",
    "region": "World",
+   "topic": "Battery recycling",
+   "title": "South Korea plans regulatory exemptions to recycle more cathode and anode scrap from battery plants",
+   "summary": "At a 12 November meeting in Daejeon, South Korea's environment ministry said it will designate circular-economy zones with regulatory exemptions by the end of 2026 and back recycling trials through its regulatory sandbox in the first quarter of 2027. Companies asked for wider circular-resource eligibility so that production scrap now classed as waste faces lighter storage and transport rules.",
+   "why": "With black mass exports now banned, Indian recyclers and cell makers will be watching how Korea frees up gigafactory scrap from waste rules, a model India's own battery-waste regime may need.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/7HBWIP6MEFJSRRA3ZORPOYTTTYMVNU6YSKDQBVI-south-korea-plans-regulatory-exemptions-for-battery-production-scrap-recycling"
+  },
+  {
+   "date": "2026-11-12",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "Korean firms commit 650 billion won to rare-earth magnet plants ahead of US defence sourcing curbs",
+   "summary": "LS Cable & System will spend 350 billion won ($263 million) on a magnet plant in Gumi with more than 1,000 tonnes a year of capacity from 2028, while KMMI plans 300 billion won through 2030 for a 6,000-tonne plant in Pohang. The push comes before US rules from 1 January 2027 restrict China-sourced magnets across the whole defence supply chain.",
+   "why": "Non-Chinese magnet capacity is growing fast in Asia, which raises demand for traceable rare-earth feed, including recycled material that Indian magnet and e-waste recyclers could supply.",
+   "source": "The Korea Herald",
+   "url": "https://www.koreaherald.com/article/10935318"
+  },
+  {
+   "date": "2026-11-13",
+   "region": "World",
    "topic": "Black mass",
    "title": "Veolia opens a French hydrometallurgical plant able to process nearly 7,000 tonnes of black mass a year",
    "summary": "Veolia said on 12 November it has started a battery-metals recycling facility in France's Grand Est region that can treat nearly 7,000 tonnes of black mass a year, roughly 20,000 tonnes of batteries, recovering over 90% of the cobalt, nickel and copper. Feedstock will come from France, the UK and Switzerland, and Veolia expects close to 700,000 tonnes of batteries to reach recycling in Europe within five years.",
@@ -380,26 +400,6 @@
    "why": "Silver is the main value driver in end-of-life panels, so Indian recyclers preparing for solar waste under the e-waste EPR regime need recovery routes that capture it.",
    "source": "Recycling International via Now.Solar",
    "url": "https://now.solar/2026/10/23/solar-panel-recycling-offers-valuable-silver-lining-recycling-international/"
-  },
-  {
-   "date": "2026-10-22",
-   "region": "World",
-   "topic": "Policy",
-   "title": "Thailand proposes banning metal scrap imports to curb e-waste smuggling",
-   "summary": "Thailand's Customs Department on 21 October proposed a ban on imports of ferrous, copper, aluminium and rubber scrap, with a 6–12 month transition period, to fight smuggling of electronic and hazardous waste. Customs has already stepped up physical checks on containers declared as metal scrap, though the ban itself is still only a proposal.",
-   "why": "A Thai ban would push more scrap toward other Asian importers such as India and signals tighter regional policing of e-waste shipped as metal scrap.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104173488-smm-aluminum-flash-newsthailand-tightens-scrap-import-inspections-proposes-ban-on-aluminium-and-copper-scrap"
-  },
-  {
-   "date": "2026-10-24",
-   "region": "World",
-   "topic": "Solar waste",
-   "title": "South Korea starts recycling solar panels on site with mobile trailer plants as panel waste climbs",
-   "summary": "Waste solar panels processed in South Korea rose from 152 tonnes in 2023 to 2,300 tonnes in 2026, and the first on-site recycling with trailer-mounted units ran this week under a regulatory sandbox that exempts it from the Wastes Control Act. A recycler says processing at the solar plant can cut transport costs to about one-sixth, while a blade-based method that separates glass from cells lifts silver and copper recovery four- to fivefold.",
-   "why": "As India's early solar fleet ages, on-site processing and better silver recovery show Indian recyclers ways to cut the freight costs that make panel recycling hard to pay for.",
-   "source": "SBS News",
-   "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008812842"
   }
  ]
 }
