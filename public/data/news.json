@@ -1,6 +1,26 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "items": [
+  {
+   "date": "2026-11-13",
+   "region": "World",
+   "topic": "Black mass",
+   "title": "Veolia opens a French hydrometallurgical plant able to process nearly 7,000 tonnes of black mass a year",
+   "summary": "Veolia said on 12 November it has started a battery-metals recycling facility in France's Grand Est region that can treat nearly 7,000 tonnes of black mass a year, roughly 20,000 tonnes of batteries, recovering over 90% of the cobalt, nickel and copper. Feedstock will come from France, the UK and Switzerland, and Veolia expects close to 700,000 tonnes of batteries to reach recycling in Europe within five years.",
+   "why": "More refining capacity in Europe adds buyers for black mass just as India has banned its export, so Indian recyclers will be competing with hubs like this for feedstock and offtake partners rather than selling to them.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/65N3EUHFLPUCDNRIRY2WURG4JXMTG2KFJWLZ4YI-veolia-launches-french-battery-metals-recycling-facility-with-annual-black-mass-capacity-of-nearly-7000-tonnes"
+  },
+  {
+   "date": "2026-11-12",
+   "region": "World",
+   "topic": "Rare earths",
+   "title": "China's magnet-scrap prices hold at highs as dysprosium oxide climbs past 1.5 million yuan a tonne",
+   "summary": "SMM's weekly review puts Pr-Nd recovered from NdFeB scrap at 715–720 yuan/kg, recycled dysprosium at 1,230–1,250 yuan/kg and recycled terbium at 5,600–5,800 yuan/kg after successive gains. Dysprosium oxide rose sharply to 1.51–1.52 million yuan/mt and Pr-Nd oxide to 715,000–718,000 yuan/mt as of 12 November.",
+   "why": "Firm heavy rare earth prices improve the economics of recovering magnets from Indian e-waste and motors, a segment the critical-mineral recycling scheme is meant to build up.",
+   "source": "Shanghai Metals Market (SMM)",
+   "url": "https://news.metal.com/newscontent/LSUA6TMB6QCBH5VU6CKK5ZFLHQUGQJCPVM653SI-rare-earth-full-chain-recovery-and-rise-dysprosium-series-significantly-lead-the-gains-smm-rare-earth-weekly-review"
+  },
   {
    "date": "2026-11-12",
    "region": "India",
@@ -380,26 +400,6 @@
    "why": "As India's early solar fleet ages, on-site processing and better silver recovery show Indian recyclers ways to cut the freight costs that make panel recycling hard to pay for.",
    "source": "SBS News",
    "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008812842"
-  },
-  {
-   "date": "2026-10-22",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "GM ends magnet supply deal with VAC's new $500 million South Carolina plant",
-   "summary": "General Motors terminated its strategic sourcing agreement with e-VAC Magnetics, the US unit of Germany's Vacuumschmelze, effective 1 July 2026; the plant has capacity of just under 2,000 tonnes a year and was meant to send 90% of its output to GM. VAC has begun arbitration seeking damages, and Energy Fuels, which agreed in June to buy VAC for $1.9 billion, says the price could be adjusted depending on the outcome.",
-   "why": "Weaker carmaker demand for non-Chinese magnets shapes the market Indian magnet makers and rare-earth recyclers are planning to sell into.",
-   "source": "Reuters via StreetInsider",
-   "url": "https://www.streetinsider.com/Reuters/Exclusive-GM+cancels+deal+with+new+US+rare-earth+magnet+plant,+documents+say/27223620.html"
-  },
-  {
-   "date": "2026-10-22",
-   "region": "World",
-   "topic": "Rare earths",
-   "title": "Neo Performance Materials wins up to €126 million in EU funding to expand its Estonian magnet plant",
-   "summary": "The EU Innovation Fund grant will help lift Neo's magnet capacity in Estonia from 2,000 to about 5,000 tonnes a year, with a third of the new output aimed at EU offshore wind. The grant agreement is due to be signed in March 2027, and construction is expected to take two to three years.",
-   "why": "Europe is paying to build magnet capacity outside China, a benchmark for the incentives India offers its own rare-earth magnet and recycling projects.",
-   "source": "Shanghai Metals Market (SMM)",
-   "url": "https://news.metal.com/newscontent/104173529-neo-performance-materials-secures-%E2%82%AC126m-eu-fund-for-rare-earth-expansion-in-estonia"
   }
  ]
 }
