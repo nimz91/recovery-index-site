@@ -3,6 +3,26 @@
   "items": [
     {
       "date": "2026-11-13",
+      "region": "India",
+      "topic": "EPR",
+      "title": "CPCB orders state inspections of over 2,000 recyclers, 309 of them e-waste units, to catch fake EPR claims",
+      "summary": "A July order from the CPCB chairman, reported by Reuters, asked all states to inspect more than 2,000 recyclers, including 309 e-waste processors, checking machinery, plant trial runs and electricity use against claimed output. Units found with forged or manipulated paperwork can be blocked from generating EPR certificates, and Uttar Pradesh, home to about a third of e-waste recyclers, has lined up 33 of them for immediate audits.",
+      "why": "Producers buying EPR certificates face a higher risk that credits from weak recyclers get blocked, which should favour verified, high-capacity recyclers.",
+      "source": "Reuters via Business Standard",
+      "url": "https://www.business-standard.com/industry/news/india-orders-audit-of-electronic-waste-recyclers-to-catch-fake-compliance-126111300869_1.html"
+    },
+    {
+      "date": "2026-11-12",
+      "region": "World",
+      "topic": "Solar waste",
+      "title": "Australia cancels the tender for its $24.7 million national solar panel recycling pilot",
+      "summary": "Australia's environment department scrapped the procurement for the pilot without awarding a contract, after months of suspension over a complaint; the scheme was meant to collect up to 250,000 panels from up to 100 sites over 12 to 18 months. The minister has asked for urgent advice on next steps and says the government remains committed to a national pilot.",
+      "why": "It shows how slowly solar-waste take-back schemes can get off the ground, a useful caution as India's MNRE drafts its own module recycling guidelines.",
+      "source": "RenewEconomy",
+      "url": "https://reneweconomy.com.au/shocking-development-solar-recycling-pilot-in-chaos-as-government-cancels-failed-tender-process"
+    },
+    {
+      "date": "2026-11-13",
       "region": "World",
       "topic": "Rare earths",
       "title": "US magnet recycler REEcycle clears an SEC hurdle for its planned Nasdaq listing via a SPAC",
@@ -380,26 +400,6 @@
       "why": "Lower Asian payables cut what Indian recyclers can earn by exporting NCM black mass and strengthen the case for refining it at home.",
       "source": "Fastmarkets",
       "url": "https://fastmarkets.com/insights/recycled-battery-metal-markets-battle-headwinds-during-damp-lme-week"
-    },
-    {
-      "date": "2026-10-27",
-      "region": "World",
-      "topic": "Rare earths",
-      "title": "HyProMag USA plans three more US magnet recycling plants to quadruple output to about 4,200 tonnes a year",
-      "summary": "A pre-feasibility study puts new plants in South Carolina, Nevada and a second Texas site at about $623–656 million, lifting salable NdFeB magnet output to roughly 4,192 tonnes a year by 2034 from about 1,048 tonnes at its first plant in Northlake, Texas. The study, which modelled a recycled-scrap-only case among others, estimates a post-tax NPV of $1.85–2.06 billion; Northlake's first phase is due in mid-2028 and no offtake deals are signed yet.",
-      "why": "Magnet scrap is becoming a contested feedstock outside China, which matters for Indian recyclers that collect NdFeB scrap from motors and electronics and for India's planned magnet plants.",
-      "source": "Investing.com",
-      "url": "https://in.investing.com/news/stock-market-news/exclusive-hypromag-usa-maps-three-new-magnet-plants-to-quadruple-us-capacity-5655233"
-    },
-    {
-      "date": "2026-10-24",
-      "region": "World",
-      "topic": "Rare earths",
-      "title": "Taiwan's ITRI plans a 500-tonne-a-year rare earth plant to meet half the island's needs by 2030",
-      "summary": "ITRI president Chang Pei-zen says a demonstration plant making 500 tonnes of rare earths a year is targeted for completion by end-2028, a hundredfold scale-up from the institute's experimental line of about 5,000 kg a year. The goal is to cover half of Taiwan's demand by end-2030 and cut exposure to Chinese export restrictions, with state funding and possible price guarantees still under discussion.",
-      "why": "It is another electronics-heavy economy building rare earth separation outside China, the same supply gap India's magnet and critical-mineral recycling schemes are trying to close.",
-      "source": "Focus Taiwan (CNA)",
-      "url": "https://focustaiwan.tw/business/202610240006"
     }
   ]
 }
