@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "items": [
+    {
+      "date": "2026-11-15",
+      "region": "World",
+      "topic": "Rare earths",
+      "title": "Ex-China Pr-Nd oxide rises $4/kg in a week as dysprosium and terbium firm in Rotterdam",
+      "summary": "SMM's weekly ex-China assessment puts Pr-Nd oxide at $113–125/kg FOB, up $4/kg, with Pr-Nd alloy also up $4/kg at $130–144/kg FOB. In Rotterdam bonded warehouses, dysprosium oxide gained $50/kg to $3,400–4,200/kg and terbium oxide $100/kg to $7,500–8,300/kg.",
+      "why": "Firmer prices outside China lift the value of the neodymium, praseodymium, dysprosium and terbium locked in scrap magnets, improving the case for Indian magnet-recycling projects.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/newscontent/PXAAYYGKCZHFCN2HUXYCHRN5BK5SVWNUD4YUBDY-light-rare-earth-prices-rebound-intensive-regional-supply-chain-moves-smm-rare-earth-ex-china-weekly-review"
+    },
     {
       "date": "2026-11-13",
       "region": "India",
@@ -390,16 +400,6 @@
       "why": "New EPR regimes in fast-growing solar markets could open export and partnership routes for Indian panel and battery recyclers.",
       "source": "Climate Home News",
       "url": "https://climatechangenews.com/2026/10/26/african-governments-strengthen-waste-rules-as-solar-and-battery-use-surges"
-    },
-    {
-      "date": "2026-10-27",
-      "region": "World",
-      "topic": "Black mass",
-      "title": "Korean black mass payables drop to their lowest since January as LME Week mood sours",
-      "summary": "Fastmarkets' NCM black mass payables (cif South Korea) fell to 88-94% for nickel and cobalt on 21 October, from 92-96% a week earlier, the weakest it has recorded since 21 January 2026. Traders at LME Week pointed to Korean cellmakers moving to LFP, with one recycler saying Korean pCAM and CAM plants are running at only about 20% capacity.",
-      "why": "Lower Asian payables cut what Indian recyclers can earn by exporting NCM black mass and strengthen the case for refining it at home.",
-      "source": "Fastmarkets",
-      "url": "https://fastmarkets.com/insights/recycled-battery-metal-markets-battle-headwinds-during-damp-lme-week"
     }
   ]
 }
