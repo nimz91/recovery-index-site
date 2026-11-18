@@ -1,6 +1,26 @@
 {
-  "updated": "2026-11-15",
+  "updated": "2026-11-18",
   "items": [
+    {
+      "date": "2026-11-17",
+      "region": "World",
+      "topic": "Policy",
+      "title": "North Carolina bans lithium-ion batteries from landfills and most incinerators from 1 December",
+      "summary": "North Carolina's ban on sending lithium-ion batteries to landfills and most permitted incinerators starts on 1 December, pushing local programmes to take loose batteries and battery-containing devices at drop-off points. The state, which holds more than 80% of US lithium ore reserves in two counties, is also asking residents to keep batteries and electronics out of kerbside recycling bins.",
+      "why": "Disposal bans are a proven way to raise collection volumes, a lesson India's battery EPR system can use as it tries to pull spent cells away from the informal sector.",
+      "source": "Resource Recycling",
+      "url": "https://resource-recycling.com/e-scrap/2026/11/17/north-carolina-nears-battery-disposal-ban"
+    },
+    {
+      "date": "2026-11-16",
+      "region": "World",
+      "topic": "Solar waste",
+      "title": "US recycler SPR takes a fifth plant in California, lifting its capacity towards 6.5 million panels a year",
+      "summary": "Solar Panel Recycling has taken over a 42,000-square-foot site in Porterville, California, which will start at 1 million panels a year once retrofitted, with processing hoped for by February. With four other sites in North Carolina, Texas and Georgia, the company says its total capacity will reach 6.5 million panels a year and that it recovers at least 95% of the aluminium, glass and silver.",
+      "why": "It shows the plant scale and recovery rates solar recyclers are reaching abroad, a benchmark for India as MNRE drafts module recycling guidelines.",
+      "source": "Resource Recycling",
+      "url": "https://resource-recycling.com/e-scrap/2026/11/16/california-expansion-gives-solar-panel-recycling-national-reach/"
+    },
     {
       "date": "2026-11-15",
       "region": "World",
@@ -380,26 +400,6 @@
       "why": "If regulators move to material-balance tests or third-party audits of recyclers, as industry voices in the piece propose, the supply and price of EPR certificates that producers buy could shift.",
       "source": "BW Businessworld",
       "url": "https://www.businessworld.in/article/india-says-it-recycles-most-of-its-e-waste-proving-it-is-the-hard-part-630895"
-    },
-    {
-      "date": "2026-10-28",
-      "region": "World",
-      "topic": "Solar waste",
-      "title": "Australia's A$24.7 million solar panel recycling pilot has been on hold for over five months",
-      "summary": "The federal pilot, meant to set up as many as 100 collection sites for old panels, was suspended on 15 May after a single complaint under procurement rules, and the environment department could not say when it will restart. Australia had about 3 million panels (60,000 tonnes) reach end of life in 2025, a figure that could hit 50 million panels (1 million tonnes) by 2035, with as little as 17% recycled.",
-      "why": "India's own solar fleet will throw up similar volumes, and Australia shows how slowly collection systems get built without a clear, enforced rulebook.",
-      "source": "AAP via Solar Now",
-      "url": "https://now.solar/2026/10/28/in-the-dark-solar-recycling-scheme-delayed-for-months-aapnews-aap-com-au/"
-    },
-    {
-      "date": "2026-10-26",
-      "region": "World",
-      "topic": "Policy",
-      "title": "African governments move towards EPR for solar panels and batteries as installations surge",
-      "summary": "Nigeria has validated a policy that would make producers, distributors and importers of off-grid solar gear responsible for it at end of life, pending cabinet approval, and ECOWAS energy ministers adopted a regional framework on handling and recycling storage batteries. Ember expects Africa to install a record 17 GW of solar in 2026, roughly 100,000 panels a day.",
-      "why": "New EPR regimes in fast-growing solar markets could open export and partnership routes for Indian panel and battery recyclers.",
-      "source": "Climate Home News",
-      "url": "https://climatechangenews.com/2026/10/26/african-governments-strengthen-waste-rules-as-solar-and-battery-use-surges"
     }
   ]
 }
