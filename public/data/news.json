@@ -2,6 +2,36 @@
   "updated": "2026-11-19",
   "items": [
     {
+      "date": "2026-11-16",
+      "region": "India",
+      "topic": "Critical minerals",
+      "title": "Technology Development Board backs Hyderabad's NeoSeekermetals to recover critical minerals from e-waste and battery scrap",
+      "summary": "The DST's Technology Development Board signed an agreement to fund a ₹20 crore project, with ₹10 crore approved from the government's RDI Fund as optionally convertible debt. NeoSeekermetals will use it to take its patented process for extracting critical minerals from e-waste and lithium-ion battery waste from TRL-5 to TRL-9.",
+      "why": "It is one of the first RDI Fund cheques for a home-grown recycling technology, a signal of state support for metal recovery as India keeps black mass at home.",
+      "source": "Social News XYZ via IANS",
+      "url": "https://www.socialnews.xyz/2026/11/16/tdb-neoseekermetals-join-hands-to-scale-critical-minerals-recovery-from-e-waste"
+    },
+    {
+      "date": "2026-11-19",
+      "region": "World",
+      "topic": "Rare earths",
+      "title": "China's Pr-Nd oxide hits a monthly high as magnet-scrap prices climb with it",
+      "summary": "SMM's weekly review puts Pr-Nd oxide at 725,000–727,000 yuan/mt after an early-week dip to 715,000–718,000, while dysprosium oxide sits at 1.56–1.57 million yuan/mt and terbium oxide at 6.45–6.5 million. NdFeB scrap was quoted at 720–730 yuan/kg for Pr-Nd content, 1,230–1,250 yuan/kg for Dy and 5,600–5,800 yuan/kg for Tb.",
+      "why": "Scrap payables track oxide prices closely, so firmer Pr-Nd and Dy lift the value of magnets recovered from Indian e-waste and motors.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/newscontent/HPLV6NBELCO5AQDNQYMMS4OASIEB5PKPMV2BZRQ-rare-earth-chain-continues-to-rise-pr-nd-hits-new-monthly-high-smm-rare-earth-weekly-review"
+    },
+    {
+      "date": "2026-11-19",
+      "region": "World",
+      "topic": "E-waste",
+      "title": "Smelters pour money into e-scrap capacity, but the fight for feedstock has yet to heat up",
+      "summary": "Aurubis's Georgia smelter is built for about 180,000 tonnes a year, Atlantic Copper's new CirCular plant for about 60,000 tonnes, and Umicore has committed €450 million to expand Hoboken refining by 2030. Yet Boliden's Rönnskär took in 18,257 tonnes of electronics and alloy feed in Q3, down 1.8% year on year, and the 2026 copper concentrate benchmark treatment charge fell to zero.",
+      "why": "With copper concentrate scarce and global smelters adding e-scrap lines, demand for Indian PCB and copper-bearing scrap could firm over the next few years.",
+      "source": "Resource Recycling",
+      "url": "https://resource-recycling.com/e-scrap/2026/11/19/e-scrap-feedstock-competition-mixed-amid-investments/"
+    },
+    {
       "date": "2026-11-18",
       "region": "India",
       "topic": "Battery recycling",
@@ -370,36 +400,6 @@
       "why": "India's solar fleet is growing far faster than Australia's, so the brief's plant economics and reuse-first approach are a useful benchmark for Indian recyclers planning panel capacity.",
       "source": "pv magazine Australia via Now.Solar",
       "url": "https://now.solar/2026/10/30/panel-recycling-laws-needed-now-as-2035-million-tonne-solar-waste-mountain-looms-pv-magazine-australia"
-    },
-    {
-      "date": "2026-10-29",
-      "region": "India",
-      "topic": "Deals",
-      "title": "Gravita's September-quarter revenue rises 38% to ₹1,427 crore as its new copper business adds volume",
-      "summary": "Gravita India reported Q2 FY27 consolidated revenue of ₹1,427 crore and net profit of ₹102 crore (up 6%), with the integrated copper business contributing ₹420 crore. Lead recycling volume fell 11.3% to 39,203 tonnes on scrap shortages linked to West Asia and Red Sea shipping delays, and the company plans ₹1,680 crore of capex through FY29, including ₹865 crore for new verticals such as copper and lithium-ion battery recycling.",
-      "why": "A listed Indian recycler is committing capital to lithium-ion and copper recycling, while its lead numbers show how exposed scrap-fed recyclers are to import supply disruptions.",
-      "source": "Business Today",
-      "url": "https://www.businesstoday.in/markets/stocks/story/gravita-india-shares-rise-4-as-axis-securities-emkay-retain-buy-rating-564516-2026-10-29"
-    },
-    {
-      "date": "2026-10-27",
-      "region": "India",
-      "topic": "Critical minerals",
-      "title": "MIDHANI signs MoU with BARC and the Heavy Water Board to recover nickel and cobalt from plant reverts",
-      "summary": "Defence PSU Mishra Dhatu Nigam (MIDHANI) signed a three-way MoU with the Heavy Water Board and BARC to develop efficient recovery processes for nickel and cobalt from its plant reverts. The pact is a cooperation framework; no capacity, investment or timeline was disclosed.",
-      "why": "It brings state research labs into recovering nickel and cobalt from secondary material, the same metals India's battery recyclers and the critical-minerals push are targeting.",
-      "source": "PSU Watch",
-      "url": "https://psuwatch.com/defencewatch/midhani-signs-mou-with-hwb-barc-to-recover-nickel-and-cobalt-from-plant-reverts"
-    },
-    {
-      "date": "2026-10-29",
-      "region": "World",
-      "topic": "Policy",
-      "title": "European clean-tech groups ask the EU to weigh export fees on black mass as most of it leaves the bloc",
-      "summary": "Transport & Environment, Recharge, Clean Tech for Europe and EIES urged the EU to assess export fees or tariffs on black mass and untreated battery waste in its Circular Economy Act, along with a single customs code and end-of-waste criteria for the material. T&E estimates at least 60% of Europe's black mass is exported for refining and says over half of the region's battery recycling capacity is at risk.",
-      "why": "Curbs on European black mass exports would shrink the traded supply that refiners elsewhere, including India's new hydrometallurgy plants, compete for.",
-      "source": "Transport & Environment via CleanTechnica",
-      "url": "https://cleantechnica.com/2026/10/29/scaling-european-battery-recycling-via-the-circular-economy-act"
     }
   ]
 }
