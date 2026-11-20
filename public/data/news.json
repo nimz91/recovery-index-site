@@ -2,6 +2,16 @@
   "updated": "2026-11-20",
   "items": [
     {
+      "date": "2026-11-17",
+      "region": "World",
+      "topic": "Solar waste",
+      "title": "Korea Zinc and Solarcycle merge US recycling arms into a new platform, Jupiter",
+      "summary": "Korea Zinc will hold a majority stake in Jupiter, which combines its PedalPoint Recycling unit with US solar panel recycler Solarcycle across eight certified facilities and one million square feet of processing space. Recovered metals will be refined through Korea Zinc's plants, including its planned US$7.4 billion Project Crucible smelter in Tennessee, due to start production in 2029.",
+      "why": "It shows a major smelter buying into panel collection to lock in recycled silver and copper, a model Indian recyclers and module makers may need as MNRE drafts solar recycling rules.",
+      "source": "PV Tech",
+      "url": "https://www.pv-tech.org/solarcycle-korea-zinc-pedalpoint-recycling-merge-jupiter-us-recycling-platform/"
+    },
+    {
       "date": "2026-11-18",
       "region": "World",
       "topic": "Battery recycling",
@@ -390,16 +400,6 @@
       "why": "Fast-growing Chinese recyclers set the scale and cost benchmark that Indian battery recyclers and black mass buyers will have to compete against.",
       "source": "Shanghai Metals Market (SMM)",
       "url": "https://news.metal.com/newscontent/104188693-gem-recycles-50105-mt-of-power-batteries-in-q1-q3-2026-up-36-yoy"
-    },
-    {
-      "date": "2026-10-29",
-      "region": "India",
-      "topic": "Rare earths",
-      "title": "Odisha plans a rare-earth corridor around Gopalpur, from beach-sand mining to magnet making",
-      "summary": "Odisha is drawing up an integrated rare-earth cluster on the Ganjam-Puri coast covering extraction, separation, metals and permanent magnets, building on its roughly 3.16 million tonnes of monazite (of 13.15 million tonnes nationally). The state has approved five projects with proposed investment of about ₹26,450 crore and around 18,450 jobs, while the Mining Corporation of Odisha is acquiring new beach-sand blocks.",
-      "why": "Rare earth chloride from IREL's Odisha plant is now processed elsewhere, so a local magnet supply chain would create domestic offtake, and future scrap streams, for India's planned magnet recyclers.",
-      "source": "Business Standard",
-      "url": "https://www.business-standard.com/economy/news/odisha-plans-integrated-rare-earth-corridor-to-boost-mineral-processing-126102901903_1.html"
     }
   ]
 }
