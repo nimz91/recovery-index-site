@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "items": [
+    {
+      "date": "2026-11-18",
+      "region": "World",
+      "topic": "Battery recycling",
+      "title": "Germany's disruptive-innovation agency SPRIND takes a stake in battery recycler Cylib",
+      "summary": "SPRIND is investing an undisclosed amount in Cylib, whose water-based process recovers lithium from black mass with stated recovery rates of over 90% for lithium, graphite, nickel, cobalt and manganese. Cylib is building a hydrometallurgical plant in Dormagen, an EU Critical Raw Materials Act strategic project, and since September has run a black mass line at Wernberg-Köblitz designed for up to 10,000 tonnes a year.",
+      "why": "State equity in lithium-from-black-mass refining in Europe sets a benchmark for the hydrometallurgical capacity India now needs after banning black mass exports.",
+      "source": "electrive.com",
+      "url": "https://www.electrive.com/2026/11/18/cylib-opens-door-for-investment-by-german-federal-agency-for-disruptive-innovation/"
+    },
     {
       "date": "2026-11-16",
       "region": "India",
@@ -390,16 +400,6 @@
       "why": "Rare earth chloride from IREL's Odisha plant is now processed elsewhere, so a local magnet supply chain would create domestic offtake, and future scrap streams, for India's planned magnet recyclers.",
       "source": "Business Standard",
       "url": "https://www.business-standard.com/economy/news/odisha-plans-integrated-rare-earth-corridor-to-boost-mineral-processing-126102901903_1.html"
-    },
-    {
-      "date": "2026-10-30",
-      "region": "World",
-      "topic": "Solar waste",
-      "title": "Australia faces 1.1 million tonnes of dead solar panels by 2035 and needs national rules now, RAND–RMIT brief warns",
-      "summary": "A policy brief by RAND and RMIT University, sponsored by Australia's industry department, projects cumulative end-of-life solar waste of 1.1 million tonnes by 2035, possibly tripling by 2050, and urges a national PV circularity framework by mid-2027 and federal funding for recycling plants by 2028. It values recoverable silver at more than A$6 billion (about US$4.2 billion) a year by 2035 and finds a 2,500-tonne-a-year recycling plant could pay back in 7.2 to 8 years in five states.",
-      "why": "India's solar fleet is growing far faster than Australia's, so the brief's plant economics and reuse-first approach are a useful benchmark for Indian recyclers planning panel capacity.",
-      "source": "pv magazine Australia via Now.Solar",
-      "url": "https://now.solar/2026/10/30/panel-recycling-laws-needed-now-as-2035-million-tonne-solar-waste-mountain-looms-pv-magazine-australia"
     }
   ]
 }
