@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "items": [
+    {
+      "date": "2026-11-19",
+      "region": "India",
+      "topic": "Rare earths",
+      "title": "Coal India-led consortium gets an LoI for a 1,200-tonne rare earth magnet plant under the ₹7,280 crore scheme",
+      "summary": "The Ministry of Heavy Industries issued a Letter of Intent dated 19 November to a consortium of Coal India and NFTDC, declared the L2 bidder, for a sintered rare earth magnet facility with 1,200 tonnes of annual capacity over a seven-year term (two years of pre-construction, five of operation). The scheme, approved in November 2025 with a ₹7,280 crore outlay, aims for 6,000 tonnes a year of domestic magnet capacity and drew 20 bids.",
+      "why": "New domestic magnet makers will need neodymium and dysprosium feed, giving Indian recyclers that recover rare earths from magnet scrap and e-waste a potential home market.",
+      "source": "The Pioneer",
+      "url": "https://dailypioneer.com/india/coal-india-led-consortium-receives-loi-from-govt-to-set-up-rare-earth-permanent-manufacturing-facility"
+    },
     {
       "date": "2026-11-17",
       "region": "World",
@@ -390,16 +400,6 @@
       "why": "Recyclers and dismantlers that source e-waste from informal kabadiwalas now carry the GST liability and paperwork on those purchases, which changes sourcing costs and pushes the chain toward registered suppliers.",
       "source": "SCC Times (SCC Online)",
       "url": "https://www.scconline.com/blog/post/2026/10/31/gst-reverse-charge-waste-scrap-unregistered-persons-2026/"
-    },
-    {
-      "date": "2026-10-30",
-      "region": "World",
-      "topic": "Battery recycling",
-      "title": "China's GEM recycled 50,105 tonnes of EV batteries in January–September, up over 36%",
-      "summary": "GEM, one of China's largest battery recyclers, says it recycled and dismantled 50,105 tonnes of power batteries in the first three quarters of 2026. That is more than 36% higher than a year earlier, according to its third-quarter report.",
-      "why": "Fast-growing Chinese recyclers set the scale and cost benchmark that Indian battery recyclers and black mass buyers will have to compete against.",
-      "source": "Shanghai Metals Market (SMM)",
-      "url": "https://news.metal.com/newscontent/104188693-gem-recycles-50105-mt-of-power-batteries-in-q1-q3-2026-up-36-yoy"
     }
   ]
 }
