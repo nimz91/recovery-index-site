@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "items": [
+    {
+      "date": "2026-11-20",
+      "region": "World",
+      "topic": "Rare earths",
+      "title": "Myanmar supplies about 80% of China's October rare earth oxide imports as volumes rise 32% on year",
+      "summary": "China imported 5,227 tonnes of unlisted rare earth oxides in October, up 4% from September and 32% from a year earlier, according to customs data compiled by SMM. Myanmar shipped 4,073 tonnes and Laos 1,037 tonnes, while mixed rare earth carbonate imports shrank to 50 tonnes, down 92% on year.",
+      "why": "With China's oxide feed resting on two neighbouring suppliers, any disruption there flows into Pr-Nd and magnet-scrap prices that set the economics of magnet recycling in India.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/en/newscontent/ZFEPTTFV7SFQDFQBG544RP7SIJ6MRHM4QNVMMTY-chinas-rare-earth-imports-surge-in-october-myanmar-dominates-supply"
+    },
     {
       "date": "2026-11-19",
       "region": "India",
@@ -390,16 +400,6 @@
       "why": "Southeast Asian recyclers raising money to buy more battery scrap adds to regional competition for the feedstock Indian recyclers also import.",
       "source": "Digital News Asia",
       "url": "https://www.digitalnewsasia.com/startups/econili-secures-vynn-capital-backing-bringing-total-funding-us196mil"
-    },
-    {
-      "date": "2026-10-31",
-      "region": "India",
-      "topic": "Policy",
-      "title": "GST reverse charge now applies to e-waste scrap bought from unregistered sellers",
-      "summary": "From 1 November 2026, a registered business that buys electrical and electronic waste and scrap (tariff item 8549) from an unregistered supplier must pay the GST itself under reverse charge, under Notification No. 04/2026 dated 27 October 2026. The same change covers plastic scrap, tyre scrap and used cooking oil, and was made on the GST Council's recommendation.",
-      "why": "Recyclers and dismantlers that source e-waste from informal kabadiwalas now carry the GST liability and paperwork on those purchases, which changes sourcing costs and pushes the chain toward registered suppliers.",
-      "source": "SCC Times (SCC Online)",
-      "url": "https://www.scconline.com/blog/post/2026/10/31/gst-reverse-charge-waste-scrap-unregistered-persons-2026/"
     }
   ]
 }
