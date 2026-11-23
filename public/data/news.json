@@ -1,6 +1,26 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "items": [
+    {
+      "date": "2026-11-23",
+      "region": "World",
+      "topic": "Policy",
+      "title": "EU Commission weighs a levy on uncollected e-waste to raise about €15 billion a year for its budget",
+      "summary": "The European Commission is considering a levy on waste electrical and electronic equipment that goes uncollected, as a new source of revenue for the EU budget. Dubbed an 'E-Waste-Tax', it is expected to raise roughly €15 billion a year.",
+      "why": "A budget levy tied to collection shortfalls would push EU states to tighten WEEE take-back, which shapes the export markets and compliance models Indian producers and recyclers benchmark against.",
+      "source": "Lebensmittel Zeitung",
+      "url": "https://lebensmittelzeitung.net/politik/nachrichten/elektroschrott-eu-kommission-plant-abgabe-auf-elektroaltgeraete-194410"
+    },
+    {
+      "date": "2026-11-19",
+      "region": "World",
+      "topic": "Black mass",
+      "title": "China's LFP black mass eases with lithium carbonate near 91,000 yuan a tonne, while ternary payables hold",
+      "summary": "Lithium carbonate traded sideways at around 91,000 yuan per tonne as of 19 November, and LFP black mass prices slipped slightly with it, though grinding plants resisted selling cheaply. Ternary black mass payables were broadly stable, LCO black mass tracked cobalt and lithium salts, and overall trading stayed thin as loss-making hydrometallurgy buyers held back.",
+      "why": "Chinese black mass payables set the reference that Indian recyclers and pre-processors price against, especially now that India has barred black mass exports.",
+      "source": "SMM (Shanghai Metals Market)",
+      "url": "https://news.metal.com/newscontent/QIUPKHC4UVHFPNXDVGW3LIIQFC43N5EXDLO4SZA-smm-weekly-review-new-energy-hydrometallurgical-disassembly-recycling-this-week-limited-black-mass-circulation-in-the-market-sluggish-transactions"
+    },
     {
       "date": "2026-11-20",
       "region": "World",
@@ -380,26 +400,6 @@
       "why": "Japanese trading houses lining up black mass from smaller markets is the same feedstock competition Indian recyclers face as they try to keep black mass at home.",
       "source": "Mining.com.au",
       "url": "https://mining.com.au/livium-advances-sumitomo-black-mass-talks"
-    },
-    {
-      "date": "2026-11-02",
-      "region": "World",
-      "topic": "Rare earths",
-      "title": "Fraunhofer and TU Freiberg test two new routes to recover neodymium from hard-drive magnets",
-      "summary": "The four-year, Horizon Europe-funded NEO-CYCLE project is trialling solid-state chlorination with ammonium chloride and an electrochemical process to separate neodymium, iron and boron from scrapped magnets, with a pilot plant already being planned. Fraunhofer notes about 90% of Europe's neodymium comes from China and most magnets collected in Europe are shipped there for reprocessing.",
-      "why": "Hard drives are a large part of India's e-waste stream, so low-chemical magnet recovery routes are directly relevant to recyclers eyeing rare earths under the critical-mineral recycling scheme.",
-      "source": "Fraunhofer-Gesellschaft",
-      "url": "https://www.fraunhofer.de/en/press/research-news/2026/november-2026/new-processes-for-recovering-rare-earth-elements-from-magnets.html"
-    },
-    {
-      "date": "2026-11-03",
-      "region": "World",
-      "topic": "Deals",
-      "title": "Malaysian battery recycler Econili adds Vynn Capital, taking total funding to RM8 million",
-      "summary": "Econili, one of five licensed battery-recycling operators in Malaysia, has 24,000 tonnes a year of battery treatment and 12,000 tonnes of critical-mineral recovery capacity in Ipoh, recovering lithium, nickel and cobalt. The undisclosed Vynn Capital cheque brings total funding to about RM8 million (US$1.96 million), to be used to buy more feedstock and raise throughput.",
-      "why": "Southeast Asian recyclers raising money to buy more battery scrap adds to regional competition for the feedstock Indian recyclers also import.",
-      "source": "Digital News Asia",
-      "url": "https://www.digitalnewsasia.com/startups/econili-secures-vynn-capital-backing-bringing-total-funding-us196mil"
     }
   ]
 }
