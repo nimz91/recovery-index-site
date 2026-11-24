@@ -1,6 +1,26 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "items": [
+    {
+      "date": "2026-11-24",
+      "region": "India",
+      "topic": "Deals",
+      "title": "Attero plans about ₹3,000 crore over five years to scale e-waste and battery recycling",
+      "summary": "Attero CEO Nitin Gupta said the recycler will invest about INR 30 billion over five years, with roughly 40% going to lithium and nickel, and aims to lift annual e-waste capacity from about 225,000 tonnes to 1 million tonnes within four years. It also plans to grow lithium and battery recycling about five-fold, with new plants in Bengaluru (about 60,000 tonnes of e-waste a year) and Andhra Pradesh.",
+      "why": "A capacity jump of this size from India's largest organised recycler would deepen competition for e-waste and battery feedstock and for EPR certificates.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/newscontent/BM55SWXOLHP3BEKQHHZYGQSIFDBVUKW6ZTKCZNY-indias-attero-plans-to-invest-inr-30-billion-to-expand-critical-mineral-recycling"
+    },
+    {
+      "date": "2026-11-23",
+      "region": "World",
+      "topic": "Deals",
+      "title": "BASF sells its battery recycling business, including the Schwarzheide black mass plant, to start-up Cylib",
+      "summary": "Aachen-based Cylib is taking over BASF's European and North American battery recycling activities, including the Schwarzheide black mass plant that can handle up to 15,000 tonnes of batteries and scrap a year, at an undisclosed price. Closing is expected in the second or third quarter of 2027, subject to regulatory approval.",
+      "why": "A chemicals major exiting battery recycling shows how thin European margins have become, a signal for Indian recyclers weighing hydromet investment and export-linked strategies.",
+      "source": "electrive",
+      "url": "https://www.electrive.com/2026/11/23/aachen-startup-cylib-acquires-basfs-battery-recycling-business/"
+    },
     {
       "date": "2026-11-23",
       "region": "World",
@@ -380,26 +400,6 @@
       "why": "Tighter dealer and audit rules would steer more spent lead-acid batteries to authorised recyclers and change how producers meet their battery EPR targets.",
       "source": "Batteries International",
       "url": "https://www.batteriesinternational.com/news/india-must-tighten-dealer-rules-to-tackle-informal-lead-recycling/"
-    },
-    {
-      "date": "2026-11-02",
-      "region": "World",
-      "topic": "Solar waste",
-      "title": "Japan proposes that owners scrapping 50 tonnes or more of solar panels file disposal plans in advance",
-      "summary": "Japan's environment ministry and METI favour a 50-tonne threshold that would cover about 7,398 facilities and roughly 38% of expected panel waste from 2027 to 2050, under a solar recycling law due to take effect around December 2027. Panel waste is now projected to peak at up to about 500,000 tonnes a year in the 2040s, well above earlier estimates.",
-      "why": "Japan's volume-based trigger is a working template for India as it decides how to make large solar plant owners handle their own coming wave of end-of-life modules.",
-      "source": "pv magazine via Solar Now",
-      "url": "https://now.solar/2026/11/02/japan-proposes-50-metric-ton-trigger-for-solar-panel-recycling-plans-pv-magazine-global/"
-    },
-    {
-      "date": "2026-11-02",
-      "region": "World",
-      "topic": "Black mass",
-      "title": "Sumitomo moves past an MoU to study black mass processing at Livium's Melbourne site",
-      "summary": "Sumitomo Corporation and Livium's Envirostream unit are now evaluating technology, equipment, economics and approvals for expanding black mass output at Derrimut, Victoria, with possible refining in Japan. Sumitomo has started onboarding for a potential black mass purchase, but no binding deal, volumes or pricing are agreed, and Envirostream's existing SungEel HiTech offtake runs to June 2027.",
-      "why": "Japanese trading houses lining up black mass from smaller markets is the same feedstock competition Indian recyclers face as they try to keep black mass at home.",
-      "source": "Mining.com.au",
-      "url": "https://mining.com.au/livium-advances-sumitomo-black-mass-talks"
     }
   ]
 }
