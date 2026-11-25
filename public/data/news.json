@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "items": [
+    {
+      "date": "2026-11-24",
+      "region": "World",
+      "topic": "Black mass",
+      "title": "Fortum produces its first battery-grade recycled nickel, cobalt and lithium samples for customers in Finland",
+      "summary": "Fortum has sent customers samples of battery-grade cobalt sulfate, nickel sulfate and lithium hydroxide from a pilot campaign at its Harjavalta site, and is in offtake talks with potential buyers. The planned NEXT HYDROMET expansion would treat 3,000 tonnes of black mass a year, enough for about 138,000 EVs, with operations estimated to start in 2029 and €86.4 million of Business Finland support approved.",
+      "why": "It shows European hydrometallurgy moving from black mass to sellable battery chemicals, the step Indian recyclers must now master at home after the black mass export ban.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/newscontent/6K4OQB3MMZMA6DTVEFDSLBENVANXLQN2AXMQW5Q-finlands-fortum-produces-first-customer-samples-of-recycled-battery-grade-cobalt-sulfate"
+    },
     {
       "date": "2026-11-24",
       "region": "India",
@@ -390,16 +400,6 @@
       "why": "If other districts copy this government-led model, more household and office e-waste could move into formal collection, the feedstock India's EPR-registered recyclers compete for.",
       "source": "Onmanorama",
       "url": "https://www.onmanorama.com/news/kerala/2026/10/31/wayanad-set-become-india-first-e-waste-free-district-from-november-1.html"
-    },
-    {
-      "date": "2026-11-03",
-      "region": "India",
-      "topic": "EPR",
-      "title": "Lead industry body wants India's battery dealers made accountable for collecting spent batteries",
-      "summary": "India Lead Zinc Development Association executive director L Pugazhenthy says the Battery Waste Management Rules 2022 leave dealers' duties unclear, and wants dealers registered, collections reported and recyclers audited regularly rather than approved once. About 30% of India's recycled lead still comes from the informal sector and about 65% from authorised recyclers, even though authorised capacity of about 3.5 million tonnes is well above secondary lead output of about 1.6 million tonnes.",
-      "why": "Tighter dealer and audit rules would steer more spent lead-acid batteries to authorised recyclers and change how producers meet their battery EPR targets.",
-      "source": "Batteries International",
-      "url": "https://www.batteriesinternational.com/news/india-must-tighten-dealer-rules-to-tackle-informal-lead-recycling/"
     }
   ]
 }
