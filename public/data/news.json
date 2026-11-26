@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "items": [
+    {
+      "date": "2026-11-25",
+      "region": "World",
+      "topic": "Battery recycling",
+      "title": "Fraunhofer ISI: Europe's announced battery recycling capacity now far outruns the scrap available to feed it",
+      "summary": "Fraunhofer ISI puts Europe's current battery return volume at about 110–150 kt a year, rising to 240–320 kt by 2030 after cutting its earlier 2030 forecast of more than 400 kt by around one-third, while announced pretreatment capacity reaches just under 750 kt a year by 2030. Installed refining capacity is only around 200 kt a year against more than 800 kt announced, and black mass prices for some chemistries have fallen by over 50%.",
+      "why": "A European feedstock glut and falling black mass prices shape the market Indian recyclers now serve at home after the black mass export ban, and show the risk of building capacity ahead of scrap supply.",
+      "source": "Fraunhofer ISI",
+      "url": "https://www.isi.fraunhofer.de/en/blog/themen/batterie-update/batterie-recycling_europa_kapazitaeten_bedarf_update_2026.html"
+    },
     {
       "date": "2026-11-24",
       "region": "World",
@@ -390,16 +400,6 @@
       "why": "It funds the step of turning ores and intermediates into high-purity battery compounds, which India largely lacks today; whether recycled intermediates such as black mass qualify will decide how much it helps Indian battery recyclers.",
       "source": "Business Standard",
       "url": "https://www.business-standard.com/amp/economy/news/cabinet-approves-five-year-2-814-cr-push-for-critical-mineral-processing-126110401052_1.html"
-    },
-    {
-      "date": "2026-10-31",
-      "region": "India",
-      "topic": "E-waste",
-      "title": "Wayanad gathers 80 tonnes of e-waste in a 50-day drive to become India's first e-waste-free district",
-      "summary": "The Kerala campaign, launched on 10 September, covered all 23 village panchayats and three municipalities, with government offices handing in 31 tonnes and Noolpuzha becoming the first e-waste-free panchayat on 27 October after collecting 5,423 kg. A buffer period with a complaints call centre runs to 10 November, before a formal declaration at Kalpetta on 20 November.",
-      "why": "If other districts copy this government-led model, more household and office e-waste could move into formal collection, the feedstock India's EPR-registered recyclers compete for.",
-      "source": "Onmanorama",
-      "url": "https://www.onmanorama.com/news/kerala/2026/10/31/wayanad-set-become-india-first-e-waste-free-district-from-november-1.html"
     }
   ]
 }
