@@ -2,6 +2,36 @@
   "updated": "2026-11-27",
   "items": [
     {
+      "date": "2026-11-27",
+      "region": "World",
+      "topic": "Rare earths",
+      "title": "Cyclic Materials picks Schkopau, Germany, for its first European magnet recycling plant",
+      "summary": "The North American rare earth recycler has secured a site near Leipzig for a plant with capacity similar to its Arizona facility, which can process up to 25,000 tonnes of scrap a year; launch is planned for 2028. It is the first of five scrap plants planned in the region to feed one central rare earth oxide separation hub.",
+      "why": "Europe building scrap-to-oxide capacity outside China raises competition for end-of-life motors and hard drives, the same feedstock Indian magnet recyclers will need under the new magnet scheme.",
+      "source": "Reuters via Mining.com.au",
+      "url": "https://mining.com.au/rare-earth-recycler-cyclic-materials-to-expand-into-europe-and-asia"
+    },
+    {
+      "date": "2026-11-26",
+      "region": "World",
+      "topic": "Black mass",
+      "title": "China's black mass market splits: LFP quotes fall with lithium while ternary and LCO payables edge up",
+      "summary": "Lithium carbonate slid to around 86,000 yuan a tonne by 26 November, dragging LFP black mass quotes lower, though deals fell by less as cost-supported processors held back. Ternary payables rose slightly as some hydrometallurgical plants paid up to fill long-term contracts, and LCO payables also climbed amid thin, contested trading.",
+      "why": "Chinese payables set the benchmark that Indian recyclers and black mass buyers price against, and the gap between LFP and ternary material affects which battery scrap is worth collecting.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/newscontent/QOMNH42RB6P3L236AK2S2O5ZQZ7J7ZONY3FLT6Q-smm-weekly-review-new-energy-hydrometallurgical-disassembly-recycling-this-week-market-shows-clear-divergence-influenced-by-salt-end"
+    },
+    {
+      "date": "2026-11-26",
+      "region": "World",
+      "topic": "Rare earths",
+      "title": "China's NdFeB scrap prices hold near highs, with Pr-Nd at 730-735 yuan/kg",
+      "summary": "Recycled Pr-Nd from magnet scrap closed the week at 730-735 yuan/kg, with dysprosium at 1,240-1,260 yuan/kg and terbium at 5,600-5,800 yuan/kg. Prices rose early in the week alongside Pr-Nd oxide and then levelled off as recyclers bought only for immediate needs and sellers held stock back.",
+      "why": "Magnet-scrap prices show what end-of-life motors and drives are worth, a key input for Indian e-waste recyclers weighing rare earth recovery.",
+      "source": "Shanghai Metals Market (SMM)",
+      "url": "https://news.metal.com/newscontent/O6TNWK2K5IUOVGNWWSLP7VOV7WPXPO4LREE44NA-scrap-pr-nd-rises-then-stabilizes-consolidates-at-highs-with-thin-trading-smm-recycled-rare-earth-weekly-review"
+    },
+    {
       "date": "2026-11-26",
       "region": "India",
       "topic": "E-waste",
@@ -370,36 +400,6 @@
       "why": "A short two-month window keeps rare earth and magnet supply uncertain, which supports the case for Indian magnet and battery recyclers building domestic sources of these materials.",
       "source": "Reuters via Investing.com",
       "url": "https://www.investing.com/news/commodities-news/china-extends-suspension-of-new-rare-earth-controls-until-january-5010878"
-    },
-    {
-      "date": "2026-11-05",
-      "region": "World",
-      "topic": "Policy",
-      "title": "US EPA says its draft universal-waste rule for lithium-ion batteries and solar panels may be out for comment in spring",
-      "summary": "EPA officials told state waste regulators that the draft rule, first promised in 2023, is still being written and could be proposed for public comment in the spring, with the federal agenda pencilling in a final rule for August 2027. State officials estimate only about 5% of US lithium batteries are recycled, and a House-passed bill would force EPA to finish a lithium-ion rule within 18 months.",
-      "why": "Clearer US rules on collecting and storing spent lithium-ion batteries and end-of-life panels would change how much feedstock stays with US recyclers, which shapes export competition and partnership openings for Indian battery and solar recyclers.",
-      "source": "Waste Dive",
-      "url": "https://www.wastedive.com/news/resource-conservation-recovery-act-epa-battery-solar-universal-waste/873841/"
-    },
-    {
-      "date": "2026-11-05",
-      "region": "India",
-      "topic": "Solar waste",
-      "title": "MNRE is drafting solar module recycling guidelines that will push makers to build more recyclable panels",
-      "summary": "MNRE Secretary Santosh Kumar Sarangi said at the Bharat Renewable Energy Summit that the ministry wants the guidelines out quickly; solar and wind waste currently falls under the E-Waste (Management) Rules, 2022, which require waste modules to be preserved until 2035. Suzlon and the Aditya Birla Group signed an MoU to recycle blade epoxy, and MNRE plans an SOP to extend this to other wind turbine makers.",
-      "why": "Separate product-specific rules for solar and wind waste would reshape EPR obligations for module makers and open a dedicated feedstock stream for Indian recyclers ahead of the 2033–35 wave of retiring panels.",
-      "source": "Business Standard",
-      "url": "https://www.business-standard.com/industry/news/renewable-energy-investments-may-exceed-220-bn-by-2030-pralhad-joshi-126110501826_1.html"
-    },
-    {
-      "date": "2026-11-05",
-      "region": "World",
-      "topic": "Black mass",
-      "title": "China LFP black mass prices edge down again while ternary payables hold steady",
-      "summary": "SMM said lithium carbonate consolidated around 92,000 yuan per tonne as of 5 November, while LFP black mass prices were adjusted down modestly and cobalt payables for ternary material slipped slightly. LCO black mass payables remain near their lowest levels of the past year, with trading described as sluggish and buyers waiting.",
-      "why": "Chinese black mass payables set the benchmark against which Indian shredders price their output and judge whether exporting or refining locally pays.",
-      "source": "SMM (Shanghai Metals Market)",
-      "url": "https://news.metal.com/newscontent/104207193-smm-weekly-review-new-energy-hydrometallurgical-disassembly-recycling-this-week-salt-end-prices-consolidate-recycled-material-transactions-sluggish"
     }
   ]
 }
