@@ -1,6 +1,36 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "items": [
+    {
+      "date": "2026-11-26",
+      "region": "India",
+      "topic": "E-waste",
+      "title": "Wayanad gathers about 103 tonnes of e-waste in a district-wide drive ahead of an e-waste-free declaration",
+      "summary": "Kerala's Wayanad district collected 102.85 tonnes of electronic waste from homes, offices, institutions and government departments across all 23 grama panchayats and three municipalities. The material has gone to authorised agencies for processing, and the district is due to be formally declared e-waste-free.",
+      "why": "It shows how panchayat-level collection with Haritha Karma Sena workers can pull household e-waste into the authorised channel that EPR recyclers depend on.",
+      "source": "Onmanorama",
+      "url": "https://www.onmanorama.com/news/kerala/2026/11/26/wayanad-moves-closer-to-e-waste-free-status-after-district-wide-collection-drive.html"
+    },
+    {
+      "date": "2026-11-27",
+      "region": "World",
+      "topic": "Rare earths",
+      "title": "Dysprosium oxide export price climbs to $328/kg, past its February peak, as China supply stays tight",
+      "summary": "Dysprosium oxide FOB China rose 1.5% in the week to $328/kg on 25 November, above the $327/kg high of 25 February, and terbium oxide rose 5.0% to $1,252/kg. Inside China, dysprosium oxide reached 1,610 yuan/kg on 26 November, up 14.2% since 23 October.",
+      "why": "Rising heavy rare earth prices lift the value of magnet scrap and strengthen the case for India's planned magnet recycling and manufacturing capacity.",
+      "source": "SMM (Shanghai Metals Market)",
+      "url": "https://news.metal.com/newscontent/Q3VQJITTAIEFEUIJY2HRGGIYBX6XHDOJQOWEMVA-dysprosium-export-price-tops-february-peak-on-tight-china-supply"
+    },
+    {
+      "date": "2026-11-26",
+      "region": "World",
+      "topic": "Black mass",
+      "title": "UK recycler Altilium signs LOI to supply recycled nickel MHP to Marubeni and POSCO HY Clean Metal",
+      "summary": "Altilium signed a non-binding letter of intent to supply mixed hydroxide precipitate recovered from end-of-life EV batteries in the UK to Marubeni and POSCO HY Clean Metal. Its ACT3 plant under construction in Plymouth is designed to recycle 24,000 EV batteries a year and make about 5,200 tonnes of nickel MHP.",
+      "why": "Offtake deals for intermediate products like MHP are a route Indian black mass processors could follow to reach Korean and Japanese cathode supply chains.",
+      "source": "The EV Report",
+      "url": "https://theevreport.com/altilium-marubeni-posco-hy-clean-metal-mhp-loi"
+    },
     {
       "date": "2026-11-25",
       "region": "World",
@@ -370,36 +400,6 @@
       "why": "Chinese black mass payables set the benchmark against which Indian shredders price their output and judge whether exporting or refining locally pays.",
       "source": "SMM (Shanghai Metals Market)",
       "url": "https://news.metal.com/newscontent/104207193-smm-weekly-review-new-energy-hydrometallurgical-disassembly-recycling-this-week-salt-end-prices-consolidate-recycled-material-transactions-sluggish"
-    },
-    {
-      "date": "2026-11-04",
-      "region": "World",
-      "topic": "Battery recycling",
-      "title": "Wagga residents press NSW planning commission to reject a 3,000-tonne lithium-ion battery recycling hub",
-      "summary": "The NSW Independent Planning Commission held public meetings on 3 and 4 November on Calibre Metals' proposed battery recycling hub in East Wagga, which the developer says could process at most 3,000 tonnes a year. The planning department received more than 50 community submissions opposing it, with flood risk a recurring concern, and written submissions stay open until 11 November.",
-      "why": "Local opposition over fire and flood risk is a hurdle Indian battery recyclers also face when siting plants, and shows why site choice and safety cases matter for approvals.",
-      "source": "The Daily Advertiser",
-      "url": "https://www.dailyadvertiser.com.au/story/9384915/community-heard-on-wagga-battery-recycling-plant-development/"
-    },
-    {
-      "date": "2026-11-01",
-      "region": "World",
-      "topic": "Solar waste",
-      "title": "Comstock Metals says its Nevada solar panel recycling line now runs continuously",
-      "summary": "Comstock Metals reports that its solar panel recycling system at Silver Springs, Nevada has moved to continuous operation across four shift teams and will now ramp up production. It also says extra storage for incoming panels is in place at its Hanford, California and Cambridge, Ohio sites.",
-      "why": "Commercial-scale panel recycling running round the clock in the US is a reference point for India, which has yet to build dedicated capacity for its own coming wave of solar waste.",
-      "source": "American Recycler via Now.Solar",
-      "url": "https://now.solar/2026/11/01/comstock-metals-commences-operations-for-solar-panel-recycling-american-recycler/"
-    },
-    {
-      "date": "2026-11-04",
-      "region": "India",
-      "topic": "Critical minerals",
-      "title": "Cabinet clears ₹2,814 crore capex subsidy for two lithium and two nickel processing plants",
-      "summary": "The five-year scheme (FY27 to FY31) offers a 30% capital subsidy to four units, each lithium plant needing at least 30,000 tonnes of capacity and each nickel plant at least 50,000 tonnes, with cobalt recovered as a by-product of nickel. Support is capped at ₹500 crore per lithium beneficiary and ₹900 crore per nickel beneficiary, picked through technical qualification followed by bidding on the lowest capital support sought.",
-      "why": "It funds the step of turning ores and intermediates into high-purity battery compounds, which India largely lacks today; whether recycled intermediates such as black mass qualify will decide how much it helps Indian battery recyclers.",
-      "source": "Business Standard",
-      "url": "https://www.business-standard.com/amp/economy/news/cabinet-approves-five-year-2-814-cr-push-for-critical-mineral-processing-126110401052_1.html"
     }
   ]
 }
