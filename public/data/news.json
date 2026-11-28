@@ -1,6 +1,16 @@
 {
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "items": [
+    {
+      "date": "2026-11-24",
+      "region": "India",
+      "topic": "Deals",
+      "title": "Adani's Kutch Copper signs a three-year deal to buy recycled copper anode from Attero",
+      "summary": "Attero will supply 2,000 tonnes of copper anode a month, recovered from discarded electronics and batteries, to Adani's Kutch Copper smelter in Mundra under a deal sources value at about $1 billion. Reuters reported the agreement was signed around three months ago and could trim the smelter's import dependence by around 5%.",
+      "why": "A large, long-term offtake from a major smelter gives Indian e-waste and battery recyclers a domestic outlet for recovered copper and a benchmark for what recycled metal contracts can look like.",
+      "source": "Business Today, via Reuters",
+      "url": "https://www.businesstoday.in/latest/corporate/story/adanis-1-billion-copper-deal-with-attero-can-recycled-metal-reduce-indias-import-dependence-569246-2026-11-24"
+    },
     {
       "date": "2026-11-27",
       "region": "World",
@@ -390,16 +400,6 @@
       "why": "It shows the full-lifecycle OEM–recycler contract that Indian EV makers may need to meet battery EPR targets, combining reuse and recycling under one partner.",
       "source": "Business Wire via Batteries News",
       "url": "https://batteriesnews.com/rivian-and-redwood-materials-expand-partnership-to-span-the-lifecycle-of-the-battery/"
-    },
-    {
-      "date": "2026-11-09",
-      "region": "World",
-      "topic": "Rare earths",
-      "title": "China extends its pause on wider rare earth export controls by two months, to 10 January",
-      "summary": "China's Ministry of Commerce said on 9 November that the one-year suspension of its October 2025 expansion of rare earth export controls, which also covered lithium battery technology, will run two more months until 10 January. The move is part of a wider pause in trade countermeasures as Beijing negotiates a lasting deal with Washington ahead of an expected Xi–Trump meeting at APEC in Shenzhen.",
-      "why": "A short two-month window keeps rare earth and magnet supply uncertain, which supports the case for Indian magnet and battery recyclers building domestic sources of these materials.",
-      "source": "Reuters via Investing.com",
-      "url": "https://www.investing.com/news/commodities-news/china-extends-suspension-of-new-rare-earth-controls-until-january-5010878"
     }
   ]
 }
